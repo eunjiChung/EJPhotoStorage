@@ -1,0 +1,768 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		45B6977B6B9DB6EF7365B897290BB33D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
+		568BF84BE08A465FAC5DE778CC560920 /* Pods-EJPhotoStorageTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D20B2D3D97077EB754BA01E958186909 /* Pods-EJPhotoStorageTests-dummy.m */; };
+		5D96D498C71CD9B88C0D42BD6D93E294 /* CHTCollectionViewWaterfallLayout-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FE506064671A068EED9E7E691E176A3A /* CHTCollectionViewWaterfallLayout-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6A0D9517F13AC909EA9E33DF1327BA75 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
+		6ED7A0E1A0C0DD3D62F324E9AC9181DA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
+		74828606C1C4BA452ECE3D8A2791BA79 /* Pods-EJPhotoStorage-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5777C1BBE2DC1BF0EBA8DA0D9E94EE30 /* Pods-EJPhotoStorage-dummy.m */; };
+		7D4258A7B8DE5B14B7B4B91D6B955029 /* CHTCollectionViewWaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14896A6D5F9DFB449906C925D3FC5AB /* CHTCollectionViewWaterfallLayout.swift */; };
+		81DEBE57FA90837F4BE22809C7FC26BE /* Pods-EJPhotoStorage-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D8F5C0AB81A667516D62EFF17E3B392E /* Pods-EJPhotoStorage-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C56B4BFDF49B2A5871D92C602F5D2103 /* Pods-EJPhotoStorageTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BDA40452C96D89059D4EA43460E2DBF5 /* Pods-EJPhotoStorageTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD5E4D782A8BED6744F29F6D5A6C2651 /* CHTCollectionViewWaterfallLayout-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8848381CA99A68377C3C3B29764234C3 /* CHTCollectionViewWaterfallLayout-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		04C321358594F281DFDAFA21A98A16D2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 83DBBCE523C3F780DFE1B689B272DDE8;
+			remoteInfo = CHTCollectionViewWaterfallLayout;
+		};
+		2B82DE8299C67702FE95D5DE1A0E7E8F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 496AD2D54BB80DED0C27D8F71508AE37;
+			remoteInfo = "Pods-EJPhotoStorage";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		05504159E7F46F6B1EED45976AB24D81 /* Pods-EJPhotoStorage-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-EJPhotoStorage-acknowledgements.markdown"; sourceTree = "<group>"; };
+		10C408E3DB9CC4ACF8C44E68723E4298 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		199170F64AB25B3C2F29E67A8DFE2635 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		33B52FAA1D595D29D01FDFC30E33EBF2 /* Pods-EJPhotoStorageTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-EJPhotoStorageTests.debug.xcconfig"; sourceTree = "<group>"; };
+		465889332EE944FDD1B459B004EDEA3D /* CHTCollectionViewWaterfallLayout.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CHTCollectionViewWaterfallLayout.xcconfig; sourceTree = "<group>"; };
+		55D2B4A01378B4AB925119D058654144 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5777C1BBE2DC1BF0EBA8DA0D9E94EE30 /* Pods-EJPhotoStorage-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-EJPhotoStorage-dummy.m"; sourceTree = "<group>"; };
+		5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		60A33350AA84EA6D6D948913A307CD68 /* CHTCollectionViewWaterfallLayout-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CHTCollectionViewWaterfallLayout-prefix.pch"; sourceTree = "<group>"; };
+		6A901A99FAD66CEF40D209B708B82D0C /* Pods-EJPhotoStorageTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EJPhotoStorageTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		6B43647AF855674DE7D39781DC0A192F /* Pods-EJPhotoStorageTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-EJPhotoStorageTests.release.xcconfig"; sourceTree = "<group>"; };
+		6BA8503A5FA1614D78888E14287E574C /* CHTCollectionViewWaterfallLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CHTCollectionViewWaterfallLayout.framework; path = CHTCollectionViewWaterfallLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A15340C500647C44E1BACD9489BE737 /* Pods-EJPhotoStorageTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-EJPhotoStorageTests.modulemap"; sourceTree = "<group>"; };
+		8848381CA99A68377C3C3B29764234C3 /* CHTCollectionViewWaterfallLayout-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CHTCollectionViewWaterfallLayout-dummy.m"; sourceTree = "<group>"; };
+		894C04AD68CB9B1EFB8A2F272BD5D745 /* Pods-EJPhotoStorageTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-EJPhotoStorageTests-frameworks.sh"; sourceTree = "<group>"; };
+		8BFA3BA8AC6B39BCF56CDE28E4E0CDB8 /* Pods_EJPhotoStorageTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_EJPhotoStorageTests.framework; path = "Pods-EJPhotoStorageTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		96205A37A62DB89D42F186735A07CF62 /* CHTCollectionViewWaterfallLayout.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = CHTCollectionViewWaterfallLayout.modulemap; sourceTree = "<group>"; };
+		99E9E317FD22C5D6EFD242186617F771 /* Pods_EJPhotoStorage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_EJPhotoStorage.framework; path = "Pods-EJPhotoStorage.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E148AE977FA0D146121437DAB1CA992 /* Pods-EJPhotoStorageTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-EJPhotoStorageTests-resources.sh"; sourceTree = "<group>"; };
+		A24A94C61484D582196090225BE28531 /* Pods-EJPhotoStorageTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-EJPhotoStorageTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		B6FAAA4ABD38714E3AFFBCD1AE1CE0F9 /* Pods-EJPhotoStorage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-EJPhotoStorage.debug.xcconfig"; sourceTree = "<group>"; };
+		BDA40452C96D89059D4EA43460E2DBF5 /* Pods-EJPhotoStorageTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-EJPhotoStorageTests-umbrella.h"; sourceTree = "<group>"; };
+		C14896A6D5F9DFB449906C925D3FC5AB /* CHTCollectionViewWaterfallLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CHTCollectionViewWaterfallLayout.swift; sourceTree = "<group>"; };
+		C57821BE66BC942D0C9179A8F85E84C2 /* Pods-EJPhotoStorage-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EJPhotoStorage-acknowledgements.plist"; sourceTree = "<group>"; };
+		D1538FA8405C3EFF8371585FCE135A2C /* Pods-EJPhotoStorage.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-EJPhotoStorage.modulemap"; sourceTree = "<group>"; };
+		D20B2D3D97077EB754BA01E958186909 /* Pods-EJPhotoStorageTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-EJPhotoStorageTests-dummy.m"; sourceTree = "<group>"; };
+		D8F5C0AB81A667516D62EFF17E3B392E /* Pods-EJPhotoStorage-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-EJPhotoStorage-umbrella.h"; sourceTree = "<group>"; };
+		E21F554C0ADDB6A8E3FEBBA38E28FF6F /* Pods-EJPhotoStorage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-EJPhotoStorage.release.xcconfig"; sourceTree = "<group>"; };
+		E2FAAC27F98233874B5D45DA4BA9E1E2 /* Pods-EJPhotoStorage-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-EJPhotoStorage-frameworks.sh"; sourceTree = "<group>"; };
+		F46BBC41B13E20991B4D2D1ECB2C2C9F /* Pods-EJPhotoStorage-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-EJPhotoStorage-resources.sh"; sourceTree = "<group>"; };
+		FE506064671A068EED9E7E691E176A3A /* CHTCollectionViewWaterfallLayout-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CHTCollectionViewWaterfallLayout-umbrella.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		099DC5FA96E0BC8AFFC4777CCF99B154 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6ED7A0E1A0C0DD3D62F324E9AC9181DA /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0F97B10D1D7D24CD9DE90BA0FBF89E6B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A0D9517F13AC909EA9E33DF1327BA75 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55A62AFAAA3306C730862F417CF48F93 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45B6977B6B9DB6EF7365B897290BB33D /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3A897A2957C46EA2C8EF65D09D02F92A /* Swift */ = {
+			isa = PBXGroup;
+			children = (
+				C14896A6D5F9DFB449906C925D3FC5AB /* CHTCollectionViewWaterfallLayout.swift */,
+			);
+			name = Swift;
+			sourceTree = "<group>";
+		};
+		3B9C110BF282F6836E90F88C2E32BACA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9D00ADE4878233845FFB86659304207A /* CHTCollectionViewWaterfallLayout */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		4A0E0C144D43D10E8057EC174A6A52CD /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				ECC01BD257FB1B0A4FDD490CBCF3D0BB /* Pods-EJPhotoStorage */,
+				51B15245001D9B79DDB7A39CD18B5E08 /* Pods-EJPhotoStorageTests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		51B15245001D9B79DDB7A39CD18B5E08 /* Pods-EJPhotoStorageTests */ = {
+			isa = PBXGroup;
+			children = (
+				199170F64AB25B3C2F29E67A8DFE2635 /* Info.plist */,
+				7A15340C500647C44E1BACD9489BE737 /* Pods-EJPhotoStorageTests.modulemap */,
+				A24A94C61484D582196090225BE28531 /* Pods-EJPhotoStorageTests-acknowledgements.markdown */,
+				6A901A99FAD66CEF40D209B708B82D0C /* Pods-EJPhotoStorageTests-acknowledgements.plist */,
+				D20B2D3D97077EB754BA01E958186909 /* Pods-EJPhotoStorageTests-dummy.m */,
+				894C04AD68CB9B1EFB8A2F272BD5D745 /* Pods-EJPhotoStorageTests-frameworks.sh */,
+				9E148AE977FA0D146121437DAB1CA992 /* Pods-EJPhotoStorageTests-resources.sh */,
+				BDA40452C96D89059D4EA43460E2DBF5 /* Pods-EJPhotoStorageTests-umbrella.h */,
+				33B52FAA1D595D29D01FDFC30E33EBF2 /* Pods-EJPhotoStorageTests.debug.xcconfig */,
+				6B43647AF855674DE7D39781DC0A192F /* Pods-EJPhotoStorageTests.release.xcconfig */,
+			);
+			name = "Pods-EJPhotoStorageTests";
+			path = "Target Support Files/Pods-EJPhotoStorageTests";
+			sourceTree = "<group>";
+		};
+		5E0D919E635D23B70123790B8308F8EF /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				3B9C110BF282F6836E90F88C2E32BACA /* Pods */,
+				D33529CB8B509EB40D4BFEE360A116D7 /* Products */,
+				4A0E0C144D43D10E8057EC174A6A52CD /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		9D00ADE4878233845FFB86659304207A /* CHTCollectionViewWaterfallLayout */ = {
+			isa = PBXGroup;
+			children = (
+				C50AE899F3C64D7750E20E59F1646F51 /* Support Files */,
+				3A897A2957C46EA2C8EF65D09D02F92A /* Swift */,
+			);
+			name = CHTCollectionViewWaterfallLayout;
+			path = CHTCollectionViewWaterfallLayout;
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5E0D919E635D23B70123790B8308F8EF /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C50AE899F3C64D7750E20E59F1646F51 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				96205A37A62DB89D42F186735A07CF62 /* CHTCollectionViewWaterfallLayout.modulemap */,
+				465889332EE944FDD1B459B004EDEA3D /* CHTCollectionViewWaterfallLayout.xcconfig */,
+				8848381CA99A68377C3C3B29764234C3 /* CHTCollectionViewWaterfallLayout-dummy.m */,
+				60A33350AA84EA6D6D948913A307CD68 /* CHTCollectionViewWaterfallLayout-prefix.pch */,
+				FE506064671A068EED9E7E691E176A3A /* CHTCollectionViewWaterfallLayout-umbrella.h */,
+				10C408E3DB9CC4ACF8C44E68723E4298 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/CHTCollectionViewWaterfallLayout";
+			sourceTree = "<group>";
+		};
+		D33529CB8B509EB40D4BFEE360A116D7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6BA8503A5FA1614D78888E14287E574C /* CHTCollectionViewWaterfallLayout.framework */,
+				99E9E317FD22C5D6EFD242186617F771 /* Pods_EJPhotoStorage.framework */,
+				8BFA3BA8AC6B39BCF56CDE28E4E0CDB8 /* Pods_EJPhotoStorageTests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ECC01BD257FB1B0A4FDD490CBCF3D0BB /* Pods-EJPhotoStorage */ = {
+			isa = PBXGroup;
+			children = (
+				55D2B4A01378B4AB925119D058654144 /* Info.plist */,
+				D1538FA8405C3EFF8371585FCE135A2C /* Pods-EJPhotoStorage.modulemap */,
+				05504159E7F46F6B1EED45976AB24D81 /* Pods-EJPhotoStorage-acknowledgements.markdown */,
+				C57821BE66BC942D0C9179A8F85E84C2 /* Pods-EJPhotoStorage-acknowledgements.plist */,
+				5777C1BBE2DC1BF0EBA8DA0D9E94EE30 /* Pods-EJPhotoStorage-dummy.m */,
+				E2FAAC27F98233874B5D45DA4BA9E1E2 /* Pods-EJPhotoStorage-frameworks.sh */,
+				F46BBC41B13E20991B4D2D1ECB2C2C9F /* Pods-EJPhotoStorage-resources.sh */,
+				D8F5C0AB81A667516D62EFF17E3B392E /* Pods-EJPhotoStorage-umbrella.h */,
+				B6FAAA4ABD38714E3AFFBCD1AE1CE0F9 /* Pods-EJPhotoStorage.debug.xcconfig */,
+				E21F554C0ADDB6A8E3FEBBA38E28FF6F /* Pods-EJPhotoStorage.release.xcconfig */,
+			);
+			name = "Pods-EJPhotoStorage";
+			path = "Target Support Files/Pods-EJPhotoStorage";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		22BD4069F2115A20477C02DADD85330E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C56B4BFDF49B2A5871D92C602F5D2103 /* Pods-EJPhotoStorageTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7EDDCE73AA1CFE6DEF8145114B78C068 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81DEBE57FA90837F4BE22809C7FC26BE /* Pods-EJPhotoStorage-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D491E5A3CFF71BD9C173CBBECE1076D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D96D498C71CD9B88C0D42BD6D93E294 /* CHTCollectionViewWaterfallLayout-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		496AD2D54BB80DED0C27D8F71508AE37 /* Pods-EJPhotoStorage */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 131D85FD4B6819BCBA92F58DCA19E99B /* Build configuration list for PBXNativeTarget "Pods-EJPhotoStorage" */;
+			buildPhases = (
+				FD5D2272F9FCADBAF1409FB778A959FC /* Sources */,
+				099DC5FA96E0BC8AFFC4777CCF99B154 /* Frameworks */,
+				7EDDCE73AA1CFE6DEF8145114B78C068 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1F6F512BC981E1C7ED11BA0EE9725C51 /* PBXTargetDependency */,
+			);
+			name = "Pods-EJPhotoStorage";
+			productName = "Pods-EJPhotoStorage";
+			productReference = 99E9E317FD22C5D6EFD242186617F771 /* Pods_EJPhotoStorage.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		83DBBCE523C3F780DFE1B689B272DDE8 /* CHTCollectionViewWaterfallLayout */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7151B549D788AB03287452A1205A14CD /* Build configuration list for PBXNativeTarget "CHTCollectionViewWaterfallLayout" */;
+			buildPhases = (
+				586A662234293D7F6DA248DF5EB34FE2 /* Sources */,
+				55A62AFAAA3306C730862F417CF48F93 /* Frameworks */,
+				8D491E5A3CFF71BD9C173CBBECE1076D /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CHTCollectionViewWaterfallLayout;
+			productName = CHTCollectionViewWaterfallLayout;
+			productReference = 6BA8503A5FA1614D78888E14287E574C /* CHTCollectionViewWaterfallLayout.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		BDF607B826AC2D1787D03B4DABA1E1C7 /* Pods-EJPhotoStorageTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B6452CC4D07338379A036C5A848C503F /* Build configuration list for PBXNativeTarget "Pods-EJPhotoStorageTests" */;
+			buildPhases = (
+				A7AB71DCF6F48757FBFE5C6CA274D204 /* Sources */,
+				0F97B10D1D7D24CD9DE90BA0FBF89E6B /* Frameworks */,
+				22BD4069F2115A20477C02DADD85330E /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8132E24D9943C219773C7C44CECA5ACF /* PBXTargetDependency */,
+			);
+			name = "Pods-EJPhotoStorageTests";
+			productName = "Pods-EJPhotoStorageTests";
+			productReference = 8BFA3BA8AC6B39BCF56CDE28E4E0CDB8 /* Pods_EJPhotoStorageTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = D33529CB8B509EB40D4BFEE360A116D7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				83DBBCE523C3F780DFE1B689B272DDE8 /* CHTCollectionViewWaterfallLayout */,
+				496AD2D54BB80DED0C27D8F71508AE37 /* Pods-EJPhotoStorage */,
+				BDF607B826AC2D1787D03B4DABA1E1C7 /* Pods-EJPhotoStorageTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		586A662234293D7F6DA248DF5EB34FE2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD5E4D782A8BED6744F29F6D5A6C2651 /* CHTCollectionViewWaterfallLayout-dummy.m in Sources */,
+				7D4258A7B8DE5B14B7B4B91D6B955029 /* CHTCollectionViewWaterfallLayout.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7AB71DCF6F48757FBFE5C6CA274D204 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				568BF84BE08A465FAC5DE778CC560920 /* Pods-EJPhotoStorageTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FD5D2272F9FCADBAF1409FB778A959FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				74828606C1C4BA452ECE3D8A2791BA79 /* Pods-EJPhotoStorage-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1F6F512BC981E1C7ED11BA0EE9725C51 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CHTCollectionViewWaterfallLayout;
+			target = 83DBBCE523C3F780DFE1B689B272DDE8 /* CHTCollectionViewWaterfallLayout */;
+			targetProxy = 04C321358594F281DFDAFA21A98A16D2 /* PBXContainerItemProxy */;
+		};
+		8132E24D9943C219773C7C44CECA5ACF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-EJPhotoStorage";
+			target = 496AD2D54BB80DED0C27D8F71508AE37 /* Pods-EJPhotoStorage */;
+			targetProxy = 2B82DE8299C67702FE95D5DE1A0E7E8F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		102E36033BE876E1EA9967F2A7A89F92 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B43647AF855674DE7D39781DC0A192F /* Pods-EJPhotoStorageTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-EJPhotoStorageTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-EJPhotoStorageTests/Pods-EJPhotoStorageTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		199D972A13F2B4C56847F7A89CCA83BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		1E7B4B05827F1E973E36378F6BBCFA8A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 465889332EE944FDD1B459B004EDEA3D /* CHTCollectionViewWaterfallLayout.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/CHTCollectionViewWaterfallLayout/CHTCollectionViewWaterfallLayout-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CHTCollectionViewWaterfallLayout/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/CHTCollectionViewWaterfallLayout/CHTCollectionViewWaterfallLayout.modulemap";
+				PRODUCT_MODULE_NAME = CHTCollectionViewWaterfallLayout;
+				PRODUCT_NAME = CHTCollectionViewWaterfallLayout;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		66B7BBF165D8F271D9B4FF9B63CE0C47 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 33B52FAA1D595D29D01FDFC30E33EBF2 /* Pods-EJPhotoStorageTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-EJPhotoStorageTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-EJPhotoStorageTests/Pods-EJPhotoStorageTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		D45CBA9597FD0912A4B0520CB5B2B52F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B6FAAA4ABD38714E3AFFBCD1AE1CE0F9 /* Pods-EJPhotoStorage.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-EJPhotoStorage/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-EJPhotoStorage/Pods-EJPhotoStorage.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		DB8033F0F740CECBAB4C8FAF6DF99E2A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E21F554C0ADDB6A8E3FEBBA38E28FF6F /* Pods-EJPhotoStorage.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-EJPhotoStorage/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-EJPhotoStorage/Pods-EJPhotoStorage.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E17B7E5DFA56234AFCEEF70E55343C26 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 465889332EE944FDD1B459B004EDEA3D /* CHTCollectionViewWaterfallLayout.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/CHTCollectionViewWaterfallLayout/CHTCollectionViewWaterfallLayout-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CHTCollectionViewWaterfallLayout/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/CHTCollectionViewWaterfallLayout/CHTCollectionViewWaterfallLayout.modulemap";
+				PRODUCT_MODULE_NAME = CHTCollectionViewWaterfallLayout;
+				PRODUCT_NAME = CHTCollectionViewWaterfallLayout;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		FDB2FC4A1E5891381CD9D922145497F1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		131D85FD4B6819BCBA92F58DCA19E99B /* Build configuration list for PBXNativeTarget "Pods-EJPhotoStorage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D45CBA9597FD0912A4B0520CB5B2B52F /* Debug */,
+				DB8033F0F740CECBAB4C8FAF6DF99E2A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				199D972A13F2B4C56847F7A89CCA83BC /* Debug */,
+				FDB2FC4A1E5891381CD9D922145497F1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7151B549D788AB03287452A1205A14CD /* Build configuration list for PBXNativeTarget "CHTCollectionViewWaterfallLayout" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1E7B4B05827F1E973E36378F6BBCFA8A /* Debug */,
+				E17B7E5DFA56234AFCEEF70E55343C26 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B6452CC4D07338379A036C5A848C503F /* Build configuration list for PBXNativeTarget "Pods-EJPhotoStorageTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66B7BBF165D8F271D9B4FF9B63CE0C47 /* Debug */,
+				102E36033BE876E1EA9967F2A7A89F92 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}
