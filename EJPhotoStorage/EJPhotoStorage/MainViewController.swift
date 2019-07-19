@@ -7,24 +7,70 @@
 //
 
 import UIKit
+import CHTCollectionViewWaterfallLayout
 
-class MainViewController: UIViewController {
-
+class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLayout, UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    // MARK: - Property
+    let photos = Photos.init(name: "main")
+    var filteredPhotos = Photos.init(name: "filtered")
+    
+    // MARK: - IBOutlet
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        photos.buildDataSource()
+        registerNib()
+        layout()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // MARK: - Private Method
+    fileprivate func registerNib() {
+        collectionView.register(UINib(nibName: "ResultCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: ResultCollectionViewCell.identifier)
     }
-    */
-
+    
+    fileprivate func layout() {
+        let waterfallLayout = CHTCollectionViewWaterfallLayout()
+        waterfallLayout.minimumColumnSpacing = 5.0
+        waterfallLayout.minimumInteritemSpacing = 5.0
+        
+        collectionView.collectionViewLayout = waterfallLayout
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier
+        {
+        case "main_detail_segue":
+            let destination = segue.destination as! ResultDetailViewController
+            destination.photos = photos
+        case "main_storage_segue":
+            let destination = segue.destination as! StorageViewController
+            destination.photos = filteredPhotos
+        default:
+            print("Nothing...")
+        }
+    }
+    
+    // MARK: - CollectionViewDataSource
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return photos.photos.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResultCollectionViewCell.identifier, for: indexPath) as! ResultCollectionViewCell
+        cell.imageView.image = photos.photos[indexPath.item].image
+        return cell
+    }
+    
+    // MARK: - CollectionViewDelegate
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "ResultDetailViewController")
+        self.present(detailVC!, animated: true, completion: nil)
+    }
+    
+    // MARK: - CHTCollectionViewWaterfallLayout Delegate
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
+        return photos.photos[indexPath.item].image.size
+    }
 }

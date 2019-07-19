@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="88" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ocH-0E-nxY">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ocH-0E-nxY">
                                 <rect key="frame" x="0.0" y="144" width="375" height="668"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="OMl-ze-Zq9">
@@ -32,6 +32,10 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="y72-S5-qZA"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="rDU-qK-qAh"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -49,12 +53,13 @@
                     <navigationItem key="navigationItem" title="검색" id="uOd-93-nTu">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="vdp-ll-ppx">
                             <connections>
-                                <segue destination="1fd-Aa-VoX" kind="show" id="rbq-1E-FP3"/>
+                                <segue destination="1fd-Aa-VoX" kind="show" identifier="main_storage_segue" id="rbq-1E-FP3"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="YKk-EL-3U1" kind="presentation" id="V1H-8N-yFX"/>
+                        <outlet property="collectionView" destination="ocH-0E-nxY" id="T5C-eb-01F"/>
+                        <segue destination="YKk-EL-3U1" kind="presentation" identifier="main_detail_segue" id="V1H-8N-yFX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -81,19 +86,33 @@
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y5T-tx-waQ">
                                         <rect key="frame" x="323.66666666666669" y="65.666666666666671" width="30" height="30"/>
+                                        <connections>
+                                            <action selector="didTouchCloseBtn:" destination="YKk-EL-3U1" eventType="touchUpInside" id="6Ab-ON-fni"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DyF-wW-feX">
+                                        <rect key="frame" x="27" y="65.666666666666671" width="30" height="30"/>
+                                        <state key="normal" title="저장">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didTouchStoreBtn:" destination="YKk-EL-3U1" eventType="touchUpInside" id="gA8-hQ-mor"/>
+                                        </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="Y5T-tx-waQ" firstAttribute="centerY" secondItem="aWl-P8-mEu" secondAttribute="centerY" id="3c0-8Q-3PU"/>
+                                    <constraint firstItem="DyF-wW-feX" firstAttribute="leading" secondItem="tdp-Ka-CA0" secondAttribute="leadingMargin" constant="19" id="BRh-QP-RnU"/>
                                     <constraint firstItem="Y5T-tx-waQ" firstAttribute="centerX" secondItem="aWl-P8-mEu" secondAttribute="centerX" id="MpQ-EW-Ghc"/>
                                     <constraint firstItem="aWl-P8-mEu" firstAttribute="top" secondItem="tdp-Ka-CA0" secondAttribute="topMargin" constant="19" id="Sny-Qe-bW3"/>
+                                    <constraint firstItem="DyF-wW-feX" firstAttribute="centerY" secondItem="Y5T-tx-waQ" secondAttribute="centerY" id="V8U-hM-crO"/>
                                     <constraint firstAttribute="height" constant="97" id="Wxa-Zx-ojv"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="aWl-P8-mEu" secondAttribute="trailing" constant="19" id="YXA-ui-7rd"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oiE-p9-6wU">
-                                <rect key="frame" x="0.0" y="97" width="375" height="715"/>
+                                <rect key="frame" x="0.0" y="97" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="kz0-1w-ylT">
                                     <size key="itemSize" width="50" height="50"/>
@@ -104,12 +123,12 @@
                                 <cells/>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="oiE-p9-6wU" secondAttribute="trailing" id="BkP-RA-a0X"/>
                             <constraint firstAttribute="trailing" secondItem="tdp-Ka-CA0" secondAttribute="trailing" id="HXT-7j-NGz"/>
                             <constraint firstItem="oiE-p9-6wU" firstAttribute="top" secondItem="tdp-Ka-CA0" secondAttribute="bottom" id="IVh-tr-Val"/>
-                            <constraint firstAttribute="bottom" secondItem="oiE-p9-6wU" secondAttribute="bottom" id="Rss-Kb-FhP"/>
+                            <constraint firstItem="m2e-8l-neA" firstAttribute="bottom" secondItem="oiE-p9-6wU" secondAttribute="bottom" constant="34" id="Rss-Kb-FhP"/>
                             <constraint firstItem="tdp-Ka-CA0" firstAttribute="top" secondItem="WMe-Ue-O81" secondAttribute="top" id="m8G-sd-o2b"/>
                             <constraint firstItem="oiE-p9-6wU" firstAttribute="leading" secondItem="WMe-Ue-O81" secondAttribute="leading" id="pdL-O7-tcV"/>
                             <constraint firstItem="tdp-Ka-CA0" firstAttribute="leading" secondItem="WMe-Ue-O81" secondAttribute="leading" id="s9K-qq-Nl9"/>

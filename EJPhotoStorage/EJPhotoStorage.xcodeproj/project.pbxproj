@@ -21,6 +21,10 @@
 		9989ACED22E202E2005F05E8 /* StorageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989ACEC22E202E2005F05E8 /* StorageDetailViewController.swift */; };
 		9989ACF022E20313005F05E8 /* ResultDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989ACEE22E20313005F05E8 /* ResultDetailCollectionViewCell.swift */; };
 		9989ACF122E20313005F05E8 /* ResultDetailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9989ACEF22E20313005F05E8 /* ResultDetailCollectionViewCell.xib */; };
+		9989ACF422E2053B005F05E8 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989ACF322E2053B005F05E8 /* Photos.swift */; };
+		9989ACF722E2075D005F05E8 /* ResultCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989ACF522E2075D005F05E8 /* ResultCollectionViewCell.swift */; };
+		9989ACF822E2075D005F05E8 /* ResultCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9989ACF622E2075D005F05E8 /* ResultCollectionViewCell.xib */; };
+		9989ACFA22E209A3005F05E8 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989ACF922E209A3005F05E8 /* Photo.swift */; };
 		D81490B2A79784323CE418B5 /* Pods_EJPhotoStorage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42D1A0CF25182978566AA8B5 /* Pods_EJPhotoStorage.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +60,10 @@
 		9989ACEC22E202E2005F05E8 /* StorageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageDetailViewController.swift; sourceTree = "<group>"; };
 		9989ACEE22E20313005F05E8 /* ResultDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		9989ACEF22E20313005F05E8 /* ResultDetailCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultDetailCollectionViewCell.xib; sourceTree = "<group>"; };
+		9989ACF322E2053B005F05E8 /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
+		9989ACF522E2075D005F05E8 /* ResultCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCollectionViewCell.swift; sourceTree = "<group>"; };
+		9989ACF622E2075D005F05E8 /* ResultCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultCollectionViewCell.xib; sourceTree = "<group>"; };
+		9989ACF922E209A3005F05E8 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		B54F93242DABF9B32A356C98 /* Pods-EJPhotoStorage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EJPhotoStorage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EJPhotoStorage/Pods-EJPhotoStorage.debug.xcconfig"; sourceTree = "<group>"; };
 		BF3732A40D799A4D421B94AB /* Pods-EJPhotoStorage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EJPhotoStorage.release.xcconfig"; path = "Pods/Target Support Files/Pods-EJPhotoStorage/Pods-EJPhotoStorage.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -105,6 +113,7 @@
 			children = (
 				9989ACBA22E1FF0F005F05E8 /* AppDelegate.swift */,
 				9989ACDA22E20190005F05E8 /* View */,
+				9989ACF222E20524005F05E8 /* Model */,
 				9989ACE422E201EF005F05E8 /* Supporting Files */,
 			);
 			path = EJPhotoStorage;
@@ -134,6 +143,8 @@
 		9989ACDB22E2019C005F05E8 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				9989ACF522E2075D005F05E8 /* ResultCollectionViewCell.swift */,
+				9989ACF622E2075D005F05E8 /* ResultCollectionViewCell.xib */,
 				9989ACEE22E20313005F05E8 /* ResultDetailCollectionViewCell.swift */,
 				9989ACEF22E20313005F05E8 /* ResultDetailCollectionViewCell.xib */,
 				9989ACE022E201C3005F05E8 /* PhotoDetailCollectionViewCell.swift */,
@@ -159,6 +170,15 @@
 				9989ACEC22E202E2005F05E8 /* StorageDetailViewController.swift */,
 			);
 			name = DetailVC;
+			sourceTree = "<group>";
+		};
+		9989ACF222E20524005F05E8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9989ACF322E2053B005F05E8 /* Photos.swift */,
+				9989ACF922E209A3005F05E8 /* Photo.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		C2FF821B67B5754D770CC5B9 /* Pods */ = {
@@ -266,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9989ACC522E1FF10005F05E8 /* LaunchScreen.storyboard in Resources */,
+				9989ACF822E2075D005F05E8 /* ResultCollectionViewCell.xib in Resources */,
 				9989ACF122E20313005F05E8 /* ResultDetailCollectionViewCell.xib in Resources */,
 				9989ACC222E1FF10005F05E8 /* Assets.xcassets in Resources */,
 				9989ACE322E201C3005F05E8 /* PhotoDetailCollectionViewCell.xib in Resources */,
@@ -345,9 +366,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				9989ACEB22E202B0005F05E8 /* ResultDetailViewController.swift in Sources */,
+				9989ACF722E2075D005F05E8 /* ResultCollectionViewCell.swift in Sources */,
 				9989ACED22E202E2005F05E8 /* StorageDetailViewController.swift in Sources */,
 				9989ACE822E2023F005F05E8 /* StorageViewController.swift in Sources */,
+				9989ACFA22E209A3005F05E8 /* Photo.swift in Sources */,
 				9989ACE222E201C3005F05E8 /* PhotoDetailCollectionViewCell.swift in Sources */,
+				9989ACF422E2053B005F05E8 /* Photos.swift in Sources */,
 				9989ACBB22E1FF0F005F05E8 /* AppDelegate.swift in Sources */,
 				9989ACF022E20313005F05E8 /* ResultDetailCollectionViewCell.swift in Sources */,
 				9989ACE622E20231005F05E8 /* MainViewController.swift in Sources */,
@@ -443,7 +467,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -498,7 +522,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -516,6 +540,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 88356WAKJ6;
 				INFOPLIST_FILE = EJPhotoStorage/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -535,6 +560,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 88356WAKJ6;
 				INFOPLIST_FILE = EJPhotoStorage/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
