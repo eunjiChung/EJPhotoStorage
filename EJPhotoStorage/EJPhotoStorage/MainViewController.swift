@@ -67,8 +67,7 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
     
     // MARK: - CollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "ResultDetailViewController")
-        self.present(detailVC!, animated: true, completion: nil)
+        self.performSegue(withIdentifier: "main_detail_segue", sender: self)
     }
     
     // MARK: - CHTCollectionViewWaterfallLayout Delegate

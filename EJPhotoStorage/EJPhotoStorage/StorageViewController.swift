@@ -20,7 +20,6 @@ class StorageViewController: UIViewController, UICollectionViewDataSource, UICol
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(photos?.photos)
         registerNib()
     }
     
@@ -56,8 +55,7 @@ class StorageViewController: UIViewController, UICollectionViewDataSource, UICol
     
     // MARK: - CollectionView Delegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "StorageDetailViewController")
-        self.present(detailVC!, animated: true, completion: nil)
+        self.performSegue(withIdentifier: "storage_detail_segue", sender: self)
     }
     
     // MARK: - CollectionView Delegate Flow Layout
