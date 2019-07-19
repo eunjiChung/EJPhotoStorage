@@ -8,23 +8,51 @@
 
 import UIKit
 
-class StorageDetailViewController: UIViewController {
+class StorageDetailViewController: UIViewController, UICollectionViewDataSource {
 
+    // MARK: - Property
+    var storedPhotos: Photos?
+    
+    // MARK: - IBOutlets
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        registerNib()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // MARK: - IBActions
+    @IBAction func didTouchCloseBtn(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
-    */
+    
+    @IBAction func didTouchStoreBtn(_ sender: Any) {
+    }
+    
+    // MARK: - Private Method
+    fileprivate func registerNib() {
+        collectionView.register(UINib(nibName: "PhotoDetailCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PhotoDetailCollectionViewCell")
+    }
+    
+    // MARK: - CollectionView DataSource
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if let photos = storedPhotos {
+            return photos.photos.count
+        }
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoDetailCollectionViewCell.identifier, for: indexPath) as! PhotoDetailCollectionViewCell
+        
+        guard let photo = storedPhotos?.photos[indexPath.item] else { return cell }
+        cell.imageView.image = photo.image
+        cell.imageName.text = photo.name
+        cell.imageDatetime.text = photo.dateTime
+        
+        return cell
+    }
+    
 
 }

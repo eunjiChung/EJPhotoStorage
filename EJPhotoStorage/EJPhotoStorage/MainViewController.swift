@@ -23,6 +23,8 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
         photos.buildDataSource()
         registerNib()
         layout()
+        
+        filteredPhotos = photos
     }
     
     // MARK: - Private Method

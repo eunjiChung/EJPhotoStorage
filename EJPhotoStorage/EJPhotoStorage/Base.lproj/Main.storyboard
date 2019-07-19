@@ -112,7 +112,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oiE-p9-6wU">
-                                <rect key="frame" x="0.0" y="97" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="97" width="375" height="681"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="kz0-1w-ylT">
                                     <size key="itemSize" width="50" height="50"/>
@@ -121,6 +121,10 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="YKk-EL-3U1" id="2fh-jf-TFs"/>
+                                    <outlet property="delegate" destination="YKk-EL-3U1" id="F6Y-VB-4sH"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -128,13 +132,16 @@
                             <constraint firstAttribute="trailing" secondItem="oiE-p9-6wU" secondAttribute="trailing" id="BkP-RA-a0X"/>
                             <constraint firstAttribute="trailing" secondItem="tdp-Ka-CA0" secondAttribute="trailing" id="HXT-7j-NGz"/>
                             <constraint firstItem="oiE-p9-6wU" firstAttribute="top" secondItem="tdp-Ka-CA0" secondAttribute="bottom" id="IVh-tr-Val"/>
-                            <constraint firstItem="m2e-8l-neA" firstAttribute="bottom" secondItem="oiE-p9-6wU" secondAttribute="bottom" constant="34" id="Rss-Kb-FhP"/>
+                            <constraint firstItem="m2e-8l-neA" firstAttribute="bottom" secondItem="oiE-p9-6wU" secondAttribute="bottom" id="Rss-Kb-FhP"/>
                             <constraint firstItem="tdp-Ka-CA0" firstAttribute="top" secondItem="WMe-Ue-O81" secondAttribute="top" id="m8G-sd-o2b"/>
                             <constraint firstItem="oiE-p9-6wU" firstAttribute="leading" secondItem="WMe-Ue-O81" secondAttribute="leading" id="pdL-O7-tcV"/>
                             <constraint firstItem="tdp-Ka-CA0" firstAttribute="leading" secondItem="WMe-Ue-O81" secondAttribute="leading" id="s9K-qq-Nl9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="m2e-8l-neA"/>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="oiE-p9-6wU" id="ent-OD-Les"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ch-Pb-As1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -158,6 +165,10 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="1fd-Aa-VoX" id="GHn-CQ-yc3"/>
+                                    <outlet property="delegate" destination="1fd-Aa-VoX" id="0tQ-os-s2H"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -170,7 +181,8 @@
                         <viewLayoutGuide key="safeArea" id="I4X-Ag-Pk4"/>
                     </view>
                     <connections>
-                        <segue destination="In2-Mg-umi" kind="presentation" id="IpD-7W-OKs"/>
+                        <outlet property="collectionView" destination="Geq-Jk-Wv4" id="xPX-AX-j3A"/>
+                        <segue destination="In2-Mg-umi" kind="presentation" identifier="storage_detail_segue" id="IpD-7W-OKs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IcA-cA-K4A" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -197,11 +209,25 @@
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W85-RE-72v">
                                         <rect key="frame" x="323.66666666666669" y="66" width="30" height="30"/>
+                                        <connections>
+                                            <action selector="didTouchCloseBtn:" destination="In2-Mg-umi" eventType="touchUpInside" id="gQA-iP-aka"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IMx-xA-VdF">
+                                        <rect key="frame" x="27" y="66" width="30" height="30"/>
+                                        <state key="normal" title="저장">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didTouchStoreBtn:" destination="In2-Mg-umi" eventType="touchUpInside" id="9eg-aX-WEF"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="IMx-xA-VdF" firstAttribute="centerY" secondItem="W85-RE-72v" secondAttribute="centerY" id="62t-jl-fQB"/>
                                     <constraint firstAttribute="height" constant="97" id="EDs-cD-EIQ"/>
+                                    <constraint firstItem="IMx-xA-VdF" firstAttribute="leading" secondItem="gUq-uW-9oE" secondAttribute="leadingMargin" constant="19" id="YPI-ZJ-48p"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="mhY-fc-B9a" secondAttribute="trailing" constant="19" id="fXz-1g-DIc"/>
                                     <constraint firstItem="W85-RE-72v" firstAttribute="centerX" secondItem="mhY-fc-B9a" secondAttribute="centerX" id="l27-oS-bex"/>
                                     <constraint firstItem="W85-RE-72v" firstAttribute="centerY" secondItem="mhY-fc-B9a" secondAttribute="centerY" id="mYi-Y9-i8e"/>
@@ -209,7 +235,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SMa-Cb-6Wf">
-                                <rect key="frame" x="0.0" y="97" width="375" height="715"/>
+                                <rect key="frame" x="0.0" y="97" width="375" height="681"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="FQZ-Qy-6G6">
                                     <size key="itemSize" width="50" height="50"/>
@@ -218,20 +244,26 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="In2-Mg-umi" id="qn3-CD-bzh"/>
+                                </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="SMa-Cb-6Wf" firstAttribute="top" secondItem="gUq-uW-9oE" secondAttribute="bottom" id="0su-Y1-Kv3"/>
                             <constraint firstItem="gUq-uW-9oE" firstAttribute="top" secondItem="e3r-yJ-xy8" secondAttribute="top" id="8ha-El-Ocz"/>
                             <constraint firstAttribute="trailing" secondItem="gUq-uW-9oE" secondAttribute="trailing" id="Ab5-9p-eUs"/>
-                            <constraint firstAttribute="bottom" secondItem="SMa-Cb-6Wf" secondAttribute="bottom" id="RR5-yy-2Aq"/>
+                            <constraint firstItem="kB4-fi-fKR" firstAttribute="bottom" secondItem="SMa-Cb-6Wf" secondAttribute="bottom" id="RR5-yy-2Aq"/>
                             <constraint firstAttribute="trailing" secondItem="SMa-Cb-6Wf" secondAttribute="trailing" id="VRk-cy-2bg"/>
                             <constraint firstItem="gUq-uW-9oE" firstAttribute="leading" secondItem="e3r-yJ-xy8" secondAttribute="leading" id="dGk-eD-rJD"/>
                             <constraint firstItem="SMa-Cb-6Wf" firstAttribute="leading" secondItem="e3r-yJ-xy8" secondAttribute="leading" id="lKU-ph-6fU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kB4-fi-fKR"/>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="SMa-Cb-6Wf" id="ukH-9q-1xV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sxf-GV-9QQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

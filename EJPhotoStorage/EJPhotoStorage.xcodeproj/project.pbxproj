@@ -25,6 +25,8 @@
 		9989ACF722E2075D005F05E8 /* ResultCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989ACF522E2075D005F05E8 /* ResultCollectionViewCell.swift */; };
 		9989ACF822E2075D005F05E8 /* ResultCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9989ACF622E2075D005F05E8 /* ResultCollectionViewCell.xib */; };
 		9989ACFA22E209A3005F05E8 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989ACF922E209A3005F05E8 /* Photo.swift */; };
+		9989ACFD22E21696005F05E8 /* StorageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989ACFB22E21696005F05E8 /* StorageCollectionViewCell.swift */; };
+		9989ACFE22E21696005F05E8 /* StorageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9989ACFC22E21696005F05E8 /* StorageCollectionViewCell.xib */; };
 		D81490B2A79784323CE418B5 /* Pods_EJPhotoStorage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42D1A0CF25182978566AA8B5 /* Pods_EJPhotoStorage.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +66,8 @@
 		9989ACF522E2075D005F05E8 /* ResultCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCollectionViewCell.swift; sourceTree = "<group>"; };
 		9989ACF622E2075D005F05E8 /* ResultCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultCollectionViewCell.xib; sourceTree = "<group>"; };
 		9989ACF922E209A3005F05E8 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		9989ACFB22E21696005F05E8 /* StorageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageCollectionViewCell.swift; sourceTree = "<group>"; };
+		9989ACFC22E21696005F05E8 /* StorageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StorageCollectionViewCell.xib; sourceTree = "<group>"; };
 		B54F93242DABF9B32A356C98 /* Pods-EJPhotoStorage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EJPhotoStorage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EJPhotoStorage/Pods-EJPhotoStorage.debug.xcconfig"; sourceTree = "<group>"; };
 		BF3732A40D799A4D421B94AB /* Pods-EJPhotoStorage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EJPhotoStorage.release.xcconfig"; path = "Pods/Target Support Files/Pods-EJPhotoStorage/Pods-EJPhotoStorage.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -132,25 +136,12 @@
 			isa = PBXGroup;
 			children = (
 				9989ACBE22E1FF0F005F05E8 /* Main.storyboard */,
-				9989ACE522E20231005F05E8 /* MainViewController.swift */,
-				9989ACE722E2023F005F05E8 /* StorageViewController.swift */,
-				9989ACE922E2028F005F05E8 /* DetailVC */,
-				9989ACDB22E2019C005F05E8 /* Cells */,
+				9989ACFF22E21EFE005F05E8 /* MainView */,
+				9989AD0022E21F0A005F05E8 /* MainDetailView */,
+				9989AD0122E21F1C005F05E8 /* StorageView */,
+				9989AD0222E21F23005F05E8 /* StorageDetailView */,
 			);
 			name = View;
-			sourceTree = "<group>";
-		};
-		9989ACDB22E2019C005F05E8 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				9989ACF522E2075D005F05E8 /* ResultCollectionViewCell.swift */,
-				9989ACF622E2075D005F05E8 /* ResultCollectionViewCell.xib */,
-				9989ACEE22E20313005F05E8 /* ResultDetailCollectionViewCell.swift */,
-				9989ACEF22E20313005F05E8 /* ResultDetailCollectionViewCell.xib */,
-				9989ACE022E201C3005F05E8 /* PhotoDetailCollectionViewCell.swift */,
-				9989ACE122E201C3005F05E8 /* PhotoDetailCollectionViewCell.xib */,
-			);
-			name = Cells;
 			sourceTree = "<group>";
 		};
 		9989ACE422E201EF005F05E8 /* Supporting Files */ = {
@@ -163,15 +154,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		9989ACE922E2028F005F05E8 /* DetailVC */ = {
-			isa = PBXGroup;
-			children = (
-				9989ACEA22E202B0005F05E8 /* ResultDetailViewController.swift */,
-				9989ACEC22E202E2005F05E8 /* StorageDetailViewController.swift */,
-			);
-			name = DetailVC;
-			sourceTree = "<group>";
-		};
 		9989ACF222E20524005F05E8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,6 +161,46 @@
 				9989ACF922E209A3005F05E8 /* Photo.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		9989ACFF22E21EFE005F05E8 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				9989ACE522E20231005F05E8 /* MainViewController.swift */,
+				9989ACF522E2075D005F05E8 /* ResultCollectionViewCell.swift */,
+				9989ACF622E2075D005F05E8 /* ResultCollectionViewCell.xib */,
+			);
+			name = MainView;
+			sourceTree = "<group>";
+		};
+		9989AD0022E21F0A005F05E8 /* MainDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				9989ACEA22E202B0005F05E8 /* ResultDetailViewController.swift */,
+				9989ACEE22E20313005F05E8 /* ResultDetailCollectionViewCell.swift */,
+				9989ACEF22E20313005F05E8 /* ResultDetailCollectionViewCell.xib */,
+			);
+			name = MainDetailView;
+			sourceTree = "<group>";
+		};
+		9989AD0122E21F1C005F05E8 /* StorageView */ = {
+			isa = PBXGroup;
+			children = (
+				9989ACE722E2023F005F05E8 /* StorageViewController.swift */,
+				9989ACFB22E21696005F05E8 /* StorageCollectionViewCell.swift */,
+				9989ACFC22E21696005F05E8 /* StorageCollectionViewCell.xib */,
+			);
+			name = StorageView;
+			sourceTree = "<group>";
+		};
+		9989AD0222E21F23005F05E8 /* StorageDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				9989ACEC22E202E2005F05E8 /* StorageDetailViewController.swift */,
+				9989ACE022E201C3005F05E8 /* PhotoDetailCollectionViewCell.swift */,
+				9989ACE122E201C3005F05E8 /* PhotoDetailCollectionViewCell.xib */,
+			);
+			name = StorageDetailView;
 			sourceTree = "<group>";
 		};
 		C2FF821B67B5754D770CC5B9 /* Pods */ = {
@@ -289,6 +311,7 @@
 				9989ACF822E2075D005F05E8 /* ResultCollectionViewCell.xib in Resources */,
 				9989ACF122E20313005F05E8 /* ResultDetailCollectionViewCell.xib in Resources */,
 				9989ACC222E1FF10005F05E8 /* Assets.xcassets in Resources */,
+				9989ACFE22E21696005F05E8 /* StorageCollectionViewCell.xib in Resources */,
 				9989ACE322E201C3005F05E8 /* PhotoDetailCollectionViewCell.xib in Resources */,
 				9989ACC022E1FF0F005F05E8 /* Main.storyboard in Resources */,
 			);
@@ -373,6 +396,7 @@
 				9989ACE222E201C3005F05E8 /* PhotoDetailCollectionViewCell.swift in Sources */,
 				9989ACF422E2053B005F05E8 /* Photos.swift in Sources */,
 				9989ACBB22E1FF0F005F05E8 /* AppDelegate.swift in Sources */,
+				9989ACFD22E21696005F05E8 /* StorageCollectionViewCell.swift in Sources */,
 				9989ACF022E20313005F05E8 /* ResultDetailCollectionViewCell.swift in Sources */,
 				9989ACE622E20231005F05E8 /* MainViewController.swift in Sources */,
 			);

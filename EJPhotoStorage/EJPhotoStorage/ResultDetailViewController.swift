@@ -12,7 +12,12 @@ class ResultDetailViewController: UIViewController {
     
     // MARK: - Property
     var photos: Photos?
+    
+    // MARK: - IBOutlets
+    @IBOutlet weak var collectionView: UICollectionView!
+    
 
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
     }
