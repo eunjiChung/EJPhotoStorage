@@ -67,6 +67,19 @@ class EJLibrary : NSObject {
                                        failure: failure)
     }
     
+    // MARK: - Image
+    func setImageUrlToImageView(imageUrl: String,
+                                imageView: UIImageView,
+                                completion: @escaping () -> Void) {
+        guard let url = URL.init(string: imageUrl) else { return }
+        
+        if let data = try? Data(contentsOf: url) {
+            if let image = UIImage(data: data) {
+                imageView.image = image
+            }
+        }
+    }
+    
     // MARK: - Private Method
     fileprivate func generateRequestHeader() -> HTTPHeaders {
         return ["Authorization": "KakaoAK \(kakaoAPPKey)"]

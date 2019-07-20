@@ -16,14 +16,23 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
     var storedPhotos = Photos.init(name: "stored")
     var filteredPhotos = Photos.init(name: "filtered")
     
+    var images = [IMDocuments]()
+    
     // MARK: - IBOutlet
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var searchResultLabel: UILabel!
     
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         photos.buildDataSource()
         layout()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setSearchStatus()
     }
     
     // MARK: - Private Method
@@ -35,7 +44,6 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
         
         searchBar.placeholder = "검색어 입력"
     }
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier
@@ -56,6 +64,14 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
         }
     }
     
+    fileprivate func setSearchStatus() {
+        if images.count == 0 {
+            searchResultLabel.text = "검색어를 입력해주세요."
+        } else {
+            searchResultLabel.text = ""
+        }
+    }
+    
     // MARK: - Save Photo Delegate
     func saveSelectedPhoto(to album: Photos) {
         storedPhotos = album
@@ -65,10 +81,13 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
     // MARK: - UISearchBar Delegate
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let searchKeyword = searchBar.text {
-            print(searchKeyword)
-            
-            EJLibrary.shared.requestPhoto(keyword: "꽃", success: { (data, response) in
-                print(data)
+            EJLibrary.shared.requestPhoto(keyword: searchKeyword, success: { (data, response) in
+                let imageModel = IMImageModel.init(object: data)
+                if let images = imageModel.documents {
+                    self.images = images
+                    self.setSearchStatus()
+                    self.collectionView.reloadData()
+                }
             }) { (error, msg) in
                 print(error)
             }
@@ -77,17 +96,23 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
     
     // MARK: - CollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photos.photos.count
+        return images.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResultCollectionViewCell.identifier, for: indexPath) as! ResultCollectionViewCell
-        cell.imageView.image = photos.photos[indexPath.item].image
+        
+//        cell.imageView.image = photos.photos[indexPath.item].image
+        if let imageUrl = images[indexPath.item].imageUrl {
+            cell.setImage(url: imageUrl)
+        }
+        
         return cell
     }
     
     // MARK: - CHTCollectionViewWaterfallLayout Delegate
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
-        return photos.photos[indexPath.item].image.size
+        let document = images[indexPath.row]
+        return CGSize(width: document.width!, height: document.height!)
     }
 }
