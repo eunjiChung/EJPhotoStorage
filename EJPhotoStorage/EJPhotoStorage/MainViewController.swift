@@ -13,6 +13,7 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
     
     // MARK: - Property
     let photos = Photos.init(name: "main")
+    var storedPhotos = Photos.init(name: "stored")
     var filteredPhotos = Photos.init(name: "filtered")
     
     // MARK: - IBOutlet
@@ -45,7 +46,7 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
             }
         case "main_storage_segue":
             let destination = segue.destination as! StorageViewController
-            destination.photos = filteredPhotos
+            destination.photos = storedPhotos
         default:
             super.prepare(for: segue, sender: sender)
         }
@@ -54,14 +55,8 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
     
     // MARK: - Save Photo Delegate
     func saveSelectedPhoto(to album: Photos) {
-        filteredPhotos = album
+        storedPhotos = album
         print("Photo Saved!!")
-    }
-    
-    // MARK: - MainDetailView Delegate
-    func saveSelectedPhoto(to storedAlbum: [Photo]) {
-        filteredPhotos.photos = storedAlbum
-        print(filteredPhotos)
     }
     
     // MARK: - CollectionViewDataSource
