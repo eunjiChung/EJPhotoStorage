@@ -80,6 +80,8 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
     
     // MARK: - UISearchBar Delegate
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.view.endEditing(true)
+        
         if let searchKeyword = searchBar.text {
             EJLibrary.shared.requestPhoto(keyword: searchKeyword, success: { (data, response) in
                 let imageModel = IMImageModel.init(object: data)
@@ -102,7 +104,6 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResultCollectionViewCell.identifier, for: indexPath) as! ResultCollectionViewCell
         
-//        cell.imageView.image = photos.photos[indexPath.item].image
         if let imageUrl = images[indexPath.item].imageUrl {
             cell.setImage(url: imageUrl)
         }

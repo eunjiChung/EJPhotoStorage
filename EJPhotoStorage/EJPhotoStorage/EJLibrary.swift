@@ -73,9 +73,13 @@ class EJLibrary : NSObject {
                                 completion: @escaping () -> Void) {
         guard let url = URL.init(string: imageUrl) else { return }
         
+        // 불리긴 불려...근데 너무 느려 ㅠㅠ
+        // 캐시를 써야될듯
         if let data = try? Data(contentsOf: url) {
             if let image = UIImage(data: data) {
-                imageView.image = image
+                DispatchQueue.main.async {
+                    imageView.image = image
+                }
             }
         }
     }
@@ -86,9 +90,11 @@ class EJLibrary : NSObject {
     }
     
     fileprivate func generateQueryItems(query: String) -> [URLQueryItem] {
+        let value: String? = "recency"
         let queryItems = [
             URLQueryItem(name: "query", value: query),
-            URLQueryItem(name: "sort", value: "recency")
+            URLQueryItem(name: "sort", value: value),
+            URLQueryItem(name: "size", value: "\(5)")
         ]
         return queryItems
     }
