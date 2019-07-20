@@ -1,16 +1,20 @@
 PODS:
   - CHTCollectionViewWaterfallLayout/Swift (0.9.7)
+  - SwiftyJSON (5.0.0)
 
 DEPENDENCIES:
   - CHTCollectionViewWaterfallLayout/Swift
+  - SwiftyJSON (~> 5.0.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - CHTCollectionViewWaterfallLayout
+    - SwiftyJSON
 
 SPEC CHECKSUMS:
   CHTCollectionViewWaterfallLayout: 9d11068fafecac106695bb5a5d6d0f738483b598
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 2a4571d204512a09ed417371b05a7f3af80c7aae
+PODFILE CHECKSUM: ab3ab1973ee5dc058af410554780f5393257b30f
 
 COCOAPODS: 1.5.3
