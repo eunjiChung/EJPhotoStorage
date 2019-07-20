@@ -20,16 +20,22 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4yF-rh-zBN">
-                        <rect key="frame" x="16" y="44" width="343" height="554.33333333333337"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="598.66666666666663"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="598.66999999999996" id="ZKh-BM-QP2"/>
+                        </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSs-WD-sfy">
-                        <rect key="frame" x="16" y="598.33333333333337" width="343" height="27.666666666666629"/>
+                        <rect key="frame" x="16" y="598.66666666666663" width="343" height="28"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="28" id="MO2-25-lPy"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="23"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2019.07.19" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z4M-P3-KVA">
-                        <rect key="frame" x="16" y="626" width="343" height="21"/>
+                        <rect key="frame" x="16" y="626.66666666666663" width="343" height="20.333333333333371"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                         <nil key="highlightedColor"/>
@@ -37,20 +43,22 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstAttribute="trailingMargin" secondItem="4yF-rh-zBN" secondAttribute="trailing" id="Aba-a3-nYI"/>
-                <constraint firstItem="4yF-rh-zBN" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leadingMargin" id="Nsl-fQ-NMR"/>
-                <constraint firstAttribute="bottomMargin" secondItem="Z4M-P3-KVA" secondAttribute="bottom" id="TPj-vx-d3N"/>
-                <constraint firstItem="DSs-WD-sfy" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leadingMargin" id="ibH-n5-Z2w"/>
-                <constraint firstItem="Z4M-P3-KVA" firstAttribute="trailing" secondItem="gTV-IL-0wX" secondAttribute="trailingMargin" id="kal-OE-wKS"/>
-                <constraint firstItem="4yF-rh-zBN" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="topMargin" id="m5y-xa-z2r"/>
-                <constraint firstItem="DSs-WD-sfy" firstAttribute="trailing" secondItem="gTV-IL-0wX" secondAttribute="trailingMargin" id="p6f-Sy-Dg0"/>
-                <constraint firstItem="Z4M-P3-KVA" firstAttribute="top" secondItem="DSs-WD-sfy" secondAttribute="bottom" id="sB1-oH-nK3"/>
-                <constraint firstItem="Z4M-P3-KVA" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leadingMargin" id="t5A-Ik-bHC"/>
-                <constraint firstItem="DSs-WD-sfy" firstAttribute="top" secondItem="4yF-rh-zBN" secondAttribute="bottom" id="wT3-ol-cvi"/>
+                <constraint firstAttribute="trailing" secondItem="DSs-WD-sfy" secondAttribute="trailing" constant="16" id="7ah-Ua-lw8"/>
+                <constraint firstItem="Z4M-P3-KVA" firstAttribute="trailing" secondItem="DSs-WD-sfy" secondAttribute="trailing" id="BRm-xe-bwy"/>
+                <constraint firstItem="DSs-WD-sfy" firstAttribute="top" secondItem="4yF-rh-zBN" secondAttribute="bottom" id="OrY-60-bPP"/>
+                <constraint firstAttribute="trailing" secondItem="4yF-rh-zBN" secondAttribute="trailing" id="QKR-a9-PxX"/>
+                <constraint firstItem="4yF-rh-zBN" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="S83-x2-gmh"/>
+                <constraint firstAttribute="bottomMargin" secondItem="Z4M-P3-KVA" secondAttribute="bottom" id="Xlj-aN-24i"/>
+                <constraint firstItem="4yF-rh-zBN" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ZNN-w1-9PI"/>
+                <constraint firstItem="Z4M-P3-KVA" firstAttribute="top" secondItem="DSs-WD-sfy" secondAttribute="bottom" id="dNh-bN-YAP"/>
+                <constraint firstItem="Z4M-P3-KVA" firstAttribute="leading" secondItem="DSs-WD-sfy" secondAttribute="leading" id="xSf-Ud-jx1"/>
+                <constraint firstItem="DSs-WD-sfy" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="yfp-CP-Ljr"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="168" height="219"/>
             <connections>
+                <outlet property="alcHeightOfImageName" destination="MO2-25-lPy" id="3S2-nD-RLM"/>
+                <outlet property="alcHeightOfImageView" destination="ZKh-BM-QP2" id="PYM-hp-zux"/>
                 <outlet property="imageDatetime" destination="Z4M-P3-KVA" id="hk6-u3-5Ud"/>
                 <outlet property="imageName" destination="DSs-WD-sfy" id="zOf-8B-Tah"/>
                 <outlet property="imageView" destination="4yF-rh-zBN" id="yQz-il-2q5"/>

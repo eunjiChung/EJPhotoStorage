@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StorageDetailViewController: UIViewController, UICollectionViewDataSource {
+class StorageDetailViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     // MARK: - Property
     var storedPhotos: Photos?
@@ -54,5 +54,9 @@ class StorageDetailViewController: UIViewController, UICollectionViewDataSource 
         return cell
     }
     
+    // MARK: - UICollectionView Delegate Flow Layout
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return collectionView.frame.size
+    }
 
 }

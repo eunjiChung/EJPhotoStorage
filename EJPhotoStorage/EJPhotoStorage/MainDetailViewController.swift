@@ -47,9 +47,7 @@ class MainDetailViewController: UIViewController, UICollectionViewDataSource, UI
         
         guard let photo = photos?.photos[indexPath.item] else { return cell }
         cell.imageView.image = photo.image
-        print(photo.name)
         cell.imageName.text = photo.name
-        print(photo.dateTime)
         cell.imageDatetime.text = photo.dateTime
         
         return cell

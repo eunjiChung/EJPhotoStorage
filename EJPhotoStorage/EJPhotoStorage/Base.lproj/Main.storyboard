@@ -234,10 +234,10 @@
                                     <constraint firstItem="mhY-fc-B9a" firstAttribute="top" secondItem="gUq-uW-9oE" secondAttribute="topMargin" constant="19" id="oL1-vL-F3O"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SMa-Cb-6Wf">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SMa-Cb-6Wf">
                                 <rect key="frame" x="0.0" y="97" width="375" height="681"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="FQZ-Qy-6G6">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="FQZ-Qy-6G6">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -246,6 +246,7 @@
                                 <cells/>
                                 <connections>
                                     <outlet property="dataSource" destination="In2-Mg-umi" id="qn3-CD-bzh"/>
+                                    <outlet property="delegate" destination="In2-Mg-umi" id="Eoy-Jm-MSZ"/>
                                 </connections>
                             </collectionView>
                         </subviews>
