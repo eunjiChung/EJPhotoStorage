@@ -27,8 +27,8 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
     // MARK: - Private Method
     fileprivate func layout() {
         let waterfallLayout = CHTCollectionViewWaterfallLayout()
-        waterfallLayout.minimumColumnSpacing = 5.0
-        waterfallLayout.minimumInteritemSpacing = 5.0
+        waterfallLayout.minimumColumnSpacing = 2.0
+        waterfallLayout.minimumInteritemSpacing = 2.0
         collectionView.collectionViewLayout = waterfallLayout
     }
     

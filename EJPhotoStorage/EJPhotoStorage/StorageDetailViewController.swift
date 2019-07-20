@@ -44,6 +44,7 @@ class StorageDetailViewController: UIViewController, UICollectionViewDataSource,
         collectionView.register(UINib(nibName: "PhotoDetailCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PhotoDetailCollectionViewCell")
     }
     
+    // 얘의 출처는 어디....?
     @objc fileprivate func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
         if let error = error {
             // we got back an error!
