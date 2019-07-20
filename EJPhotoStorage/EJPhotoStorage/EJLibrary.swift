@@ -51,7 +51,7 @@ class EJLibrary : NSObject {
                       success: @escaping SuccessHandler,
                       failure: @escaping FailureHandler) {
         self.networkManager.GETRequest(path: APIPathPhoto,
-                                       query: keyword,
+                                       query: generateQueryItems(query: keyword),
                                        header: generateRequestHeader(),
                                        success: success,
                                        failure: failure)
@@ -61,7 +61,7 @@ class EJLibrary : NSObject {
                       success: @escaping SuccessHandler,
                       failure: @escaping FailureHandler) {
         self.networkManager.GETRequest(path: APIPathVclip,
-                                       query: keyword,
+                                       query: generateQueryItems(query: keyword),
                                        header: generateRequestHeader(),
                                        success: success,
                                        failure: failure)
@@ -70,6 +70,14 @@ class EJLibrary : NSObject {
     // MARK: - Private Method
     fileprivate func generateRequestHeader() -> HTTPHeaders {
         return ["Authorization": "KakaoAK \(kakaoAPPKey)"]
+    }
+    
+    fileprivate func generateQueryItems(query: String) -> [URLQueryItem] {
+        let queryItems = [
+            URLQueryItem(name: "query", value: query),
+            URLQueryItem(name: "sort", value: "recency")
+        ]
+        return queryItems
     }
     
 }

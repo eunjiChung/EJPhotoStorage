@@ -26,7 +26,7 @@ class NetworkManager {
     
     // MARK: - Request
     func GETRequest(path: String,
-                    query: String,
+                    query: [URLQueryItem],
                     header: HTTPHeaders,
                     success: @escaping SuccessHandler,
                     failure: @escaping FailureHandler)
@@ -58,11 +58,11 @@ class NetworkManager {
     
     // MARK: - Private Method
     fileprivate func UrlForRequest(path: String,
-                                   query: String,
+                                   query: [URLQueryItem],
                                    header: HTTPHeaders) -> URLRequest? {
         let fullPath = baseURL + path
         var urlComponents = URLComponents(string: fullPath)!
-        urlComponents.queryItems = [ URLQueryItem(name: "query", value: query) ]
+        urlComponents.queryItems = query
         
         var request = URLRequest(url: urlComponents.url!)
     

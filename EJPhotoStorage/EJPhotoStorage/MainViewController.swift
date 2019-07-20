@@ -16,7 +16,6 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
     var storedPhotos = Photos.init(name: "stored")
     var filteredPhotos = Photos.init(name: "filtered")
     
-    
     // MARK: - IBOutlet
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -25,12 +24,6 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
         super.viewDidLoad()
         photos.buildDataSource()
         layout()
-        
-        EJLibrary.shared.requestPhoto(keyword: "꽃", success: { (data, response) in
-            print(data)
-        }) { (error, msg) in
-            print(error)
-        }
     }
     
     // MARK: - Private Method
@@ -71,7 +64,15 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
     
     // MARK: - UISearchBar Delegate
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("Search Button is clicked")
+        if let searchKeyword = searchBar.text {
+            print(searchKeyword)
+            
+            EJLibrary.shared.requestPhoto(keyword: "꽃", success: { (data, response) in
+                print(data)
+            }) { (error, msg) in
+                print(error)
+            }
+        }
     }
     
     // MARK: - CollectionViewDataSource
