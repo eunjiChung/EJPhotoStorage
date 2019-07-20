@@ -13,6 +13,7 @@ class StorageDetailViewController: UIViewController, UICollectionViewDataSource,
     // MARK: - Property
     var storedPhotos: Photos?
     var indexPath: IndexPath?
+    var currentPhoto: Photo?
     
     // MARK: - IBOutlets
     @IBOutlet weak var collectionView: UICollectionView!
@@ -34,11 +35,22 @@ class StorageDetailViewController: UIViewController, UICollectionViewDataSource,
     }
     
     @IBAction func didTouchStoreBtn(_ sender: Any) {
+        guard let image = currentPhoto?.image else { return }
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
     }
     
     // MARK: - Private Method
     fileprivate func registerNib() {
         collectionView.register(UINib(nibName: "PhotoDetailCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PhotoDetailCollectionViewCell")
+    }
+    
+    @objc fileprivate func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
+        if let error = error {
+            // we got back an error!
+//            Toast(message: error.localizedDescription).show()
+        } else {
+            print("Image Saved!!")
+        }
     }
     
     // MARK: - CollectionView DataSource
@@ -56,6 +68,7 @@ class StorageDetailViewController: UIViewController, UICollectionViewDataSource,
         cell.imageView.image = photo.image
         cell.imageName.text = photo.name
         cell.imageDatetime.text = photo.dateTime
+        currentPhoto = photo
         
         return cell
     }

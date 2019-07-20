@@ -8,7 +8,14 @@
 
 import UIKit
 
+protocol SavePhotoDelegate: class {
+    func saveSelectedPhoto(to album: Photos)
+}
+
 class MainDetailViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    // MARK: - Delegate
+    weak var delegate: SavePhotoDelegate?
     
     // MARK: - Property
     var photos: Photos?
@@ -38,7 +45,11 @@ class MainDetailViewController: UIViewController, UICollectionViewDataSource, UI
     
     @IBAction func didTouchStoreBtn(_ sender: Any) {
         if let currentPhoto = currentPhoto {
-            if !storedPhotos.contains(currentPhoto) { storedPhotos.append(currentPhoto) }
+            if !storedPhotos.contains(currentPhoto) {
+                storedPhotos.append(currentPhoto)
+                storedAlbum.photos = storedPhotos
+                delegate?.saveSelectedPhoto(to: storedAlbum)
+            }
         }
     }
     

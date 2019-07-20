@@ -16,11 +16,24 @@ class StorageViewController: UIViewController, UICollectionViewDataSource, UICol
 
     // MARK: - IBOutlet
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var noImageDescLabel: UILabel!
+    
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if photos?.photos.count == 0 {
+            noImageDescLabel.text = "저장된 이미지가 없습니다."
+        } else {
+            noImageDescLabel.text = ""
+        }
+    }
+    
     
     // MARK: - Private Method
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

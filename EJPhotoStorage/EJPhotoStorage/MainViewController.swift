@@ -9,7 +9,7 @@
 import UIKit
 import CHTCollectionViewWaterfallLayout
 
-class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLayout, UICollectionViewDataSource {
+class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLayout, UICollectionViewDataSource, SavePhotoDelegate {
     
     // MARK: - Property
     let photos = Photos.init(name: "main")
@@ -22,8 +22,6 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
         super.viewDidLoad()
         photos.buildDataSource()
         layout()
-        
-        filteredPhotos = photos
     }
     
     // MARK: - Private Method
@@ -43,6 +41,7 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
                 let indexPath = collectionView.indexPath(for: cell) {
                 destination.photos = photos
                 destination.indexPath = indexPath
+                destination.delegate = self
             }
         case "main_storage_segue":
             let destination = segue.destination as! StorageViewController
@@ -50,6 +49,19 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
         default:
             super.prepare(for: segue, sender: sender)
         }
+    }
+    
+    
+    // MARK: - Save Photo Delegate
+    func saveSelectedPhoto(to album: Photos) {
+        filteredPhotos = album
+        print("Photo Saved!!")
+    }
+    
+    // MARK: - MainDetailView Delegate
+    func saveSelectedPhoto(to storedAlbum: [Photo]) {
+        filteredPhotos.photos = storedAlbum
+        print(filteredPhotos)
     }
     
     // MARK: - CollectionViewDataSource
