@@ -27,7 +27,6 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
         layout()
         
         EJLibrary.shared.requestPhoto(keyword: "꽃", success: { (data, response) in
-            print("Request Photo")
             print(data)
         }) { (error, msg) in
             print(error)

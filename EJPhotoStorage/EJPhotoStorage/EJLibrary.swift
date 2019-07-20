@@ -13,6 +13,7 @@ import UIKit
 typealias SuccessHandler = (Any, String) -> ()
 typealias FailureHandler = (Error, String) -> ()
 typealias HTTPHeaders = [String:String]
+typealias JSONDictionary = [String: Any]
 
 // MARK: - API Path
 fileprivate let kakaoHost                       =   "https://dapi.kakao.com"

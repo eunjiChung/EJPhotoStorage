@@ -44,9 +44,9 @@ class NetworkManager {
                 let response = response as? HTTPURLResponse,
                 response.statusCode == 200
             {
-                print("Response: ", response.statusCode)
+                let result = self.JSONencode(data: data)
                 DispatchQueue.main.async {
-                    success(data, "\(response.statusCode)")
+                    success(result, "\(response.statusCode)")
                 }
             } else if let error = error {
                 failure(error, error.localizedDescription)
@@ -71,6 +71,11 @@ class NetworkManager {
         }
         
         return request
+    }
+    
+    fileprivate func JSONencode(data: Data) -> JSONDictionary {
+        guard let json = try! JSONSerialization.jsonObject(with: data, options: []) as? JSONDictionary else { return ["":""] }
+        return json
     }
     
 }
