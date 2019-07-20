@@ -9,12 +9,14 @@
 import UIKit
 import CHTCollectionViewWaterfallLayout
 
-class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLayout, UICollectionViewDataSource, SavePhotoDelegate {
+class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLayout, UICollectionViewDataSource, SavePhotoDelegate, UISearchResultsUpdating {
     
     // MARK: - Property
     let photos = Photos.init(name: "main")
     var storedPhotos = Photos.init(name: "stored")
     var filteredPhotos = Photos.init(name: "filtered")
+    
+    let searchController = UISearchController(searchResultsController: nil)
     
     // MARK: - IBOutlet
     @IBOutlet weak var collectionView: UICollectionView!
@@ -23,6 +25,7 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
         super.viewDidLoad()
         photos.buildDataSource()
         layout()
+        searchControllerSetting()
     }
     
     // MARK: - Private Method
@@ -31,6 +34,14 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
         waterfallLayout.minimumColumnSpacing = 2.0
         waterfallLayout.minimumInteritemSpacing = 2.0
         collectionView.collectionViewLayout = waterfallLayout
+    }
+    
+    fileprivate func searchControllerSetting() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "검색어 입력"
+        definesPresentationContext = true //...?
+        navigationItem.searchController = searchController
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -52,6 +63,11 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
         }
     }
     
+    // MARK: - UISearchResultUpdating Delegate
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else { return }
+        print(text)
+    }
     
     // MARK: - Save Photo Delegate
     func saveSelectedPhoto(to album: Photos) {
