@@ -17,7 +17,7 @@
 		9989ACE322E201C3005F05E8 /* PhotoDetailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9989ACE122E201C3005F05E8 /* PhotoDetailCollectionViewCell.xib */; };
 		9989ACE622E20231005F05E8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989ACE522E20231005F05E8 /* MainViewController.swift */; };
 		9989ACE822E2023F005F05E8 /* StorageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989ACE722E2023F005F05E8 /* StorageViewController.swift */; };
-		9989ACEB22E202B0005F05E8 /* ResultDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989ACEA22E202B0005F05E8 /* ResultDetailViewController.swift */; };
+		9989ACEB22E202B0005F05E8 /* MainDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989ACEA22E202B0005F05E8 /* MainDetailViewController.swift */; };
 		9989ACED22E202E2005F05E8 /* StorageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989ACEC22E202E2005F05E8 /* StorageDetailViewController.swift */; };
 		9989ACF022E20313005F05E8 /* ResultDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989ACEE22E20313005F05E8 /* ResultDetailCollectionViewCell.swift */; };
 		9989ACF122E20313005F05E8 /* ResultDetailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9989ACEF22E20313005F05E8 /* ResultDetailCollectionViewCell.xib */; };
@@ -59,7 +59,7 @@
 		9989ACE122E201C3005F05E8 /* PhotoDetailCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoDetailCollectionViewCell.xib; sourceTree = "<group>"; };
 		9989ACE522E20231005F05E8 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		9989ACE722E2023F005F05E8 /* StorageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageViewController.swift; sourceTree = "<group>"; };
-		9989ACEA22E202B0005F05E8 /* ResultDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultDetailViewController.swift; sourceTree = "<group>"; };
+		9989ACEA22E202B0005F05E8 /* MainDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDetailViewController.swift; sourceTree = "<group>"; };
 		9989ACEC22E202E2005F05E8 /* StorageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageDetailViewController.swift; sourceTree = "<group>"; };
 		9989ACEE22E20313005F05E8 /* ResultDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		9989ACEF22E20313005F05E8 /* ResultDetailCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultDetailCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -179,7 +179,7 @@
 		9989AD0022E21F0A005F05E8 /* MainDetailView */ = {
 			isa = PBXGroup;
 			children = (
-				9989ACEA22E202B0005F05E8 /* ResultDetailViewController.swift */,
+				9989ACEA22E202B0005F05E8 /* MainDetailViewController.swift */,
 				9989ACEE22E20313005F05E8 /* ResultDetailCollectionViewCell.swift */,
 				9989ACEF22E20313005F05E8 /* ResultDetailCollectionViewCell.xib */,
 			);
@@ -391,7 +391,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9989ACEB22E202B0005F05E8 /* ResultDetailViewController.swift in Sources */,
+				9989ACEB22E202B0005F05E8 /* MainDetailViewController.swift in Sources */,
 				9989ACF722E2075D005F05E8 /* ResultCollectionViewCell.swift in Sources */,
 				9989AD0422E22895005F05E8 /* EJLibrary.swift in Sources */,
 				9989ACED22E202E2005F05E8 /* StorageDetailViewController.swift in Sources */,

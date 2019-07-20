@@ -20,16 +20,22 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qdk-aB-gUG">
-                        <rect key="frame" x="16" y="44" width="343" height="554.33333333333337"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="593"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="593" id="2xu-eb-8X3"/>
+                        </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cG0-Ma-ycA">
-                        <rect key="frame" x="16" y="598.33333333333337" width="343" height="27.666666666666629"/>
+                        <rect key="frame" x="16" y="593" width="343" height="28"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="28" id="XCi-aR-7Fo"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="23"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2019.07.19" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pNr-kn-gCd">
-                        <rect key="frame" x="16" y="626" width="343" height="21"/>
+                        <rect key="frame" x="16" y="621" width="343" height="26"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                         <nil key="highlightedColor"/>
@@ -37,19 +43,21 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="cG0-Ma-ycA" firstAttribute="trailing" secondItem="gTV-IL-0wX" secondAttribute="trailingMargin" id="3CF-rY-4rf"/>
-                <constraint firstAttribute="bottomMargin" secondItem="pNr-kn-gCd" secondAttribute="bottom" id="3dt-ou-eld"/>
-                <constraint firstItem="pNr-kn-gCd" firstAttribute="top" secondItem="cG0-Ma-ycA" secondAttribute="bottom" id="Enj-Y4-Zmz"/>
-                <constraint firstAttribute="trailingMargin" secondItem="Qdk-aB-gUG" secondAttribute="trailing" id="IFT-Km-8M9"/>
-                <constraint firstItem="Qdk-aB-gUG" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leadingMargin" id="W8M-5j-glA"/>
-                <constraint firstItem="pNr-kn-gCd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leadingMargin" id="Wwl-y3-5gt"/>
-                <constraint firstItem="pNr-kn-gCd" firstAttribute="trailing" secondItem="gTV-IL-0wX" secondAttribute="trailingMargin" id="dqJ-1r-hnW"/>
-                <constraint firstItem="cG0-Ma-ycA" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leadingMargin" id="elk-ro-xL8"/>
-                <constraint firstItem="Qdk-aB-gUG" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="topMargin" id="n8N-lx-FSg"/>
-                <constraint firstItem="cG0-Ma-ycA" firstAttribute="top" secondItem="Qdk-aB-gUG" secondAttribute="bottom" id="sM3-zo-Uw3"/>
+                <constraint firstItem="cG0-Ma-ycA" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leadingMargin" id="7yE-lT-Xj0"/>
+                <constraint firstItem="pNr-kn-gCd" firstAttribute="top" secondItem="cG0-Ma-ycA" secondAttribute="bottom" id="86N-Hp-6WT"/>
+                <constraint firstItem="Qdk-aB-gUG" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="DWF-JU-kg5"/>
+                <constraint firstItem="cG0-Ma-ycA" firstAttribute="top" secondItem="Qdk-aB-gUG" secondAttribute="bottom" id="EOS-lg-gf2"/>
+                <constraint firstAttribute="trailingMargin" secondItem="cG0-Ma-ycA" secondAttribute="trailing" id="GxL-3u-xFf"/>
+                <constraint firstItem="pNr-kn-gCd" firstAttribute="trailing" secondItem="gTV-IL-0wX" secondAttribute="trailingMargin" id="LVT-5V-X8l"/>
+                <constraint firstItem="pNr-kn-gCd" firstAttribute="bottom" secondItem="gTV-IL-0wX" secondAttribute="bottomMargin" id="RWT-kO-F5b"/>
+                <constraint firstAttribute="trailing" secondItem="Qdk-aB-gUG" secondAttribute="trailing" id="c12-sT-WGF"/>
+                <constraint firstItem="pNr-kn-gCd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leadingMargin" id="qP7-MR-3WC"/>
+                <constraint firstItem="Qdk-aB-gUG" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="yjI-mF-w26"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>
+                <outlet property="alcHeightOfImageName" destination="XCi-aR-7Fo" id="AUb-L6-yjh"/>
+                <outlet property="alcHeightOfImageView" destination="2xu-eb-8X3" id="rAM-4m-ToU"/>
                 <outlet property="imageDatetime" destination="pNr-kn-gCd" id="XQu-uA-F8a"/>
                 <outlet property="imageName" destination="cG0-Ma-ycA" id="I7a-rx-pod"/>
                 <outlet property="imageView" destination="Qdk-aB-gUG" id="mcC-Xz-2B9"/>

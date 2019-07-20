@@ -18,10 +18,15 @@ class ResultDetailCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageName: UILabel!
     @IBOutlet weak var imageDatetime: UILabel!
     
+    // MARK: - Alc Layout Constraint
+    @IBOutlet weak var alcHeightOfImageView: NSLayoutConstraint!
+    @IBOutlet weak var alcHeightOfImageName: NSLayoutConstraint!
+    
     // MARK: - View Life Cycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        alcHeightOfImageView.constant = EJSizeHeight(593.0)
+        alcHeightOfImageName.constant = EJSizeHeight(28.0)
     }
 
 }

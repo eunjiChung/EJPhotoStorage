@@ -44,7 +44,7 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
         switch segue.identifier
         {
         case "main_detail_segue":
-            let destination = segue.destination as! ResultDetailViewController
+            let destination = segue.destination as! MainDetailViewController
             destination.photos = photos
         case "main_storage_segue":
             let destination = segue.destination as! StorageViewController

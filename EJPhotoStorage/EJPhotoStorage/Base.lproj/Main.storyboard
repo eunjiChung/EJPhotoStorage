@@ -66,10 +66,10 @@
             </objects>
             <point key="canvasLocation" x="1080.8" y="129.31034482758622"/>
         </scene>
-        <!--Result Detail View Controller-->
+        <!--Main Detail View Controller-->
         <scene sceneID="rDY-3p-LUt">
             <objects>
-                <viewController storyboardIdentifier="ResultDetailViewController" id="YKk-EL-3U1" customClass="ResultDetailViewController" customModule="EJPhotoStorage" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainDetailViewController" id="YKk-EL-3U1" customClass="MainDetailViewController" customModule="EJPhotoStorage" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WMe-Ue-O81">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -111,10 +111,10 @@
                                     <constraint firstAttribute="trailingMargin" secondItem="aWl-P8-mEu" secondAttribute="trailing" constant="19" id="YXA-ui-7rd"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oiE-p9-6wU">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oiE-p9-6wU">
                                 <rect key="frame" x="0.0" y="97" width="375" height="681"/>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="kz0-1w-ylT">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="kz0-1w-ylT">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>

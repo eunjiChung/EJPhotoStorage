@@ -8,10 +8,11 @@
 
 import UIKit
 
-class ResultDetailViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class MainDetailViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     // MARK: - Property
     var photos: Photos?
+    var startIndex: Int?
     
     // MARK: - IBOutlets
     @IBOutlet weak var collectionView: UICollectionView!
@@ -44,10 +45,12 @@ class ResultDetailViewController: UIViewController, UICollectionViewDataSource, 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResultDetailCollectionViewCell.identifier, for: indexPath) as! ResultDetailCollectionViewCell
         
-        guard let photos = photos?.photos else { return cell }
-        cell.imageView.image = photos[indexPath.item].image
-        cell.imageName.text = photos[indexPath.item].name
-        cell.imageDatetime.text = photos[indexPath.item].dateTime
+        guard let photo = photos?.photos[indexPath.item] else { return cell }
+        cell.imageView.image = photo.image
+        print(photo.name)
+        cell.imageName.text = photo.name
+        print(photo.dateTime)
+        cell.imageDatetime.text = photo.dateTime
         
         return cell
     }
