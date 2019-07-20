@@ -12,6 +12,9 @@ class MainDetailViewController: UIViewController, UICollectionViewDataSource, UI
     
     // MARK: - Property
     var photos: Photos?
+    var storedAlbum = Photos.init(name: "stored")
+    var storedPhotos = [Photo]()
+    var currentPhoto : Photo?
     var indexPath : IndexPath?
     
     // MARK: - IBOutlets
@@ -34,6 +37,9 @@ class MainDetailViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     @IBAction func didTouchStoreBtn(_ sender: Any) {
+        if let currentPhoto = currentPhoto {
+            if !storedPhotos.contains(currentPhoto) { storedPhotos.append(currentPhoto) }
+        }
     }
     
     // MARK: - Private Method
@@ -51,6 +57,7 @@ class MainDetailViewController: UIViewController, UICollectionViewDataSource, UI
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResultDetailCollectionViewCell.identifier, for: indexPath) as! ResultDetailCollectionViewCell
         
         guard let photo = photos?.photos[indexPath.item] else { return cell }
+        currentPhoto = photo
         cell.imageView.image = photo.image
         cell.imageName.text = photo.name
         cell.imageDatetime.text = photo.dateTime
