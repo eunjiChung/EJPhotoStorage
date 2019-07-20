@@ -26,6 +26,7 @@
 		9989ACFA22E209A3005F05E8 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989ACF922E209A3005F05E8 /* Photo.swift */; };
 		9989ACFD22E21696005F05E8 /* StorageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989ACFB22E21696005F05E8 /* StorageCollectionViewCell.swift */; };
 		9989AD0422E22895005F05E8 /* EJLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989AD0322E22895005F05E8 /* EJLibrary.swift */; };
+		9989AD2722E35B0C005F05E8 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989AD2622E35B0C005F05E8 /* NetworkManager.swift */; };
 		D81490B2A79784323CE418B5 /* Pods_EJPhotoStorage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42D1A0CF25182978566AA8B5 /* Pods_EJPhotoStorage.framework */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +67,7 @@
 		9989ACF922E209A3005F05E8 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		9989ACFB22E21696005F05E8 /* StorageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageCollectionViewCell.swift; sourceTree = "<group>"; };
 		9989AD0322E22895005F05E8 /* EJLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EJLibrary.swift; sourceTree = "<group>"; };
+		9989AD2622E35B0C005F05E8 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		B54F93242DABF9B32A356C98 /* Pods-EJPhotoStorage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EJPhotoStorage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EJPhotoStorage/Pods-EJPhotoStorage.debug.xcconfig"; sourceTree = "<group>"; };
 		BF3732A40D799A4D421B94AB /* Pods-EJPhotoStorage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EJPhotoStorage.release.xcconfig"; path = "Pods/Target Support Files/Pods-EJPhotoStorage/Pods-EJPhotoStorage.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -117,6 +119,7 @@
 				9989AD0322E22895005F05E8 /* EJLibrary.swift */,
 				9989ACDA22E20190005F05E8 /* View */,
 				9989ACF222E20524005F05E8 /* Model */,
+				9989AD2522E35AE1005F05E8 /* Network */,
 				9989ACE422E201EF005F05E8 /* Supporting Files */,
 			);
 			path = EJPhotoStorage;
@@ -198,6 +201,14 @@
 				9989ACE122E201C3005F05E8 /* PhotoDetailCollectionViewCell.xib */,
 			);
 			name = StorageDetailView;
+			sourceTree = "<group>";
+		};
+		9989AD2522E35AE1005F05E8 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				9989AD2622E35B0C005F05E8 /* NetworkManager.swift */,
+			);
+			name = Network;
 			sourceTree = "<group>";
 		};
 		C2FF821B67B5754D770CC5B9 /* Pods */ = {
@@ -384,6 +395,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9989ACEB22E202B0005F05E8 /* MainDetailViewController.swift in Sources */,
+				9989AD2722E35B0C005F05E8 /* NetworkManager.swift in Sources */,
 				9989ACF722E2075D005F05E8 /* ResultCollectionViewCell.swift in Sources */,
 				9989AD0422E22895005F05E8 /* EJLibrary.swift in Sources */,
 				9989ACED22E202E2005F05E8 /* StorageDetailViewController.swift in Sources */,
@@ -565,7 +577,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "-.EJPhotoStorage";
+				PRODUCT_BUNDLE_IDENTIFIER = com.eunji.EJPhotoStorage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -585,7 +597,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "-.EJPhotoStorage";
+				PRODUCT_BUNDLE_IDENTIFIER = com.eunji.EJPhotoStorage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
