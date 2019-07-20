@@ -60,7 +60,7 @@ class StorageViewController: UIViewController, UICollectionViewDataSource, UICol
     
     // MARK: - CollectionView Delegate Flow Layout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (collectionView.frame.width - 32.0 - 2.0) / 3
+        let width = (collectionView.bounds.width - 2.0) / 3
         return CGSize(width: width, height: width)
     }
 
