@@ -12,7 +12,7 @@ class MainDetailViewController: UIViewController, UICollectionViewDataSource, UI
     
     // MARK: - Property
     var photos: Photos?
-    var startIndex: Int?
+    var indexPath : IndexPath?
     
     // MARK: - IBOutlets
     @IBOutlet weak var collectionView: UICollectionView!
@@ -21,6 +21,11 @@ class MainDetailViewController: UIViewController, UICollectionViewDataSource, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         registerNib()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .centeredHorizontally)
     }
     
     // MARK: - IBAction

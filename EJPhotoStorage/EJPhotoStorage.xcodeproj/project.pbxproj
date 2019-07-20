@@ -23,10 +23,8 @@
 		9989ACF122E20313005F05E8 /* ResultDetailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9989ACEF22E20313005F05E8 /* ResultDetailCollectionViewCell.xib */; };
 		9989ACF422E2053B005F05E8 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989ACF322E2053B005F05E8 /* Photos.swift */; };
 		9989ACF722E2075D005F05E8 /* ResultCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989ACF522E2075D005F05E8 /* ResultCollectionViewCell.swift */; };
-		9989ACF822E2075D005F05E8 /* ResultCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9989ACF622E2075D005F05E8 /* ResultCollectionViewCell.xib */; };
 		9989ACFA22E209A3005F05E8 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989ACF922E209A3005F05E8 /* Photo.swift */; };
 		9989ACFD22E21696005F05E8 /* StorageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989ACFB22E21696005F05E8 /* StorageCollectionViewCell.swift */; };
-		9989ACFE22E21696005F05E8 /* StorageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9989ACFC22E21696005F05E8 /* StorageCollectionViewCell.xib */; };
 		9989AD0422E22895005F05E8 /* EJLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989AD0322E22895005F05E8 /* EJLibrary.swift */; };
 		D81490B2A79784323CE418B5 /* Pods_EJPhotoStorage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42D1A0CF25182978566AA8B5 /* Pods_EJPhotoStorage.framework */; };
 /* End PBXBuildFile section */
@@ -65,10 +63,8 @@
 		9989ACEF22E20313005F05E8 /* ResultDetailCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultDetailCollectionViewCell.xib; sourceTree = "<group>"; };
 		9989ACF322E2053B005F05E8 /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
 		9989ACF522E2075D005F05E8 /* ResultCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCollectionViewCell.swift; sourceTree = "<group>"; };
-		9989ACF622E2075D005F05E8 /* ResultCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultCollectionViewCell.xib; sourceTree = "<group>"; };
 		9989ACF922E209A3005F05E8 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		9989ACFB22E21696005F05E8 /* StorageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageCollectionViewCell.swift; sourceTree = "<group>"; };
-		9989ACFC22E21696005F05E8 /* StorageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StorageCollectionViewCell.xib; sourceTree = "<group>"; };
 		9989AD0322E22895005F05E8 /* EJLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EJLibrary.swift; sourceTree = "<group>"; };
 		B54F93242DABF9B32A356C98 /* Pods-EJPhotoStorage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EJPhotoStorage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EJPhotoStorage/Pods-EJPhotoStorage.debug.xcconfig"; sourceTree = "<group>"; };
 		BF3732A40D799A4D421B94AB /* Pods-EJPhotoStorage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EJPhotoStorage.release.xcconfig"; path = "Pods/Target Support Files/Pods-EJPhotoStorage/Pods-EJPhotoStorage.release.xcconfig"; sourceTree = "<group>"; };
@@ -171,7 +167,6 @@
 			children = (
 				9989ACE522E20231005F05E8 /* MainViewController.swift */,
 				9989ACF522E2075D005F05E8 /* ResultCollectionViewCell.swift */,
-				9989ACF622E2075D005F05E8 /* ResultCollectionViewCell.xib */,
 			);
 			name = MainView;
 			sourceTree = "<group>";
@@ -191,7 +186,6 @@
 			children = (
 				9989ACE722E2023F005F05E8 /* StorageViewController.swift */,
 				9989ACFB22E21696005F05E8 /* StorageCollectionViewCell.swift */,
-				9989ACFC22E21696005F05E8 /* StorageCollectionViewCell.xib */,
 			);
 			name = StorageView;
 			sourceTree = "<group>";
@@ -311,10 +305,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9989ACC522E1FF10005F05E8 /* LaunchScreen.storyboard in Resources */,
-				9989ACF822E2075D005F05E8 /* ResultCollectionViewCell.xib in Resources */,
 				9989ACF122E20313005F05E8 /* ResultDetailCollectionViewCell.xib in Resources */,
 				9989ACC222E1FF10005F05E8 /* Assets.xcassets in Resources */,
-				9989ACFE22E21696005F05E8 /* StorageCollectionViewCell.xib in Resources */,
 				9989ACE322E201C3005F05E8 /* PhotoDetailCollectionViewCell.xib in Resources */,
 				9989ACC022E1FF0F005F05E8 /* Main.storyboard in Resources */,
 			);

@@ -9,7 +9,7 @@
 import UIKit
 import CHTCollectionViewWaterfallLayout
 
-class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLayout, UICollectionViewDataSource, UICollectionViewDelegate {
+class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLayout, UICollectionViewDataSource {
     
     // MARK: - Property
     let photos = Photos.init(name: "main")
@@ -21,36 +21,34 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
     override func viewDidLoad() {
         super.viewDidLoad()
         photos.buildDataSource()
-        registerNib()
         layout()
         
         filteredPhotos = photos
     }
     
     // MARK: - Private Method
-    fileprivate func registerNib() {
-        collectionView.register(UINib(nibName: "ResultCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: ResultCollectionViewCell.identifier)
-    }
-    
     fileprivate func layout() {
         let waterfallLayout = CHTCollectionViewWaterfallLayout()
         waterfallLayout.minimumColumnSpacing = 5.0
         waterfallLayout.minimumInteritemSpacing = 5.0
-        
         collectionView.collectionViewLayout = waterfallLayout
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier
         {
-        case "main_detail_segue":
-            let destination = segue.destination as! MainDetailViewController
-            destination.photos = photos
+        case .some("main_detail_segue"):
+            if let destination = segue.destination as? MainDetailViewController,
+                let cell = sender as? UICollectionViewCell,
+                let indexPath = collectionView.indexPath(for: cell) {
+                destination.photos = photos
+                destination.indexPath = indexPath
+            }
         case "main_storage_segue":
             let destination = segue.destination as! StorageViewController
             destination.photos = filteredPhotos
         default:
-            print("Nothing...")
+            super.prepare(for: segue, sender: sender)
         }
     }
     
@@ -63,11 +61,6 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResultCollectionViewCell.identifier, for: indexPath) as! ResultCollectionViewCell
         cell.imageView.image = photos.photos[indexPath.item].image
         return cell
-    }
-    
-    // MARK: - CollectionViewDelegate
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "main_detail_segue", sender: self)
     }
     
     // MARK: - CHTCollectionViewWaterfallLayout Delegate

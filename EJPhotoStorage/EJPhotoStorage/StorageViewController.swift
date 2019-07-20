@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StorageViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class StorageViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     // MARK: - Property
     var photos: Photos?
@@ -20,18 +20,17 @@ class StorageViewController: UIViewController, UICollectionViewDataSource, UICol
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        registerNib()
     }
     
     // MARK: - Private Method
-    fileprivate func registerNib() {
-        collectionView.register(UINib(nibName: cellId, bundle: nil), forCellWithReuseIdentifier: cellId)
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "storage_detail_segue" {
-            let destination = segue.destination as! StorageDetailViewController
-            destination.storedPhotos = photos
+            if let destination = segue.destination as? StorageDetailViewController,
+                let cell = sender as? UICollectionViewCell,
+                let indexPath = collectionView.indexPath(for: cell) {
+                destination.storedPhotos = photos
+                destination.indexPath = indexPath
+            }
         }
     }
     
@@ -51,11 +50,6 @@ class StorageViewController: UIViewController, UICollectionViewDataSource, UICol
         }
         
         return cell
-    }
-    
-    // MARK: - CollectionView Delegate
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "storage_detail_segue", sender: self)
     }
     
     // MARK: - CollectionView Delegate Flow Layout

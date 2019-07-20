@@ -26,12 +26,36 @@
                                 <rect key="frame" x="0.0" y="144" width="375" height="668"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="OMl-ze-Zq9">
-                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="itemSize" width="229" height="208"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells/>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ResultCollectionViewCell" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="ResultCollectionViewCell" id="Ey6-Lq-P3d" customClass="ResultCollectionViewCell" customModule="EJPhotoStorage" customModuleProvider="target">
+                                        <rect key="frame" x="73" y="0.0" width="229" height="208"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="229" height="208"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dc7-C6-C0t">
+                                                    <rect key="frame" x="0.0" y="0.0" width="229" height="208"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="dc7-C6-C0t" firstAttribute="top" secondItem="Ey6-Lq-P3d" secondAttribute="top" id="Gv2-Om-wDC"/>
+                                            <constraint firstItem="dc7-C6-C0t" firstAttribute="leading" secondItem="Ey6-Lq-P3d" secondAttribute="leading" id="Iid-Yf-FAo"/>
+                                            <constraint firstAttribute="trailing" secondItem="dc7-C6-C0t" secondAttribute="trailing" id="dl4-2m-zqF"/>
+                                            <constraint firstAttribute="bottom" secondItem="dc7-C6-C0t" secondAttribute="bottom" id="j6A-Yi-8lE"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="imageView" destination="dc7-C6-C0t" id="he3-Rp-9cv"/>
+                                            <segue destination="YKk-EL-3U1" kind="presentation" identifier="main_detail_segue" id="Og5-JO-DFO"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="y72-S5-qZA"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="rDU-qK-qAh"/>
@@ -59,7 +83,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="ocH-0E-nxY" id="T5C-eb-01F"/>
-                        <segue destination="YKk-EL-3U1" kind="presentation" identifier="main_detail_segue" id="V1H-8N-yFX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -159,12 +182,36 @@
                                 <rect key="frame" x="0.0" y="88" width="375" height="724"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="0.0" id="FrQ-2k-tby">
-                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="itemSize" width="243" height="236"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells/>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="StorageCollectionViewCell" id="BpZ-w9-Jzw" customClass="StorageCollectionViewCell" customModule="EJPhotoStorage" customModuleProvider="target">
+                                        <rect key="frame" x="66" y="0.0" width="243" height="236"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="243" height="236"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bDl-rm-ydO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="243" height="236"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="bDl-rm-ydO" firstAttribute="top" secondItem="BpZ-w9-Jzw" secondAttribute="top" id="CQg-31-CBn"/>
+                                            <constraint firstAttribute="trailing" secondItem="bDl-rm-ydO" secondAttribute="trailing" id="Yy0-Pm-xJs"/>
+                                            <constraint firstItem="bDl-rm-ydO" firstAttribute="leading" secondItem="BpZ-w9-Jzw" secondAttribute="leading" id="fGd-mE-gOA"/>
+                                            <constraint firstAttribute="bottom" secondItem="bDl-rm-ydO" secondAttribute="bottom" id="ksf-ai-1lX"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="imageView" destination="bDl-rm-ydO" id="HFH-Qv-dgM"/>
+                                            <segue destination="In2-Mg-umi" kind="presentation" identifier="storage_detail_segue" id="5Av-eT-jGd"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
                                 <connections>
                                     <outlet property="dataSource" destination="1fd-Aa-VoX" id="GHn-CQ-yc3"/>
                                     <outlet property="delegate" destination="1fd-Aa-VoX" id="0tQ-os-s2H"/>
@@ -182,12 +229,11 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="Geq-Jk-Wv4" id="xPX-AX-j3A"/>
-                        <segue destination="In2-Mg-umi" kind="presentation" identifier="storage_detail_segue" id="IpD-7W-OKs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IcA-cA-K4A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1986" y="-273"/>
+            <point key="canvasLocation" x="1984.8" y="-273.39901477832512"/>
         </scene>
         <!--Storage Detail View Controller-->
         <scene sceneID="WZE-6S-nbh">

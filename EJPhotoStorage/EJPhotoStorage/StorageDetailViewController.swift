@@ -12,6 +12,7 @@ class StorageDetailViewController: UIViewController, UICollectionViewDataSource,
 
     // MARK: - Property
     var storedPhotos: Photos?
+    var indexPath: IndexPath?
     
     // MARK: - IBOutlets
     @IBOutlet weak var collectionView: UICollectionView!
@@ -20,6 +21,11 @@ class StorageDetailViewController: UIViewController, UICollectionViewDataSource,
     override func viewDidLoad() {
         super.viewDidLoad()
         registerNib()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .centeredHorizontally)
     }
     
     // MARK: - IBActions
