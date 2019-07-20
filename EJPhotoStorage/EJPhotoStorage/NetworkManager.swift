@@ -33,7 +33,7 @@ class NetworkManager {
     {
         dataTask?.cancel()
         
-        let url = UrlForRequest(path: path, query: query, header: header)
+        guard let url = UrlForRequest(path: path, query: query, header: header) else { return }
         
         dataTask = defaultSession.dataTask(with: url, completionHandler: { (data, response, error) in
             defer {
@@ -44,6 +44,7 @@ class NetworkManager {
                 let response = response as? HTTPURLResponse,
                 response.statusCode == 200
             {
+                print("Response: ", response.statusCode)
                 DispatchQueue.main.async {
                     success(data, "\(response.statusCode)")
                 }
@@ -58,13 +59,14 @@ class NetworkManager {
     // MARK: - Private Method
     fileprivate func UrlForRequest(path: String,
                                    query: String,
-                                   header: HTTPHeaders) -> URLRequest {
-        var urlComponents = URLComponents(string: baseURL + path)!
-        urlComponents.query = query
-        var request = URLRequest(url: (urlComponents.url)!)
+                                   header: HTTPHeaders) -> URLRequest? {
+        let fullPath = baseURL + path
+        var urlComponents = URLComponents(string: fullPath)!
+        urlComponents.queryItems = [ URLQueryItem(name: "query", value: query) ]
         
+        var request = URLRequest(url: urlComponents.url!)
+    
         for (key, value) in header {
-//            request.value(forHTTPHeaderField: key)
             request.setValue(value, forHTTPHeaderField: key)
         }
         

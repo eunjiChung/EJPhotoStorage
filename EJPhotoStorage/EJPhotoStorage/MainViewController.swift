@@ -25,6 +25,13 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
         super.viewDidLoad()
         photos.buildDataSource()
         layout()
+        
+        EJLibrary.shared.requestPhoto(keyword: "꽃", success: { (data, response) in
+            print("Request Photo")
+            print(data)
+        }) { (error, msg) in
+            print(error)
+        }
     }
     
     // MARK: - Private Method
