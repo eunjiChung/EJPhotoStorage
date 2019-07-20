@@ -86,6 +86,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="ocH-0E-nxY" id="T5C-eb-01F"/>
+                        <outlet property="searchBar" destination="The-oF-vBr" id="Kom-nv-Lgc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
