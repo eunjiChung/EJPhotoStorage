@@ -14,11 +14,4 @@ class ResultCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
     
-    // MARK: - Public Method
-    public func setImage(url: String) {
-        EJLibrary.shared.setImageUrlToImageView(imageUrl: url, imageView: imageView) {
-            print("Setting Image....Completion is going on..")
-        }
-    }
-
 }
