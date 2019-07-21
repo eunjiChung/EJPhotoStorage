@@ -80,6 +80,11 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
     }
     
     // MARK: - Request
+    // 얘네를 하나로 합쳐...?
+    func requestImageAndVclip(with keyword:String) {
+        requestImage(with: keyword)
+    }
+    
     func requestImage(with keyword:String) {
         EJLibrary.shared.requestPhoto(keyword: keyword,
                                       success: { (data, response) in
