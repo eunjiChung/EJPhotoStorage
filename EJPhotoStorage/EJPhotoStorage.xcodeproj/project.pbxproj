@@ -33,6 +33,8 @@
 		9989AD3522E38A91005F05E8 /* IMMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989AD2F22E38A91005F05E8 /* IMMeta.swift */; };
 		9989AD3622E38A91005F05E8 /* IMDocuments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989AD3022E38A91005F05E8 /* IMDocuments.swift */; };
 		9989AD3722E38A91005F05E8 /* VMDocuments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989AD3122E38A91005F05E8 /* VMDocuments.swift */; };
+		9989AD3922E3A64F005F05E8 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989AD3822E3A64F005F05E8 /* Image.swift */; };
+		9989AD3B22E41D26005F05E8 /* Documents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989AD3A22E41D26005F05E8 /* Documents.swift */; };
 		D81490B2A79784323CE418B5 /* Pods_EJPhotoStorage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42D1A0CF25182978566AA8B5 /* Pods_EJPhotoStorage.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +82,8 @@
 		9989AD2F22E38A91005F05E8 /* IMMeta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMMeta.swift; sourceTree = "<group>"; };
 		9989AD3022E38A91005F05E8 /* IMDocuments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMDocuments.swift; sourceTree = "<group>"; };
 		9989AD3122E38A91005F05E8 /* VMDocuments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VMDocuments.swift; sourceTree = "<group>"; };
+		9989AD3822E3A64F005F05E8 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		9989AD3A22E41D26005F05E8 /* Documents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Documents.swift; sourceTree = "<group>"; };
 		B54F93242DABF9B32A356C98 /* Pods-EJPhotoStorage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EJPhotoStorage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EJPhotoStorage/Pods-EJPhotoStorage.debug.xcconfig"; sourceTree = "<group>"; };
 		BF3732A40D799A4D421B94AB /* Pods-EJPhotoStorage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EJPhotoStorage.release.xcconfig"; path = "Pods/Target Support Files/Pods-EJPhotoStorage/Pods-EJPhotoStorage.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -174,6 +178,8 @@
 				9989AD2B22E388C4005F05E8 /* SwifyJSON */,
 				9989ACF322E2053B005F05E8 /* Photos.swift */,
 				9989ACF922E209A3005F05E8 /* Photo.swift */,
+				9989AD3822E3A64F005F05E8 /* Image.swift */,
+				9989AD3A22E41D26005F05E8 /* Documents.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -423,7 +429,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9989ACEB22E202B0005F05E8 /* MainDetailViewController.swift in Sources */,
+				9989AD3B22E41D26005F05E8 /* Documents.swift in Sources */,
 				9989AD2722E35B0C005F05E8 /* NetworkManager.swift in Sources */,
+				9989AD3922E3A64F005F05E8 /* Image.swift in Sources */,
 				9989ACF722E2075D005F05E8 /* ResultCollectionViewCell.swift in Sources */,
 				9989AD0422E22895005F05E8 /* EJLibrary.swift in Sources */,
 				9989ACED22E202E2005F05E8 /* StorageDetailViewController.swift in Sources */,

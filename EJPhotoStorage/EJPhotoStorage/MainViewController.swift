@@ -16,7 +16,7 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
     var storedPhotos = Photos.init(name: "stored")
     var filteredPhotos = Photos.init(name: "filtered")
     
-    var images = [IMDocuments]()
+    var resultImages = Documents.init(with: "result")
     
     // MARK: - IBOutlet
     @IBOutlet weak var collectionView: UICollectionView!
@@ -34,8 +34,96 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
         super.viewWillAppear(animated)
         setSearchStatus()
     }
+
+    
+    // MARK: - Save Photo Delegate
+    func saveSelectedPhoto(to album: Photos) {
+        storedPhotos = album
+        print("Photo Saved!!")
+    }
+    
+    // MARK: - UISearchBar Delegate
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.view.endEditing(true)
+        
+        if let searchKeyword = searchBar.text {
+            requestImage(with: searchKeyword)
+        }
+    }
+    
+    // MARK: - CollectionViewDataSource
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return resultImages.images.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResultCollectionViewCell.identifier, for: indexPath) as! ResultCollectionViewCell
+        
+        let result = resultImages.images[indexPath.item]
+        if let image = result.image {
+            print("It happened...!")
+            cell.imageView.image = image
+        }
+        
+        return cell
+    }
+    
+    // MARK: - CHTCollectionViewWaterfallLayout Delegate
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
+        
+        let result = resultImages.images[indexPath.item]
+        if let image = result.image {
+            return image.size
+        }
+        
+        return CGSize.zero
+    }
+    
+    // MARK: - Request
+    func requestImage(with keyword:String) {
+        EJLibrary.shared.requestPhoto(keyword: keyword,
+                                      success: { (data, response) in
+            self.generateImageModel(response: data, loadMore: false)
+            self.requestVclip(with: keyword)
+        }) { (error, msg) in
+            print(error)
+        }
+    }
+    
+    func requestVclip(with keyword: String) {
+        EJLibrary.shared.requestVclip(keyword: keyword,
+                                      success: { (data, response) in
+            self.generateVclipModel(response: data, loadMore: false)
+            self.setSearchStatus()
+            self.collectionView.reloadData()
+        }) { (error, msg) in
+            print(error)
+        }
+    }
+    
+    func requestLoadMoreImage(with keyword:String) {
+    }
+    
+    func requestLoadMoreVclip() {
+        
+    }
+
     
     // MARK: - Private Method
+    fileprivate func generateImageModel(response: Any, loadMore: Bool) {
+        let imageModel = IMImageModel.init(object: response)
+        guard let images = imageModel.documents else { return }
+        resultImages.addImageDocument(images)
+    }
+    
+    fileprivate func generateVclipModel(response: Any, loadMore: Bool) {
+        let vclipModel = VMVclipModel.init(object: response)
+        guard let vclips = vclipModel.documents else { return }
+        resultImages.addVclipDocument(vclips)
+        resultImages.generateUrlToImage()
+    }
+    
+    
     fileprivate func layout() {
         let waterfallLayout = CHTCollectionViewWaterfallLayout()
         waterfallLayout.minimumColumnSpacing = 2.0
@@ -65,55 +153,10 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
     }
     
     fileprivate func setSearchStatus() {
-        if images.count == 0 {
+        if resultImages.images.count == 0 {
             searchResultLabel.text = "검색어를 입력해주세요."
         } else {
             searchResultLabel.text = ""
         }
-    }
-    
-    // MARK: - Save Photo Delegate
-    func saveSelectedPhoto(to album: Photos) {
-        storedPhotos = album
-        print("Photo Saved!!")
-    }
-    
-    // MARK: - UISearchBar Delegate
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        self.view.endEditing(true)
-        
-        if let searchKeyword = searchBar.text {
-            EJLibrary.shared.requestPhoto(keyword: searchKeyword, success: { (data, response) in
-                let imageModel = IMImageModel.init(object: data)
-                if let images = imageModel.documents {
-                    self.images = images
-                    self.setSearchStatus()
-                    self.collectionView.reloadData()
-                }
-            }) { (error, msg) in
-                print(error)
-            }
-        }
-    }
-    
-    // MARK: - CollectionViewDataSource
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResultCollectionViewCell.identifier, for: indexPath) as! ResultCollectionViewCell
-        
-        if let imageUrl = images[indexPath.item].imageUrl {
-            cell.setImage(url: imageUrl)
-        }
-        
-        return cell
-    }
-    
-    // MARK: - CHTCollectionViewWaterfallLayout Delegate
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
-        let document = images[indexPath.row]
-        return CGSize(width: document.width!, height: document.height!)
     }
 }
