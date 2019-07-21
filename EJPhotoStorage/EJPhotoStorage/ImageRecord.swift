@@ -22,14 +22,14 @@ class ImageRecord: NSObject {
     init(with imageDocument: IMDocuments) {
         self.imageUrl = imageDocument.thumbnailUrl
         self.datetime = imageDocument.datetime
-        self.image = UIImage.init() // 나중에는 placeholder 이미지 넣기!
+        self.image = UIImage.init(named: "Placeholder")
         self.state = .new
     }
     
     init(with vclipDocument: VMDocuments) {
         self.imageUrl = vclipDocument.thumbnail
         self.datetime = vclipDocument.datetime
-        self.image = UIImage.init()
+        self.image = UIImage.init(named: "Placeholder")
         self.state = .new
     }
     

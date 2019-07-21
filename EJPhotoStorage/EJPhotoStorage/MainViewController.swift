@@ -32,36 +32,6 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
         super.viewWillAppear(animated)
         setSearchStatus()
     }
-
-    
-    // MARK: - Save Photo Delegate
-    func saveSelectedPhoto(to images: [ImageRecord]) {
-        storedImages = images
-        print("Photo Saved!!")
-    }
-    
-    // MARK: - UISearchBar Delegate
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        self.view.endEditing(true)
-        
-        if let searchKeyword = searchBar.text {
-            print(searchKeyword)
-            let imageRequester = ImageRequester.init(searchKeyword)
-            
-            imageRequester.completionBlock = {
-                self.images = imageRequester.images
-                print("Image Requester!!!!!!!!")
-                print(self.images)
-                print("Image Count", self.images.count)
-                
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
-            }
-            
-            self.pendingOperations.queue.addOperation(imageRequester)
-        }
-    }
     
     // MARK: - CollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -71,14 +41,26 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResultCollectionViewCell.identifier, for: indexPath) as! ResultCollectionViewCell
         
-        let result = images[indexPath.item]
-        if let image = result.image {
-            print("It happened...!")
-            cell.imageView.image = image
+        let imageDetail = images[indexPath.item]
+        
+        // 나중에는 indicator도 넣기
+        cell.imageView.image = imageDetail.image
+        
+        switch imageDetail.state {
+        case .fail:
+            print("Image Download failed...")
+        case .cancel:
+            print("Cancelled Operation!")
+        case .new, .downloaded:
+            if !collectionView.isDragging && !collectionView.isDecelerating {
+                print("...")
+                startImageDownloading(for: imageDetail, at: indexPath)
+            }
         }
         
         return cell
     }
+    
     
     // MARK: - CHTCollectionViewWaterfallLayout Delegate
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
@@ -91,7 +73,71 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
         return CGSize.zero
     }
     
+    
+    // MARK: - Save Photo Delegate
+    func saveSelectedPhoto(to images: [ImageRecord]) {
+        storedImages = images
+        print("Photo Saved!!")
+    }
+    
+    // MARK: - UISearchBar Delegate
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        // Hide Keyboard
+        self.view.endEditing(true)
+        
+        if let searchKeyword = searchBar.text {
+            
+            let imageRequester = ImageRequester.init(searchKeyword)
+            
+            imageRequester.completionBlock = {
+                self.images = imageRequester.images
+                
+                DispatchQueue.main.async {
+                    print("Reload!")
+                    self.setSearchStatus()
+                    self.collectionView.reloadData()
+                }
+            }
+            
+            self.pendingOperations.requestQueue.addOperation(imageRequester)
+        }
+    }
+    
     // MARK: - Private Method
+    fileprivate func startImageDownloading(for imageRecord: ImageRecord, at indexPath: IndexPath) {
+        switch imageRecord.state {
+        case .new:
+            startDownload(for: imageRecord, at: indexPath)
+        case .downloaded:
+            print("It already downloaded!!!")
+        default:
+            print("Nothing....")
+        }
+    }
+    
+    fileprivate func startDownload(for imageRecord: ImageRecord, at indexPath: IndexPath) {
+        
+        guard pendingOperations.downloadsInProgress[indexPath] == nil else { return }
+        
+        let imageDownloader = ImageDownloader.init(imageRecord)
+        
+        imageDownloader.completionBlock = {
+//            print("??")
+            
+            if imageDownloader.isCancelled {
+                return
+            }
+            
+            DispatchQueue.main.async {
+                self.pendingOperations.downloadsInProgress.removeValue(forKey: indexPath)
+                self.collectionView.reloadItems(at: [indexPath])
+            }
+        }
+        
+        pendingOperations.downloadsInProgress[indexPath] = imageDownloader
+        pendingOperations.downloadQueue.addOperation(imageDownloader)
+    }
+    
     fileprivate func layout() {
         let waterfallLayout = CHTCollectionViewWaterfallLayout()
         waterfallLayout.minimumColumnSpacing = 2.0
@@ -108,7 +154,7 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
             if let destination = segue.destination as? MainDetailViewController,
                 let cell = sender as? UICollectionViewCell,
                 let indexPath = collectionView.indexPath(for: cell) {
-                destination.images = storedImages
+                destination.images = images
                 destination.indexPath = indexPath
                 destination.delegate = self
             }

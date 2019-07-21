@@ -9,15 +9,18 @@
 import UIKit
 
 class PendingOperations {
-    
-//    lazy var imageRequester: Operation
     lazy var downloadsInProgress: [IndexPath: Operation] = [:]
-    lazy var queue: OperationQueue = {
+    lazy var downloadQueue: OperationQueue = {
         var queue = OperationQueue()
-        queue.name = "queue"
+        queue.name = "download"
         return queue
     }()
     
+    lazy var requestQueue: OperationQueue = {
+        var queue = OperationQueue()
+        queue.name = "request"
+        return queue
+    }()
 }
 
 
@@ -46,7 +49,7 @@ class ImageDownloader: Operation {
             imageRecord.image = UIImage(data: imageData)!
             imageRecord.state = .downloaded
         } else {
-//            imageRecord.image = UIImage() placeholder 넣기!
+            imageRecord.image = UIImage.init(named: "Fail")
             imageRecord.state = .fail
         }
     }
