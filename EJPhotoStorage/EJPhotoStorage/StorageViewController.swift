@@ -11,7 +11,7 @@ import UIKit
 class StorageViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     // MARK: - Property
-    var photos: Photos?
+    var images: [ImageRecord]?
     let cellId = StorageCollectionViewCell.identifier
 
     // MARK: - IBOutlet
@@ -27,7 +27,7 @@ class StorageViewController: UIViewController, UICollectionViewDataSource, UICol
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if photos?.photos.count == 0 {
+        if images?.count == 0 {
             noImageDescLabel.text = "저장된 이미지가 없습니다."
         } else {
             noImageDescLabel.text = ""
@@ -41,7 +41,7 @@ class StorageViewController: UIViewController, UICollectionViewDataSource, UICol
             if let destination = segue.destination as? StorageDetailViewController,
                 let cell = sender as? UICollectionViewCell,
                 let indexPath = collectionView.indexPath(for: cell) {
-                destination.storedPhotos = photos
+                destination.images = images
                 destination.indexPath = indexPath
             }
         }
@@ -49,8 +49,8 @@ class StorageViewController: UIViewController, UICollectionViewDataSource, UICol
     
     // MARK: - CollectionView DataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let photos = photos {
-            return photos.photos.count
+        if let images = images {
+            return images.count
         }
         return 1
     }
@@ -58,8 +58,8 @@ class StorageViewController: UIViewController, UICollectionViewDataSource, UICol
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! StorageCollectionViewCell
         
-        if let photos = photos {
-            cell.imageView.image = photos.photos[indexPath.item].image
+        if let images = images {
+            cell.imageView.image = images[indexPath.item].image
         }
         
         return cell

@@ -11,9 +11,9 @@ import UIKit
 class StorageDetailViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     // MARK: - Property
-    var storedPhotos: Photos?
+    var images: [ImageRecord]?
     var indexPath: IndexPath?
-    var currentPhoto: Photo?
+    var currentImage: ImageRecord?
     
     // MARK: - IBOutlets
     @IBOutlet weak var collectionView: UICollectionView!
@@ -35,7 +35,7 @@ class StorageDetailViewController: UIViewController, UICollectionViewDataSource,
     }
     
     @IBAction func didTouchStoreBtn(_ sender: Any) {
-        guard let image = currentPhoto?.image else { return }
+        guard let image = currentImage?.image else { return }
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
     }
     
@@ -56,8 +56,8 @@ class StorageDetailViewController: UIViewController, UICollectionViewDataSource,
     
     // MARK: - CollectionView DataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let photos = storedPhotos {
-            return photos.photos.count
+        if let images = images {
+            return images.count
         }
         return 1
     }
@@ -65,11 +65,11 @@ class StorageDetailViewController: UIViewController, UICollectionViewDataSource,
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoDetailCollectionViewCell.identifier, for: indexPath) as! PhotoDetailCollectionViewCell
         
-        guard let photo = storedPhotos?.photos[indexPath.item] else { return cell }
-        cell.imageView.image = photo.image
-        cell.imageName.text = photo.name
-        cell.imageDatetime.text = photo.dateTime
-        currentPhoto = photo
+        guard let imageRecord = images?[indexPath.item] else { return cell }
+        cell.imageView.image = imageRecord.image
+        cell.imageName.text = ""
+        cell.imageDatetime.text = imageRecord.datetime
+        currentImage = imageRecord
         
         return cell
     }

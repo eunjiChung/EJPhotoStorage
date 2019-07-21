@@ -10,10 +10,10 @@ import Foundation
 import UIKit
 
 // MARK: - Type alias
-typealias SuccessHandler = (Any, String) -> ()
-typealias FailureHandler = (Error, String) -> ()
 typealias HTTPHeaders = [String:String]
 typealias JSONDictionary = [String: Any]
+typealias SuccessHandler = (Any) -> ()
+typealias FailureHandler = (Error) -> ()
 
 // MARK: - API Path
 fileprivate let kakaoHost                       =   "https://dapi.kakao.com"

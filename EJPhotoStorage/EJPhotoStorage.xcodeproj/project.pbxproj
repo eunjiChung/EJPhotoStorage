@@ -21,9 +21,7 @@
 		9989ACED22E202E2005F05E8 /* StorageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989ACEC22E202E2005F05E8 /* StorageDetailViewController.swift */; };
 		9989ACF022E20313005F05E8 /* ResultDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989ACEE22E20313005F05E8 /* ResultDetailCollectionViewCell.swift */; };
 		9989ACF122E20313005F05E8 /* ResultDetailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9989ACEF22E20313005F05E8 /* ResultDetailCollectionViewCell.xib */; };
-		9989ACF422E2053B005F05E8 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989ACF322E2053B005F05E8 /* Photos.swift */; };
 		9989ACF722E2075D005F05E8 /* ResultCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989ACF522E2075D005F05E8 /* ResultCollectionViewCell.swift */; };
-		9989ACFA22E209A3005F05E8 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989ACF922E209A3005F05E8 /* Photo.swift */; };
 		9989ACFD22E21696005F05E8 /* StorageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989ACFB22E21696005F05E8 /* StorageCollectionViewCell.swift */; };
 		9989AD0422E22895005F05E8 /* EJLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989AD0322E22895005F05E8 /* EJLibrary.swift */; };
 		9989AD2722E35B0C005F05E8 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989AD2622E35B0C005F05E8 /* NetworkManager.swift */; };
@@ -33,8 +31,8 @@
 		9989AD3522E38A91005F05E8 /* IMMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989AD2F22E38A91005F05E8 /* IMMeta.swift */; };
 		9989AD3622E38A91005F05E8 /* IMDocuments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989AD3022E38A91005F05E8 /* IMDocuments.swift */; };
 		9989AD3722E38A91005F05E8 /* VMDocuments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989AD3122E38A91005F05E8 /* VMDocuments.swift */; };
-		9989AD3922E3A64F005F05E8 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989AD3822E3A64F005F05E8 /* Image.swift */; };
-		9989AD3B22E41D26005F05E8 /* Documents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989AD3A22E41D26005F05E8 /* Documents.swift */; };
+		9989ADA122E4D29E005F05E8 /* ImageOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989AD9F22E4D29E005F05E8 /* ImageOperations.swift */; };
+		9989ADA222E4D29E005F05E8 /* ImageRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989ADA022E4D29E005F05E8 /* ImageRecord.swift */; };
 		D81490B2A79784323CE418B5 /* Pods_EJPhotoStorage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42D1A0CF25182978566AA8B5 /* Pods_EJPhotoStorage.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,9 +68,7 @@
 		9989ACEC22E202E2005F05E8 /* StorageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageDetailViewController.swift; sourceTree = "<group>"; };
 		9989ACEE22E20313005F05E8 /* ResultDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		9989ACEF22E20313005F05E8 /* ResultDetailCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultDetailCollectionViewCell.xib; sourceTree = "<group>"; };
-		9989ACF322E2053B005F05E8 /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
 		9989ACF522E2075D005F05E8 /* ResultCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCollectionViewCell.swift; sourceTree = "<group>"; };
-		9989ACF922E209A3005F05E8 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		9989ACFB22E21696005F05E8 /* StorageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageCollectionViewCell.swift; sourceTree = "<group>"; };
 		9989AD0322E22895005F05E8 /* EJLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EJLibrary.swift; sourceTree = "<group>"; };
 		9989AD2622E35B0C005F05E8 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -82,8 +78,8 @@
 		9989AD2F22E38A91005F05E8 /* IMMeta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMMeta.swift; sourceTree = "<group>"; };
 		9989AD3022E38A91005F05E8 /* IMDocuments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMDocuments.swift; sourceTree = "<group>"; };
 		9989AD3122E38A91005F05E8 /* VMDocuments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VMDocuments.swift; sourceTree = "<group>"; };
-		9989AD3822E3A64F005F05E8 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
-		9989AD3A22E41D26005F05E8 /* Documents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Documents.swift; sourceTree = "<group>"; };
+		9989AD9F22E4D29E005F05E8 /* ImageOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageOperations.swift; sourceTree = "<group>"; };
+		9989ADA022E4D29E005F05E8 /* ImageRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageRecord.swift; sourceTree = "<group>"; };
 		B54F93242DABF9B32A356C98 /* Pods-EJPhotoStorage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EJPhotoStorage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EJPhotoStorage/Pods-EJPhotoStorage.debug.xcconfig"; sourceTree = "<group>"; };
 		BF3732A40D799A4D421B94AB /* Pods-EJPhotoStorage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EJPhotoStorage.release.xcconfig"; path = "Pods/Target Support Files/Pods-EJPhotoStorage/Pods-EJPhotoStorage.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -175,11 +171,9 @@
 		9989ACF222E20524005F05E8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9989AD9F22E4D29E005F05E8 /* ImageOperations.swift */,
+				9989ADA022E4D29E005F05E8 /* ImageRecord.swift */,
 				9989AD2B22E388C4005F05E8 /* SwifyJSON */,
-				9989ACF322E2053B005F05E8 /* Photos.swift */,
-				9989ACF922E209A3005F05E8 /* Photo.swift */,
-				9989AD3822E3A64F005F05E8 /* Image.swift */,
-				9989AD3A22E41D26005F05E8 /* Documents.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -429,20 +423,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				9989ACEB22E202B0005F05E8 /* MainDetailViewController.swift in Sources */,
-				9989AD3B22E41D26005F05E8 /* Documents.swift in Sources */,
 				9989AD2722E35B0C005F05E8 /* NetworkManager.swift in Sources */,
-				9989AD3922E3A64F005F05E8 /* Image.swift in Sources */,
 				9989ACF722E2075D005F05E8 /* ResultCollectionViewCell.swift in Sources */,
 				9989AD0422E22895005F05E8 /* EJLibrary.swift in Sources */,
 				9989ACED22E202E2005F05E8 /* StorageDetailViewController.swift in Sources */,
 				9989AD3222E38A91005F05E8 /* VMVclipModel.swift in Sources */,
 				9989AD3522E38A91005F05E8 /* IMMeta.swift in Sources */,
+				9989ADA222E4D29E005F05E8 /* ImageRecord.swift in Sources */,
 				9989ACE822E2023F005F05E8 /* StorageViewController.swift in Sources */,
 				9989AD3422E38A91005F05E8 /* IMImageModel.swift in Sources */,
-				9989ACFA22E209A3005F05E8 /* Photo.swift in Sources */,
 				9989ACE222E201C3005F05E8 /* PhotoDetailCollectionViewCell.swift in Sources */,
-				9989ACF422E2053B005F05E8 /* Photos.swift in Sources */,
 				9989AD3322E38A91005F05E8 /* VMMeta.swift in Sources */,
+				9989ADA122E4D29E005F05E8 /* ImageOperations.swift in Sources */,
 				9989AD3722E38A91005F05E8 /* VMDocuments.swift in Sources */,
 				9989ACBB22E1FF0F005F05E8 /* AppDelegate.swift in Sources */,
 				9989ACFD22E21696005F05E8 /* StorageCollectionViewCell.swift in Sources */,

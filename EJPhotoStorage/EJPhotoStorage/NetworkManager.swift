@@ -31,25 +31,17 @@ class NetworkManager {
                     success: @escaping SuccessHandler,
                     failure: @escaping FailureHandler)
     {
-        dataTask?.cancel()
-        
         guard let url = UrlForRequest(path: path, query: query, header: header) else { return }
         
-        dataTask = defaultSession.dataTask(with: url, completionHandler: { (data, response, error) in
-            defer {
-                self.dataTask = nil
-            }
-            
+        dataTask = defaultSession.dataTask(with: url,
+                                           completionHandler: { (data, response, error) in
             if let data = data,
                 let response = response as? HTTPURLResponse,
                 response.statusCode == 200
             {
-                let result = self.JSONencode(data: data)
-                DispatchQueue.main.async {
-                    success(result, "\(response.statusCode)")
-                }
+                success(data)
             } else if let error = error {
-                failure(error, error.localizedDescription)
+                failure(error)
             }
         })
         
@@ -72,10 +64,5 @@ class NetworkManager {
         
         return request
     }
-    
-    fileprivate func JSONencode(data: Data) -> JSONDictionary {
-        guard let json = try! JSONSerialization.jsonObject(with: data, options: []) as? JSONDictionary else { return ["":""] }
-        return json
-    }
-    
+
 }
