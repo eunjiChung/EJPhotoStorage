@@ -15,14 +15,6 @@ class NetworkManager {
     
     // MARK: - Variables and Properties
     var dataTask : URLSessionDataTask?
-    var errorMessage = ""
-    
-    fileprivate let baseURL: String
-    
-    // MARK: - Init
-    init(baseURL: String) {
-        self.baseURL = baseURL
-    }
     
     // MARK: - Request
     func GETRequest(path: String,
@@ -52,8 +44,7 @@ class NetworkManager {
     fileprivate func UrlForRequest(path: String,
                                    query: [URLQueryItem],
                                    header: HTTPHeaders) -> URLRequest? {
-        let fullPath = baseURL + path
-        var urlComponents = URLComponents(string: fullPath)!
+        var urlComponents = URLComponents(string: path)!
         urlComponents.queryItems = query
         
         var request = URLRequest(url: urlComponents.url!)

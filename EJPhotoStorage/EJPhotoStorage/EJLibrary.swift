@@ -47,25 +47,14 @@ class EJLibrary : NSObject {
     
     // MARK: - Singleton
     static let shared = EJLibrary()
-    let networkManager = NetworkManager.init(baseURL: kakaoHost)
     
     // MARK: - HTTP Request
-    func requestPhoto(keyword: String,
-                      page: Int,
-                      success: @escaping SuccessHandler,
-                      failure: @escaping FailureHandler) {
-        self.networkManager.GETRequest(path: APIPathPhoto,
-                                       query: generateQueryItems(keyword, page),
-                                       header: generateRequestHeader(),
-                                       success: success,
-                                       failure: failure)
-    }
-    
-    func requestVclip(keyword: String,
-                      page: Int,
-                      success: @escaping SuccessHandler,
-                      failure: @escaping FailureHandler) {
-        self.networkManager.GETRequest(path: APIPathVclip,
+    func requestImages(keyword: String,
+                       page: Int,
+                       success: @escaping (Images) -> (),
+                       failure: @escaping FailureHandler) {
+        pendingOperations.startRequest(imagePath: imagePath(),
+                                       vclipPath: vclipPath(),
                                        query: generateQueryItems(keyword, page),
                                        header: generateRequestHeader(),
                                        success: success,
@@ -80,6 +69,14 @@ class EJLibrary : NSObject {
     }
     
     // MARK: - Private Method
+    fileprivate func imagePath() -> String {
+        return kakaoHost + APIPathPhoto
+    }
+    
+    fileprivate func vclipPath() -> String {
+        return kakaoHost + APIPathVclip
+    }
+    
     fileprivate func generateRequestHeader() -> HTTPHeaders {
         return ["Authorization": "KakaoAK \(kakaoAPPKey)"]
     }

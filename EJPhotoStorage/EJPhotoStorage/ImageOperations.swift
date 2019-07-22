@@ -22,15 +22,27 @@ public class PendingOperations {
         return queue
     }()
     
-    func startRequest(keyword:String,
-                      page: Int,
-                      success: @escaping ([ImageRecord], Bool) -> ()) {
+    func startRequest(imagePath: String,
+                      vclipPath: String,
+                      query: [URLQueryItem],
+                      header: HTTPHeaders,
+                      success: @escaping (Images) -> (),
+                      failure: @escaping (Error) -> ()) {
 
-        let imageRequester = ImageRequester.init(keyword, page)
+        let imageRequester = ImageRequester.init(imagePath: imagePath,
+                                                 vclipPath: vclipPath,
+                                                 query: query,
+                                                 header: header)
         
         imageRequester.completionBlock = {
+            
+            if let error = imageRequester.error {
+                failure(error)
+            }
+            
             DispatchQueue.main.async {
-                success(imageRequester.imageRecords, imageRequester.isEnd)
+                // 혼란...여기서 해도 되나?
+                success(imageRequester.images)
             }
         }
         
@@ -93,20 +105,23 @@ enum requestType {
 class ImageRequester: BlockOperation {
     
     // MARK: - Variables
-    var imageRecords: [ImageRecord] = []
-    var keyword = ""
+    let networkManager = NetworkManager()
+    var imagePath: String
+    var vclipPath: String
+    var query: [URLQueryItem]
+    var header: HTTPHeaders
+    var error: Error?
     
-    var isImageEnd = false
-    var isVclipEnd = false
-    var isEnd = false
-    var page = 0
+    var images = Images.init(with: "temp")
     
     let group = DispatchGroup()
     
     // MARK: - Initializer
-    init(_ keyword: String, _ page: Int) {
-        self.keyword = keyword
-        self.page = page
+    init(imagePath: String, vclipPath: String, query: [URLQueryItem], header: HTTPHeaders) {
+        self.imagePath = imagePath
+        self.vclipPath = vclipPath
+        self.query = query
+        self.header = header
     }
     
     // MARK: - Operation Execution
@@ -127,26 +142,23 @@ class ImageRequester: BlockOperation {
     // MARK: - Private Method
     // 둘 중 하나의 결과가 먼저 떨어진다면?
     fileprivate func requestImage() {
-        EJLibrary.shared.requestPhoto(keyword: keyword,
-                                      page: page,
-                                      success: { (data) in
+        networkManager.GETRequest(path: imagePath, query: query, header: header, success: { (data) in
             self.appendImages(of: data, by: .image)
             self.isEndOfPage(of: data, by: .image)
             self.group.leave()
         }) { (error) in
+            self.error = error
             self.group.leave()
         }
     }
     
     fileprivate func requestVclip() {
-        EJLibrary.shared.requestVclip(keyword: keyword,
-                                      page: page,
-                                      success: { (data) in
+        networkManager.GETRequest(path: vclipPath, query: query, header: header, success: { (data) in
             self.appendImages(of: data, by: .vclip)
             self.isEndOfPage(of: data, by: .vclip)
-            self.sortImagesByDateTime()
             self.group.leave()
         }) { (error) in
+            self.error = error
             self.group.leave()
         }
     }
@@ -160,7 +172,7 @@ class ImageRequester: BlockOperation {
             if let documents = result.documents {
                 documents.forEach {
                     let newImageRecord = ImageRecord.init(with: $0)
-                    self.imageRecords.append(newImageRecord)
+                    self.images.imageRecords.append(newImageRecord)
                 }
             }
         case .vclip:
@@ -169,7 +181,7 @@ class ImageRequester: BlockOperation {
             if let documents = result.documents {
                 documents.forEach {
                     let newImageRecord = ImageRecord.init(with: $0)
-                    self.imageRecords.append(newImageRecord)
+                    self.images.imageRecords.append(newImageRecord)
                 }
             }
         }
@@ -181,24 +193,17 @@ class ImageRequester: BlockOperation {
             let model = IMImageModel.init(object: data)
             
             if let meta = model.meta, let isEnd = meta.isEnd {
-                self.isImageEnd = isEnd
-                print("isImageEnd:", self.isImageEnd)
+                self.images.isImageEnd = isEnd
             }
         case .vclip:
             let model = VMVclipModel.init(object: data)
             
             if let meta = model.meta, let isEnd = meta.isEnd {
-                self.isVclipEnd = isEnd
-                print("isVclipEnd:", self.isVclipEnd)
-                self.isEnd = self.isImageEnd && self.isVclipEnd
-                print("isEnd:", self.isEnd)
+                self.images.isVclipEnd = isEnd
             }
         }
     }
     
-    fileprivate func sortImagesByDateTime() {
-        self.imageRecords = self.imageRecords.sorted { $0.dateTime() > $1.dateTime() }
-    }
 }
 
 

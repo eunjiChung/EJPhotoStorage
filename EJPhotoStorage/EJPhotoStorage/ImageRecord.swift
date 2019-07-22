@@ -16,7 +16,8 @@ class ImageRecord: NSObject {
     
     let getDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "YYYY-MM-DD'T'HH:mm:ss.0000"
+        // HH와 hh의 차이?
+        formatter.dateFormat = "YYYY-MM-DD'T'hh:mm:ss.0000"
         return formatter
     }()
     
@@ -41,10 +42,10 @@ class ImageRecord: NSObject {
     
     // MARK: - Public Method
     public func dateTime() -> Int {
-
         if let datetime = self.datetime {
             let newDatetime = datetime.components(separatedBy: "+")[0]
             if let date = getDateFormatter.date(from: newDatetime) {
+                print("THIS IS DATE!!!!!!!", date)
                 let dateString = setDateFormatter.string(from: date)
                 return Int(dateString)!
             }

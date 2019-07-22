@@ -17,12 +17,10 @@ enum SearchStatus {
 class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfallLayout, UICollectionViewDataSource, MainDetailViewDelegate, UISearchBarDelegate {
     
     // MARK: - Property
+    var images = Images.init(with: "main")
     var searchedImages: [ImageRecord] = []
     var storedImages: [ImageRecord] = []
     var searchKeyword = ""
-    
-    var isEndOfImage = false
-    var imagePage = 1
     
     // MARK: - IBOutlet
     @IBOutlet weak var collectionView: UICollectionView!
@@ -32,7 +30,6 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("VIew did load")
         
         layout()
         
@@ -41,13 +38,12 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
         }
         
         self.collectionView.es.addInfiniteScrolling { [unowned self] in
-            if self.isEndOfImage {
+            if self.images.isEnd {
                 self.presentAlert(title: "알림", message: "목록의 끝입니다.")
                 EJLibrary.shared.delayAnimation {
                     self.collectionView.es.stopLoadingMore()
                 }
             } else {
-                print("isNotEnd!!!")
                 self.requestLoadMoreImages()
             }
         }
@@ -60,13 +56,13 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
     
     // MARK: - CollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return searchedImages.count
+        return images.imageRecords.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResultCollectionViewCell.identifier, for: indexPath) as! ResultCollectionViewCell
         
-        let imageDetail = searchedImages[indexPath.item]
+        let imageDetail = images.imageRecords[indexPath.item]
         cell.imageView.image = imageDetail.image
         
         // 상태 빼버림 ㅋㅋ 
@@ -78,7 +74,7 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
     
     // MARK: - CHTCollectionViewWaterfallLayout Delegate
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
-        let result = searchedImages[indexPath.item]
+        let result = images.imageRecords[indexPath.item]
         return result.image.size
     }
     
@@ -103,43 +99,38 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
     
     // MARK: - Private Method
     fileprivate func requestImages(for keyword: String) {
-        pendingOperations.startRequest(keyword: keyword,
-                                       page: 1) { (resultRecords, isEnd) in
-            self.searchedImages = resultRecords
-            self.isEndOfImage = isEnd
-                                        print("1: ", self.isEndOfImage)
-                                        print("2: ", isEnd)
-            self.imagePage = 2
-                                        
+        EJLibrary.shared.requestImages(keyword: keyword, page: 1, success: { (images) in
+            self.images = images
+            print("Result!!!!!!!!!!!!!!!!!!", self.images.imageRecords)
+            self.images.page = 2
             self.setSearchResultLabel(by: .searched)
             self.collectionView.reloadData()
             self.collectionView.es.stopPullToRefresh()
+        }) { (error) in
+            self.presentAlert(title: "검색 요청 오류", message: error.localizedDescription)
         }
     }
     
     fileprivate func requestLoadMoreImages() {
-        pendingOperations.startRequest(keyword: searchKeyword, page: imagePage+1) { (resultRecords, isEnd) in
-            self.isEndOfImage = isEnd
-            self.imagePage += 1
+        EJLibrary.shared.requestImages(keyword: searchKeyword, page: self.images.page+1, success: { (resultImages) in
+            self.images.page += 1
             
             self.collectionView.performBatchUpdates({
-                let indexPaths = self.indexPathsForLoadMore(by: resultRecords)
+                let indexPaths = self.indexPathsForLoadMore(by: resultImages.imageRecords)
                 self.collectionView.insertItems(at: indexPaths)
-                self.appendLoaded(resultRecords)
-            }, completion: { (success) in
+                self.images.appendImageRecords(with: resultImages.imageRecords)
+            }, completion: { (result) in
                 self.collectionView.es.stopLoadingMore()
-                print(success)
             })
+        }) { (error) in
+            self.presentAlert(title: "추가 요청 오류", message: error.localizedDescription)
         }
     }
     
-    fileprivate func appendLoaded(_ images: [ImageRecord]) {
-        images.forEach { self.searchedImages.append($0) }
-    }
     
     fileprivate func indexPathsForLoadMore(by resultRecords: [ImageRecord]) -> [IndexPath] {
         var moreIndexPaths: [IndexPath] = []
-        let startIndex = self.searchedImages.count
+        let startIndex = images.imageRecords.count
         
         for index in 0..<resultRecords.count {
             let indexPath = IndexPath.init(item: startIndex+index, section: 0)
@@ -163,7 +154,7 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
         case .some("main_detail_segue"):
             if let destination = segue.destination as? MainDetailViewController,
                 let cell = sender as? UICollectionViewCell, let indexPath = collectionView.indexPath(for: cell) {
-                destination.images = searchedImages
+                destination.images = images.imageRecords
                 destination.indexPath = indexPath
                 destination.delegate = self
             }
@@ -181,11 +172,11 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
         
         switch status {
         case .initial:
-            if searchedImages.count == 0 {
+            if images.imageRecords.count == 0 {
                 searchResultLabel.text = "검색어를 입력해주세요."
             }
         case .searched:
-            if searchedImages.count == 0 {
+            if images.imageRecords.count == 0 {
                 searchResultLabel.text = "검색 결과가 없습니다."
             }
         }

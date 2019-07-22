@@ -35,6 +35,7 @@
 		9989ADA222E4D29E005F05E8 /* ImageRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989ADA022E4D29E005F05E8 /* ImageRecord.swift */; };
 		9989ADA422E5A3F5005F05E8 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989ADA322E5A3F5005F05E8 /* Extension.swift */; };
 		9989ADA922E5F5D2005F05E8 /* BasicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989ADA822E5F5D1005F05E8 /* BasicViewController.swift */; };
+		9989ADAC22E5FFA8005F05E8 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989ADAB22E5FFA8005F05E8 /* Images.swift */; };
 		D81490B2A79784323CE418B5 /* Pods_EJPhotoStorage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42D1A0CF25182978566AA8B5 /* Pods_EJPhotoStorage.framework */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +85,7 @@
 		9989ADA022E4D29E005F05E8 /* ImageRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageRecord.swift; sourceTree = "<group>"; };
 		9989ADA322E5A3F5005F05E8 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		9989ADA822E5F5D1005F05E8 /* BasicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicViewController.swift; sourceTree = "<group>"; };
+		9989ADAB22E5FFA8005F05E8 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		B54F93242DABF9B32A356C98 /* Pods-EJPhotoStorage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EJPhotoStorage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EJPhotoStorage/Pods-EJPhotoStorage.debug.xcconfig"; sourceTree = "<group>"; };
 		BF3732A40D799A4D421B94AB /* Pods-EJPhotoStorage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EJPhotoStorage.release.xcconfig"; path = "Pods/Target Support Files/Pods-EJPhotoStorage/Pods-EJPhotoStorage.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -135,7 +137,8 @@
 				9989AD0322E22895005F05E8 /* EJLibrary.swift */,
 				9989ACDA22E20190005F05E8 /* View */,
 				9989ACF222E20524005F05E8 /* Model */,
-				9989AD2522E35AE1005F05E8 /* Network */,
+				9989AD2522E35AE1005F05E8 /* Services */,
+				9989ADAA22E5FBE5005F05E8 /* Extensions */,
 				9989ACE422E201EF005F05E8 /* Supporting Files */,
 			);
 			path = EJPhotoStorage;
@@ -169,7 +172,6 @@
 				9989ACC322E1FF10005F05E8 /* LaunchScreen.storyboard */,
 				9989ACC122E1FF10005F05E8 /* Assets.xcassets */,
 				9989ACC622E1FF10005F05E8 /* Info.plist */,
-				9989ADA322E5A3F5005F05E8 /* Extension.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -177,7 +179,7 @@
 		9989ACF222E20524005F05E8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				9989AD9F22E4D29E005F05E8 /* ImageOperations.swift */,
+				9989ADAB22E5FFA8005F05E8 /* Images.swift */,
 				9989ADA022E4D29E005F05E8 /* ImageRecord.swift */,
 				9989AD2B22E388C4005F05E8 /* SwifyJSON */,
 			);
@@ -222,12 +224,13 @@
 			name = StorageDetailView;
 			sourceTree = "<group>";
 		};
-		9989AD2522E35AE1005F05E8 /* Network */ = {
+		9989AD2522E35AE1005F05E8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				9989AD9F22E4D29E005F05E8 /* ImageOperations.swift */,
 				9989AD2622E35B0C005F05E8 /* NetworkManager.swift */,
 			);
-			name = Network;
+			name = Services;
 			sourceTree = "<group>";
 		};
 		9989AD2B22E388C4005F05E8 /* SwifyJSON */ = {
@@ -241,6 +244,14 @@
 				9989AD2C22E38A91005F05E8 /* VMVclipModel.swift */,
 			);
 			name = SwifyJSON;
+			sourceTree = "<group>";
+		};
+		9989ADAA22E5FBE5005F05E8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9989ADA322E5A3F5005F05E8 /* Extension.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		C2FF821B67B5754D770CC5B9 /* Pods */ = {
@@ -433,6 +444,7 @@
 				9989ACEB22E202B0005F05E8 /* MainDetailViewController.swift in Sources */,
 				9989AD2722E35B0C005F05E8 /* NetworkManager.swift in Sources */,
 				9989ACF722E2075D005F05E8 /* ResultCollectionViewCell.swift in Sources */,
+				9989ADAC22E5FFA8005F05E8 /* Images.swift in Sources */,
 				9989AD0422E22895005F05E8 /* EJLibrary.swift in Sources */,
 				9989ACED22E202E2005F05E8 /* StorageDetailViewController.swift in Sources */,
 				9989AD3222E38A91005F05E8 /* VMVclipModel.swift in Sources */,
