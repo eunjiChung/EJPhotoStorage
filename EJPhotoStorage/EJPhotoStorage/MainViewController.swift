@@ -15,6 +15,7 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
     // MARK: - Property
     var images: [ImageRecord] = []
     var storedImages: [ImageRecord] = []
+    var searchKeyword: String?
     
     let pendingOperations = PendingOperations()
     
@@ -30,10 +31,12 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
         
         self.collectionView.es.addPullToRefresh { [unowned self] in
             print("PullToRefresh")
-//            self.collectionView.es.stopPullToRefresh()
+            if let keyword = self.searchKeyword {
+                self.requestImages(for: keyword)
+            }
         }
         
-        self.collectionView.es.addInfiniteScrolling {
+        self.collectionView.es.addInfiniteScrolling { [unowned self] in
             print("Infinite Scrolling")
         }
     }
@@ -52,8 +55,6 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResultCollectionViewCell.identifier, for: indexPath) as! ResultCollectionViewCell
         
         let imageDetail = images[indexPath.item]
-        
-        // 나중에는 indicator도 넣기
         cell.imageView.image = imageDetail.image
         
         switch imageDetail.state {
@@ -63,7 +64,6 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
             print("Cancelled Operation!")
         case .new, .downloaded:
             if !collectionView.isDragging && !collectionView.isDecelerating {
-                print("...")
                 startImageDownloading(for: imageDetail, at: indexPath)
             }
         }
@@ -83,6 +83,59 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
         return CGSize.zero
     }
     
+    // MARK: - UIScrollView Delegate
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        suspendAllOperations()
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if !decelerate {
+            loadImagesForOnScreenCells()
+            resumeAllOperations()
+        }
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        loadImagesForOnScreenCells()
+        resumeAllOperations()
+    }
+    
+    // MARK: - Manage Operation
+    func suspendAllOperations() {
+        pendingOperations.requestQueue.isSuspended = true
+        pendingOperations.downloadQueue.isSuspended = true
+    }
+    
+    func resumeAllOperations() {
+        pendingOperations.requestQueue.isSuspended = false
+        pendingOperations.downloadQueue.isSuspended = false
+    }
+    
+    func loadImagesForOnScreenCells() {
+        let pathsArray = collectionView.indexPathsForVisibleItems
+        
+        let allPendingOperations = Set(pendingOperations.downloadsInProgress.keys)
+        var toBeCancelled = allPendingOperations
+        let visiblePaths = Set(pathsArray)
+    
+        toBeCancelled.subtract(visiblePaths)
+        
+        var toBeStarted = visiblePaths
+        toBeStarted.subtract(allPendingOperations)
+        
+        for indexPath in toBeCancelled {
+            if let pendingDownload = pendingOperations.downloadsInProgress[indexPath] {
+                pendingDownload.cancel()
+            }
+            pendingOperations.downloadsInProgress.removeValue(forKey: indexPath)
+        }
+        
+        for indexPath in toBeStarted {
+            let recordToProgress = images[indexPath.row]
+            startImageDownloading(for: recordToProgress, at: indexPath)
+        }
+    }
+    
     
     // MARK: - Save Photo Delegate
     func saveSelectedPhoto(to images: [ImageRecord]) {
@@ -96,24 +149,30 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
         self.view.endEditing(true)
         
         if let searchKeyword = searchBar.text {
-            
-            let imageRequester = ImageRequester.init(searchKeyword)
-            
-            imageRequester.completionBlock = {
-                self.images = imageRequester.images
-                
-                DispatchQueue.main.async {
-                    print("Reload!")
-                    self.setSearchStatus()
-                    self.collectionView.reloadData()
-                }
-            }
-            
-            self.pendingOperations.requestQueue.addOperation(imageRequester)
+            self.searchKeyword = searchKeyword
+            requestImages(for: searchKeyword)
         }
     }
     
     // MARK: - Private Method
+    fileprivate func requestImages(for keyword: String) {
+        print("Search keyword: ", keyword)
+        let imageRequester = ImageRequester.init(keyword)
+        
+        imageRequester.completionBlock = {
+            self.images = imageRequester.images
+            
+            DispatchQueue.main.async {
+                print("Reload!")
+                self.setSearchStatus()
+                self.collectionView.reloadData()
+                self.collectionView.es.stopPullToRefresh()
+            }
+        }
+        
+        self.pendingOperations.requestQueue.addOperation(imageRequester)
+    }
+    
     fileprivate func startImageDownloading(for imageRecord: ImageRecord, at indexPath: IndexPath) {
         switch imageRecord.state {
         case .new:
