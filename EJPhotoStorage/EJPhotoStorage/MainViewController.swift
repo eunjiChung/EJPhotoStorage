@@ -13,7 +13,7 @@ import CHTCollectionViewWaterfallLayout
 class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLayout, UICollectionViewDataSource, SavePhotoDelegate, UISearchBarDelegate {
     
     // MARK: - Property
-    var images: [ImageRecord] = []
+    var searchedImages: [ImageRecord] = []
     var storedImages: [ImageRecord] = []
     var searchKeyword: String?
     
@@ -30,7 +30,6 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
         layout()
         
         self.collectionView.es.addPullToRefresh { [unowned self] in
-            print("PullToRefresh")
             if let keyword = self.searchKeyword {
                 self.requestImages(for: keyword)
             }
@@ -48,13 +47,13 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
     
     // MARK: - CollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images.count
+        return searchedImages.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResultCollectionViewCell.identifier, for: indexPath) as! ResultCollectionViewCell
         
-        let imageDetail = images[indexPath.item]
+        let imageDetail = searchedImages[indexPath.item]
         cell.imageView.image = imageDetail.image
         
         switch imageDetail.state {
@@ -75,7 +74,7 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
     // MARK: - CHTCollectionViewWaterfallLayout Delegate
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         
-        let result = images[indexPath.item]
+        let result = searchedImages[indexPath.item]
         if let image = result.image {
             return image.size
         }
@@ -131,7 +130,7 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
         }
         
         for indexPath in toBeStarted {
-            let recordToProgress = images[indexPath.row]
+            let recordToProgress = searchedImages[indexPath.row]
             startImageDownloading(for: recordToProgress, at: indexPath)
         }
     }
@@ -156,14 +155,12 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
     
     // MARK: - Private Method
     fileprivate func requestImages(for keyword: String) {
-        print("Search keyword: ", keyword)
         let imageRequester = ImageRequester.init(keyword)
         
         imageRequester.completionBlock = {
-            self.images = imageRequester.images
+            self.searchedImages = imageRequester.images
             
             DispatchQueue.main.async {
-                print("Reload!")
                 self.setSearchStatus()
                 self.collectionView.reloadData()
                 self.collectionView.es.stopPullToRefresh()
@@ -171,6 +168,10 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
         }
         
         self.pendingOperations.requestQueue.addOperation(imageRequester)
+    }
+    
+    fileprivate func requestLoadMoreImages() {
+        
     }
     
     fileprivate func startImageDownloading(for imageRecord: ImageRecord, at indexPath: IndexPath) {
@@ -223,7 +224,7 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
             if let destination = segue.destination as? MainDetailViewController,
                 let cell = sender as? UICollectionViewCell,
                 let indexPath = collectionView.indexPath(for: cell) {
-                destination.images = images
+                destination.images = searchedImages
                 destination.indexPath = indexPath
                 destination.delegate = self
             }
@@ -236,7 +237,7 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
     }
     
     fileprivate func setSearchStatus() {
-        if images.count == 0 {
+        if searchedImages.count == 0 {
             searchResultLabel.text = "검색어를 입력해주세요."
         } else {
             searchResultLabel.text = ""

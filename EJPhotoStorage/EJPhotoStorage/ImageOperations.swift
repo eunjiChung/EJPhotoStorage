@@ -67,25 +67,16 @@ class ImageRequester: BlockOperation {
         self.keyword = keyword
     }
     
+    // MARK: - Operation Execution
     override func main() {
 
         guard let keyword = keyword else { return }
         
         group.enter()
-        EJLibrary.shared.requestPhoto(keyword: keyword, success: { (data) in
-            self.appendImages(of: data)
-            self.group.leave()
-        }) { (error) in
-            self.group.leave()
-        }
+        requestImage(by: keyword)
         
         group.enter()
-        EJLibrary.shared.requestVclip(keyword: keyword, success: { (data) in
-            self.appendImages(of: data)
-            self.group.leave()
-        }) { (error) in
-            self.group.leave()
-        }
+        requestVclip(by: keyword)
         
         group.wait()
     }
@@ -98,6 +89,25 @@ class ImageRequester: BlockOperation {
                 let newImageRecord = ImageRecord.init(with: $0)
                 self.images.append(newImageRecord)
             }
+        }
+    }
+    
+    // MARK: - Private Method
+    fileprivate func requestImage(by keyword: String) {
+        EJLibrary.shared.requestPhoto(keyword: keyword, success: { (data) in
+            self.appendImages(of: data)
+            self.group.leave()
+        }) { (error) in
+            self.group.leave()
+        }
+    }
+    
+    fileprivate func requestVclip(by keyword: String) {
+        EJLibrary.shared.requestVclip(keyword: keyword, success: { (data) in
+            self.appendImages(of: data)
+            self.group.leave()
+        }) { (error) in
+            self.group.leave()
         }
     }
 }
