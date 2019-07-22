@@ -75,7 +75,7 @@ class EJLibrary : NSObject {
     fileprivate func generateQueryItems(query: String) -> [URLQueryItem] {
         let queryItems = [
             URLQueryItem(name: "query", value: query),
-            URLQueryItem(name: "size", value: "\(10)")
+            URLQueryItem(name: "size", value: "\(5)")
         ]
         return queryItems
     }

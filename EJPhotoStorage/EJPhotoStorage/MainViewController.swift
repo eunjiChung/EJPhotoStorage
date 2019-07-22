@@ -18,7 +18,6 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
     var searchKeyword: String?
     
     let pendingOperations = PendingOperations()
-    
     // MARK: - IBOutlet
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -37,6 +36,9 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
         
         self.collectionView.es.addInfiniteScrolling { [unowned self] in
             print("Infinite Scrolling")
+            if let keyword = self.searchKeyword {
+                self.requestLoadMoreImages()
+            }
         }
     }
     
@@ -155,23 +157,16 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
     
     // MARK: - Private Method
     fileprivate func requestImages(for keyword: String) {
-        let imageRequester = ImageRequester.init(keyword)
-        
-        imageRequester.completionBlock = {
-            self.searchedImages = imageRequester.images
-            
-            DispatchQueue.main.async {
-                self.setSearchStatus()
-                self.collectionView.reloadData()
-                self.collectionView.es.stopPullToRefresh()
-            }
+        pendingOperations.startImageDownloading(for: keyword) { (imageRecords) in
+            self.searchedImages = imageRecords
+            self.setSearchStatus()
+            self.collectionView.reloadData()
+            self.collectionView.es.stopPullToRefresh()
         }
-        
-        self.pendingOperations.requestQueue.addOperation(imageRequester)
     }
     
     fileprivate func requestLoadMoreImages() {
-        
+        print("LoadMore Images")
     }
     
     fileprivate func startImageDownloading(for imageRecord: ImageRecord, at indexPath: IndexPath) {
@@ -187,25 +182,25 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
     
     fileprivate func startDownload(for imageRecord: ImageRecord, at indexPath: IndexPath) {
         
-        guard pendingOperations.downloadsInProgress[indexPath] == nil else { return }
-        
-        let imageDownloader = ImageDownloader.init(imageRecord)
-        
-        imageDownloader.completionBlock = {
-//            print("??")
-            
-            if imageDownloader.isCancelled {
-                return
-            }
-            
-            DispatchQueue.main.async {
-                self.pendingOperations.downloadsInProgress.removeValue(forKey: indexPath)
-                self.collectionView.reloadItems(at: [indexPath])
-            }
-        }
-        
-        pendingOperations.downloadsInProgress[indexPath] = imageDownloader
-        pendingOperations.downloadQueue.addOperation(imageDownloader)
+//        guard pendingOperations.downloadsInProgress[indexPath] == nil else { return }
+//
+//        let imageDownloader = ImageDownloader.init(imageRecord)
+//
+//        imageDownloader.completionBlock = {
+////            print("??")
+//
+//            if imageDownloader.isCancelled {
+//                return
+//            }
+//
+//            DispatchQueue.main.async {
+//                self.pendingOperations.downloadsInProgress.removeValue(forKey: indexPath)
+//                self.collectionView.reloadItems(at: [indexPath])
+//            }
+//        }
+//
+//        pendingOperations.downloadsInProgress[indexPath] = imageDownloader
+//        pendingOperations.downloadQueue.addOperation(imageDownloader)
     }
     
     fileprivate func layout() {
