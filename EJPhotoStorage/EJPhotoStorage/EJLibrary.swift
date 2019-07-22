@@ -30,6 +30,9 @@ public let EJ_SCREEN_HEIGHT_812 : CGFloat       =   812.0
 public let EJ_SCREEN_WIDTH_414: CGFloat         =   414.0
 public let EJ_SCREEN_WIDTH_375: CGFloat         =   375.0
 
+// MARK: - Global Operation Class
+public let pendingOperations = PendingOperations()
+
 // MARK: - Auto Layout
 func EJSize(_ standardSize: CGFloat) -> CGFloat {
     // iPhoneX 기준으로 잡음

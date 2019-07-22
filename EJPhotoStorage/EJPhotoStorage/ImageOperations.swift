@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PendingOperations {
+public class PendingOperations {
     lazy var downloadsInProgress: [IndexPath: Operation] = [:]
     lazy var downloadQueue: OperationQueue = {
         var queue = OperationQueue()
@@ -22,65 +22,85 @@ class PendingOperations {
         return queue
     }()
     
-    func startImageDownloading(for searchKeyword:String?, success: @escaping ([ImageRecord]) -> ()) {
+    func startRequest(for searchKeyword:String?, success: @escaping ([ImageRecord]) -> ()) {
         
         guard let keyword = searchKeyword else { return }
         
         let imageRequester = ImageRequester.init(keyword)
-        let imageDownloader = ImageDownloader()
+//        let imageDownloader = ImageDownloader()
         
         imageRequester.completionBlock = {
-            imageDownloader.imageRecords = imageRequester.imageRecords
-        }
-        
-        imageDownloader.completionBlock = {
-            print("Image Download Completed!!")
-            
-            // 만약 loadMore라면 append...해야될것 같은데
-            imageRequester.imageRecords = imageDownloader.downloadedImageRecords
-            print(imageRequester.imageRecords)
-            
+//            imageDownloader.imageRecords = imageRequester.imageRecords
             DispatchQueue.main.async {
                 success(imageRequester.imageRecords)
             }
         }
         
-        imageDownloader.addDependency(imageRequester)
+//        imageDownloader.completionBlock = {
+//            print("Image Download Completed!!")
+//
+//            // 만약 loadMore라면 append...해야될것 같은데
+//            imageRequester.imageRecords = imageDownloader.downloadedImageRecords
+//            print(imageRequester.imageRecords)
+//
+//            DispatchQueue.main.async {
+//                success(imageRequester.imageRecords)
+//            }
+//        }
+        
+//        imageDownloader.addDependency(imageRequester)
         requestQueue.addOperation(imageRequester)
-        requestQueue.addOperation(imageDownloader)
+//        requestQueue.addOperation(imageDownloader)
+    }
+    
+    func downloadImage(with imageRecord: ImageRecord, completionHandler: @escaping (UIImage?) -> ()) {
+        
+        let imageDownloader = ImageDownloader.init(with: imageRecord)
+        
+        imageDownloader.completionBlock = {
+            completionHandler(imageDownloader.imageRecord.image)
+        }
+        
+        downloadQueue.addOperation(imageDownloader)
     }
 }
 
 
 class ImageDownloader: BlockOperation {
     
-    var imageRecords: [ImageRecord] = []
-    var downloadedImageRecords: [ImageRecord] = []
+//    var imageRecords: [ImageRecord] = []
+//    var downloadedImageRecords: [ImageRecord] = []
+
+    var imageRecord: ImageRecord
+    var imageCache: [ImageRecord]?
+    
+    init(with imageRecord: ImageRecord) {
+        self.imageRecord = imageRecord
+    }
     
     override func main() {
         print("Download start....")
-        let images = imageRecords
         
-        images.forEach { (image) in
-            if let url = image.imageUrl, let resourceURL = URL(string: url) {
-                print("Get image url")
-                if let imageData = try? Data(contentsOf: resourceURL),
-                    let newImage = UIImage(data: imageData) {
-                    print("Get new image!!!! YeY!")
-                    image.image = newImage
-                }
+        if let url = imageRecord.imageUrl,
+            let resourceURL = URL(string: url) {
+            
+            print("Get image url")
+            
+            if let imageData = try? Data(contentsOf: resourceURL),
+                let newImage = UIImage(data: imageData) {
+                print("Get new image!!!! YeY!")
+                imageRecord.image = newImage
+                imageRecord.state = .downloaded
             }
         }
-        
-        downloadedImageRecords = images
-        print("Image count: ", downloadedImageRecords.count)
     }
 }
+
+
 
 enum requestType {
     case image, vclip
 }
-
 
 class ImageRequester: BlockOperation {
     

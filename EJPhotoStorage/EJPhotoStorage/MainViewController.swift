@@ -17,7 +17,6 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
     var storedImages: [ImageRecord] = []
     var searchKeyword: String?
     
-    let pendingOperations = PendingOperations()
     // MARK: - IBOutlet
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -54,20 +53,21 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResultCollectionViewCell.identifier, for: indexPath) as! ResultCollectionViewCell
-        print("Cell viewing...")
         
         let imageDetail = searchedImages[indexPath.item]
         cell.imageView.image = imageDetail.image
         
         switch imageDetail.state {
+        case .new, .cancel:
+//            if !collectionView.isDragging && !collectionView.isDecelerating {
+//                startImageDownloading(for: imageDetail, at: indexPath)
+//            }
+            cell.setCellImage(by: imageDetail)
+            print("This is new Image or cancled image! Must download it!")
+        case .downloaded:
+            print("Already downloaded image")
         case .fail:
             print("Image Download failed...")
-        case .cancel:
-            print("Cancelled Operation!")
-        case .new, .downloaded:
-            if !collectionView.isDragging && !collectionView.isDecelerating {
-                startImageDownloading(for: imageDetail, at: indexPath)
-            }
         }
         
         return cell
@@ -158,7 +158,7 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
     
     // MARK: - Private Method
     fileprivate func requestImages(for keyword: String) {
-        pendingOperations.startImageDownloading(for: keyword) { (imageRecords) in
+        pendingOperations.startRequest(for: keyword) { (imageRecords) in
             self.searchedImages = imageRecords
             self.setSearchStatus()
             self.collectionView.reloadData()
