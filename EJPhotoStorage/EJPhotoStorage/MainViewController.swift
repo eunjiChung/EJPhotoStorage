@@ -18,8 +18,12 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
     
     // MARK: - Property
     var searchedImages: [ImageRecord] = []
+    var loadmoreImages: [ImageRecord] = []
     var storedImages: [ImageRecord] = []
-    var searchKeyword: String?
+    var searchKeyword = ""
+    
+    var isEndOfImage = false
+    var imagePage = 1
     
     // MARK: - IBOutlet
     @IBOutlet weak var collectionView: UICollectionView!
@@ -33,14 +37,13 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
         layout()
         
         self.collectionView.es.addPullToRefresh { [unowned self] in
-            if let keyword = self.searchKeyword {
-                self.requestImages(for: keyword)
-            }
+            self.requestImages(for: self.searchKeyword)
         }
         
         self.collectionView.es.addInfiniteScrolling { [unowned self] in
-            print("Infinite Scrolling")
-            if let keyword = self.searchKeyword {
+            if self.isEndOfImage {
+                self.collectionView.es.stopLoadingMore()
+            } else {
                 self.requestLoadMoreImages()
             }
         }
@@ -62,14 +65,8 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
         let imageDetail = searchedImages[indexPath.item]
         cell.imageView.image = imageDetail.image // 처음엔 placeholder 넣어준다
         
-        switch imageDetail.state {
-        case .new, .cancel:
-            cell.setCellImage(by: imageDetail)
-        case .downloaded:
-            print("Already downloaded image")
-        case .fail:
-            cell.imageView.image = UIImage(named: "Failed")
-        }
+        // 상태 빼버림 ㅋㅋ 
+        cell.setCellImage(by: imageDetail)
         
         return cell
     }
@@ -77,7 +74,6 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
     
     // MARK: - CHTCollectionViewWaterfallLayout Delegate
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
-        
         let result = searchedImages[indexPath.item]
         return result.image.size
     }
@@ -103,8 +99,12 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
     
     // MARK: - Private Method
     fileprivate func requestImages(for keyword: String) {
-        pendingOperations.startRequest(for: keyword) { resultRecords in
+        pendingOperations.startRequest(keyword: keyword,
+                                       page: 1) { (resultRecords, isEnd) in
             self.searchedImages = resultRecords
+            self.isEndOfImage = isEnd
+            self.imagePage = 2
+                                        
             self.setSearchResultLabel(by: .searched)
             self.collectionView.reloadData()
             self.collectionView.es.stopPullToRefresh()
@@ -112,7 +112,35 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
     }
     
     fileprivate func requestLoadMoreImages() {
-        print("LoadMore Images")
+        pendingOperations.startRequest(keyword: searchKeyword, page: imagePage+1) { (resultRecords, isEnd) in
+            self.isEndOfImage = isEnd
+            self.imagePage += 1
+            
+            self.collectionView.performBatchUpdates({
+                let indexPaths = self.indexPathsForLoadMore(by: resultRecords)
+                self.collectionView.insertItems(at: indexPaths)
+                self.appendLoaded(resultRecords)
+            }, completion: { (success) in
+                self.collectionView.es.stopLoadingMore()
+                print(success)
+            })
+        }
+    }
+    
+    fileprivate func appendLoaded(_ images: [ImageRecord]) {
+        images.forEach { self.searchedImages.append($0) }
+    }
+    
+    fileprivate func indexPathsForLoadMore(by resultRecords: [ImageRecord]) -> [IndexPath] {
+        var moreIndexPaths: [IndexPath] = []
+        let startIndex = self.searchedImages.count
+        
+        for index in 0..<resultRecords.count {
+            let indexPath = IndexPath.init(item: startIndex+index, section: 0)
+            moreIndexPaths.append(indexPath)
+        }
+        
+        return moreIndexPaths
     }
     
     fileprivate func layout() {

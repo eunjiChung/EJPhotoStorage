@@ -9,7 +9,7 @@
 import UIKit
 
 public class PendingOperations {
-    lazy var downloadsInProgress: [IndexPath: Operation] = [:]
+    
     lazy var downloadQueue: OperationQueue = {
         var queue = OperationQueue()
         queue.name = "download"
@@ -22,27 +22,31 @@ public class PendingOperations {
         return queue
     }()
     
-    func startRequest(for searchKeyword:String?, success: @escaping ([ImageRecord]) -> ()) {
-        
-        guard let keyword = searchKeyword else { return }
-        
-        let imageRequester = ImageRequester.init(keyword)
+    func startRequest(keyword:String,
+                      page: Int,
+                      success: @escaping ([ImageRecord], Bool) -> ()) {
+
+        let imageRequester = ImageRequester.init(keyword, page)
         
         imageRequester.completionBlock = {
             DispatchQueue.main.async {
-                success(imageRequester.imageRecords)
+                success(imageRequester.imageRecords, imageRequester.isEnd)
             }
         }
         
         requestQueue.addOperation(imageRequester)
     }
     
-    func downloadImage(with imageRecord: ImageRecord, completionHandler: @escaping (UIImage) -> ()) {
+    // 이거 진짜 옮기고 싶다...
+    // 일단 넘어가
+    var imageCache: [String: UIImage] = [:]
+    func downloadImage(with imageUrl: String, completionHandler: @escaping (UIImage) -> ()) {
         
-        let imageDownloader = ImageDownloader.init(with: imageRecord)
+        let imageDownloader = ImageDownloader.init(with: imageUrl, imageCache)
         
         imageDownloader.completionBlock = {
-            completionHandler(imageDownloader.imageRecord.image)
+            self.imageCache = imageDownloader.imageCache
+            completionHandler(imageDownloader.imageCache[imageUrl]!)
         }
         
         downloadQueue.addOperation(imageDownloader)
@@ -52,33 +56,31 @@ public class PendingOperations {
 
 class ImageDownloader: BlockOperation {
     
-    var imageRecord: ImageRecord
+    var imageUrl = ""
     var imageCache: [String: UIImage] = [:]
     
-    init(with imageRecord: ImageRecord) {
-        self.imageRecord = imageRecord
+    init(with imageUrl: String, _ cache: [String:UIImage]) {
+        self.imageUrl = imageUrl
+        self.imageCache = cache
     }
     
     override func main() {
         print("Download start....")
-        if let url = imageRecord.imageUrl, let resourceURL = URL(string: url) {
+        if let resourceURL = URL(string: imageUrl) {
             
-            // 캐시 정보는 어디서 체크하지?
-//            if imageCache[url] == nil {
-//
-//            } else {
-//
-//            }
-            guard let imageData = try? Data(contentsOf: resourceURL) else { return }
-            
-            if !imageData.isEmpty {
-                imageRecord.image = UIImage(data: imageData)!
-                imageRecord.state = .downloaded
-                imageCache[url] = UIImage(data: imageData)
+            // 캐시는 어디에 두지?ㅠㅠ
+            if imageCache[imageUrl] == nil {
+                guard let imageData = try? Data(contentsOf: resourceURL) else { return }
+                
+                if !imageData.isEmpty {
+                    imageCache[imageUrl] = UIImage(data: imageData) // 캐시 처리
+                } else {
+                    imageCache[imageUrl] = UIImage(named: "Failed")!
+                }
             } else {
-                imageRecord.image = UIImage(named: "Failed")!
-                imageRecord.state = .fail
+                print("Image Already Exists")
             }
+            
         }
     }
 }
@@ -93,30 +95,30 @@ class ImageRequester: BlockOperation {
     
     // MARK: - Variables
     var imageRecords: [ImageRecord] = []
-    var keyword: String?
+    var keyword = ""
     
-    var loadMoreImageRecords: [ImageRecord] = []
-    var isLoadMore: Bool?
+    var isImageEnd = false
+    var isVclipEnd = false
+    var isEnd = false
+    var page = 0
     
     let group = DispatchGroup()
     
     // MARK: - Initializer
-    init(_ keyword: String) {
+    init(_ keyword: String, _ page: Int) {
         self.keyword = keyword
-        self.isLoadMore = false
+        self.page = page
     }
     
     // MARK: - Operation Execution
     override func main() {
         print("Request Image")
-
-        guard let keyword = keyword else { return }
         
         group.enter()
-        requestImage(by: keyword)
+        requestImage()
         
         group.enter()
-        requestVclip(by: keyword)
+        requestVclip()
         
         print("Request finished!!")
         group.wait()
@@ -124,18 +126,25 @@ class ImageRequester: BlockOperation {
     }
     
     // MARK: - Private Method
-    fileprivate func requestImage(by keyword: String) {
-        EJLibrary.shared.requestPhoto(keyword: keyword, success: { (data) in
+    // 둘 중 하나의 결과가 먼저 떨어진다면?
+    fileprivate func requestImage() {
+        EJLibrary.shared.requestPhoto(keyword: keyword,
+                                      page: page,
+                                      success: { (data) in
             self.appendImages(of: data, by: .image)
+            self.isEndOfPage(of: data, by: .image)
             self.group.leave()
         }) { (error) in
             self.group.leave()
         }
     }
     
-    fileprivate func requestVclip(by keyword: String) {
-        EJLibrary.shared.requestVclip(keyword: keyword, success: { (data) in
+    fileprivate func requestVclip() {
+        EJLibrary.shared.requestVclip(keyword: keyword,
+                                      page: page,
+                                      success: { (data) in
             self.appendImages(of: data, by: .vclip)
+            self.isEndOfPage(of: data, by: .vclip)
             self.sortImagesByDateTime()
             self.group.leave()
         }) { (error) in
@@ -163,6 +172,24 @@ class ImageRequester: BlockOperation {
                     let newImageRecord = ImageRecord.init(with: $0)
                     self.imageRecords.append(newImageRecord)
                 }
+            }
+        }
+    }
+    
+    fileprivate func isEndOfPage(of data: Any, by type: requestType) {
+        switch type {
+        case .image:
+            let model = IMImageModel.init(object: data)
+            
+            if let meta = model.meta, let isEnd = meta.isEnd {
+                self.isImageEnd = isEnd
+            }
+        case .vclip:
+            let model = VMVclipModel.init(object: data)
+            
+            if let meta = model.meta, let isEnd = meta.isEnd {
+                self.isVclipEnd = isEnd
+                self.isEnd = self.isImageEnd && self.isVclipEnd
             }
         }
     }

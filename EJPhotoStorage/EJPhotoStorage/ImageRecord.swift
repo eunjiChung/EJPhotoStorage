@@ -8,16 +8,11 @@
 
 import UIKit
 
-enum ImageRecordState {
-    case new, downloaded, fail, cancel
-}
-
 class ImageRecord: NSObject {
     
     var image: UIImage
     var datetime: String?
     var imageUrl: String?
-    var state: ImageRecordState
     
     let getDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -36,14 +31,12 @@ class ImageRecord: NSObject {
         self.imageUrl = imageDocument.thumbnailUrl
         self.datetime = imageDocument.datetime
         self.image = UIImage.init(named: "Placeholder")!
-        self.state = .new
     }
     
     init(with vclipDocument: VMDocuments) {
         self.imageUrl = vclipDocument.thumbnail
         self.datetime = vclipDocument.datetime
         self.image = UIImage.init(named: "Placeholder")!
-        self.state = .new
     }
     
     // MARK: - Public Method
