@@ -59,11 +59,8 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
         
         switch imageDetail.state {
         case .new, .cancel:
-//            if !collectionView.isDragging && !collectionView.isDecelerating {
-//                startImageDownloading(for: imageDetail, at: indexPath)
-//            }
-            cell.setCellImage(by: imageDetail)
             print("This is new Image or cancled image! Must download it!")
+            cell.setCellImage(by: imageDetail)
         case .downloaded:
             print("Already downloaded image")
         case .fail:
@@ -83,59 +80,6 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
         }
         
         return CGSize.zero
-    }
-    
-    // MARK: - UIScrollView Delegate
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        suspendAllOperations()
-    }
-    
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if !decelerate {
-            loadImagesForOnScreenCells()
-            resumeAllOperations()
-        }
-    }
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        loadImagesForOnScreenCells()
-        resumeAllOperations()
-    }
-    
-    // MARK: - Manage Operation
-    func suspendAllOperations() {
-        pendingOperations.requestQueue.isSuspended = true
-        pendingOperations.downloadQueue.isSuspended = true
-    }
-    
-    func resumeAllOperations() {
-        pendingOperations.requestQueue.isSuspended = false
-        pendingOperations.downloadQueue.isSuspended = false
-    }
-    
-    func loadImagesForOnScreenCells() {
-        let pathsArray = collectionView.indexPathsForVisibleItems
-        
-        let allPendingOperations = Set(pendingOperations.downloadsInProgress.keys)
-        var toBeCancelled = allPendingOperations
-        let visiblePaths = Set(pathsArray)
-    
-        toBeCancelled.subtract(visiblePaths)
-        
-        var toBeStarted = visiblePaths
-        toBeStarted.subtract(allPendingOperations)
-        
-        for indexPath in toBeCancelled {
-            if let pendingDownload = pendingOperations.downloadsInProgress[indexPath] {
-                pendingDownload.cancel()
-            }
-            pendingOperations.downloadsInProgress.removeValue(forKey: indexPath)
-        }
-        
-        for indexPath in toBeStarted {
-            let recordToProgress = searchedImages[indexPath.row]
-            startImageDownloading(for: recordToProgress, at: indexPath)
-        }
     }
     
     
@@ -168,40 +112,6 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
     
     fileprivate func requestLoadMoreImages() {
         print("LoadMore Images")
-    }
-    
-    fileprivate func startImageDownloading(for imageRecord: ImageRecord, at indexPath: IndexPath) {
-        switch imageRecord.state {
-        case .new:
-            startDownload(for: imageRecord, at: indexPath)
-        case .downloaded:
-            print("It already downloaded!!!")
-        default:
-            print("Nothing....")
-        }
-    }
-    
-    fileprivate func startDownload(for imageRecord: ImageRecord, at indexPath: IndexPath) {
-        
-//        guard pendingOperations.downloadsInProgress[indexPath] == nil else { return }
-//
-//        let imageDownloader = ImageDownloader.init(imageRecord)
-//
-//        imageDownloader.completionBlock = {
-////            print("??")
-//
-//            if imageDownloader.isCancelled {
-//                return
-//            }
-//
-//            DispatchQueue.main.async {
-//                self.pendingOperations.downloadsInProgress.removeValue(forKey: indexPath)
-//                self.collectionView.reloadItems(at: [indexPath])
-//            }
-//        }
-//
-//        pendingOperations.downloadsInProgress[indexPath] = imageDownloader
-//        pendingOperations.downloadQueue.addOperation(imageDownloader)
     }
     
     fileprivate func layout() {
