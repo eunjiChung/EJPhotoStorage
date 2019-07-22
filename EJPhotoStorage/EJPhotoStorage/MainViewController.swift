@@ -54,6 +54,7 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResultCollectionViewCell.identifier, for: indexPath) as! ResultCollectionViewCell
+        print("Cell viewing...")
         
         let imageDetail = searchedImages[indexPath.item]
         cell.imageView.image = imageDetail.image
@@ -205,8 +206,8 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
     
     fileprivate func layout() {
         let waterfallLayout = CHTCollectionViewWaterfallLayout()
-        waterfallLayout.minimumColumnSpacing = 2.0
-        waterfallLayout.minimumInteritemSpacing = 2.0
+        waterfallLayout.minimumColumnSpacing = 5.0
+        waterfallLayout.minimumInteritemSpacing = 5.0
         collectionView.collectionViewLayout = waterfallLayout
         
         searchBar.placeholder = "검색어 입력"

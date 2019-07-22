@@ -19,6 +19,19 @@ class ImageRecord: NSObject {
     var imageUrl: String?
     var state: ImageRecordState
     
+    let getDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YYYY-MM-DD'T'HH:mm:ss.0000"
+        return formatter
+    }()
+    
+    let setDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YYYYMMDDHHmmss"
+        return formatter
+    }()
+    
+    // MARK: - Initializer
     init(with imageDocument: IMDocuments) {
         self.imageUrl = imageDocument.thumbnailUrl
         self.datetime = imageDocument.datetime
@@ -33,4 +46,16 @@ class ImageRecord: NSObject {
         self.state = .new
     }
     
+    // MARK: - Public Method
+    public func dateTime() -> Int {
+
+        if let datetime = self.datetime {
+            let newDatetime = datetime.components(separatedBy: "+")[0]
+            if let date = getDateFormatter.date(from: newDatetime) {
+                let dateString = setDateFormatter.string(from: date)
+                return Int(dateString)!
+            }
+        }
+        return 0
+    }
 }

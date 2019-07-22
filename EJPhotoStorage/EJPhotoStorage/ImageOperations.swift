@@ -129,6 +129,7 @@ class ImageRequester: BlockOperation {
     fileprivate func requestVclip(by keyword: String) {
         EJLibrary.shared.requestVclip(keyword: keyword, success: { (data) in
             self.appendImages(of: data, by: .vclip)
+            self.sortImagesByDateTime()
             self.group.leave()
         }) { (error) in
             self.group.leave()
@@ -157,6 +158,10 @@ class ImageRequester: BlockOperation {
                 }
             }
         }
+    }
+    
+    fileprivate func sortImagesByDateTime() {
+        self.imageRecords = self.imageRecords.sorted { $0.dateTime() > $1.dateTime() }
     }
 }
 
