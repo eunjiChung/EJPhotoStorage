@@ -32,6 +32,7 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("VIew did load")
         
         layout()
         
