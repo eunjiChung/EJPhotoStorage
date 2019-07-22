@@ -72,6 +72,13 @@ class EJLibrary : NSObject {
                                        failure: failure)
     }
     
+    // MARK: - Animation Action
+    public func delayAnimation(completion: @escaping () -> Void) {
+        UIView.animate(withDuration: 0.5, delay: 0.1, options: [], animations: {
+            completion()
+        }, completion: nil)
+    }
+    
     // MARK: - Private Method
     fileprivate func generateRequestHeader() -> HTTPHeaders {
         return ["Authorization": "KakaoAK \(kakaoAPPKey)"]

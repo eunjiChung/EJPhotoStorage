@@ -14,7 +14,7 @@ enum SearchStatus {
     case initial, searched
 }
 
-class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLayout, UICollectionViewDataSource, MainDetailViewDelegate, UISearchBarDelegate {
+class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfallLayout, UICollectionViewDataSource, MainDetailViewDelegate, UISearchBarDelegate {
     
     // MARK: - Property
     var searchedImages: [ImageRecord] = []
@@ -42,8 +42,10 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
         
         self.collectionView.es.addInfiniteScrolling { [unowned self] in
             if self.isEndOfImage {
-                print("isEndofImage")
-                self.collectionView.es.stopLoadingMore()
+                self.presentAlert(title: "알림", message: "목록의 끝입니다.")
+                EJLibrary.shared.delayAnimation {
+                    self.collectionView.es.stopLoadingMore()
+                }
             } else {
                 print("isNotEnd!!!")
                 self.requestLoadMoreImages()
