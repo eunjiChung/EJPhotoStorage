@@ -6,7 +6,10 @@ target 'EJPhotoStorage' do
   use_frameworks!
 
   # Pods for EJPhotoStorage
-  pod 'CHTCollectionViewWaterfallLayout/Swift'
+   pod 'CHTCollectionViewWaterfallLayout/Swift'
+   pod 'SwiftyJSON', '~> 5.0.0'
+   pod 'ESPullToRefresh', '~> 2.9'
+
   
   target 'EJPhotoStorageTests' do
     inherit! :search_paths

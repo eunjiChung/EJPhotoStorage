@@ -8,20 +8,19 @@
 
 import UIKit
 
-protocol SavePhotoDelegate: class {
-    func saveSelectedPhoto(to album: Photos)
+protocol MainDetailViewDelegate: class {
+    func saveSelectedPhoto(to images: [ImageRecord])
 }
 
 class MainDetailViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     // MARK: - Delegate
-    weak var delegate: SavePhotoDelegate?
+    weak var delegate: MainDetailViewDelegate?
     
     // MARK: - Property
-    var photos: Photos?
-    var storedAlbum = Photos.init(name: "stored")
-    var storedPhotos = [Photo]()
-    var currentPhoto : Photo?
+    var images: [ImageRecord]?
+    var storedImages = [ImageRecord]()
+    var currentImage : ImageRecord?
     var indexPath : IndexPath?
     
     // MARK: - IBOutlets
@@ -38,17 +37,20 @@ class MainDetailViewController: UIViewController, UICollectionViewDataSource, UI
         collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .centeredHorizontally)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
+    
     // MARK: - IBAction
     @IBAction func didTouchCloseBtn(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func didTouchStoreBtn(_ sender: Any) {
-        if let currentPhoto = currentPhoto {
-            if !storedPhotos.contains(currentPhoto) {
-                storedPhotos.append(currentPhoto)
-                storedAlbum.photos = storedPhotos
-                delegate?.saveSelectedPhoto(to: storedAlbum)
+        if let currentImage = currentImage {
+            if !storedImages.contains(currentImage) {
+                storedImages.append(currentImage)
+                delegate?.saveSelectedPhoto(to: storedImages)
             }
         }
     }
@@ -60,18 +62,18 @@ class MainDetailViewController: UIViewController, UICollectionViewDataSource, UI
     
     // MARK: - CollectionView Data Source
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let photos = photos else { return 0 }
-        return photos.photos.count
+        guard let images = images else { return 0 }
+        return images.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResultDetailCollectionViewCell.identifier, for: indexPath) as! ResultDetailCollectionViewCell
         
-        guard let photo = photos?.photos[indexPath.item] else { return cell }
-        currentPhoto = photo
-        cell.imageView.image = photo.image
-        cell.imageName.text = photo.name
-        cell.imageDatetime.text = photo.dateTime
+        guard let imageRecord = images?[indexPath.item] else { return cell }
+        currentImage = imageRecord
+        cell.imageView.image = imageRecord.image
+        cell.imageName.text = ""
+        cell.imageDatetime.text = imageRecord.datetime
         
         return cell
     }

@@ -18,9 +18,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="24z-bt-BJR">
+                                <rect key="frame" x="166.66666666666666" y="395.66666666666669" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ocH-0E-nxY">
                                 <rect key="frame" x="0.0" y="144" width="375" height="668"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="OMl-ze-Zq9">
                                     <size key="itemSize" width="229" height="208"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -71,8 +77,10 @@
                             <constraint firstItem="ocH-0E-nxY" firstAttribute="top" secondItem="The-oF-vBr" secondAttribute="bottom" id="1f8-Ma-hfZ"/>
                             <constraint firstAttribute="bottom" secondItem="ocH-0E-nxY" secondAttribute="bottom" id="48Z-PZ-qyN"/>
                             <constraint firstItem="The-oF-vBr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="HT8-2z-WaE"/>
+                            <constraint firstItem="24z-bt-BJR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Pg5-iA-VE0"/>
                             <constraint firstItem="ocH-0E-nxY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Q8O-eH-Usa"/>
                             <constraint firstItem="The-oF-vBr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="XN5-Rb-Alj"/>
+                            <constraint firstItem="24z-bt-BJR" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="lBx-xc-g64"/>
                             <constraint firstAttribute="trailing" secondItem="The-oF-vBr" secondAttribute="trailing" id="opS-XD-yZD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -87,6 +95,7 @@
                     <connections>
                         <outlet property="collectionView" destination="ocH-0E-nxY" id="T5C-eb-01F"/>
                         <outlet property="searchBar" destination="The-oF-vBr" id="Kom-nv-Lgc"/>
+                        <outlet property="searchResultLabel" destination="24z-bt-BJR" id="m2Y-aG-ekU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

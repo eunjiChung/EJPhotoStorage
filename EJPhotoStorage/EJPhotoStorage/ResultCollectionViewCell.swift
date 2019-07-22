@@ -14,9 +14,10 @@ class ResultCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    // MARK: - Public Method
+    func setCellImage(by imageRecord: ImageRecord) {
+        pendingOperations.downloadImage(with: imageRecord.imageUrl!) {
+            self.imageView.ej_setImage(with: $0)
+        }
     }
-
 }
