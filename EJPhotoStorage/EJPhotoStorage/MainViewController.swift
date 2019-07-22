@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ESPullToRefresh
 import CHTCollectionViewWaterfallLayout
 
 class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLayout, UICollectionViewDataSource, SavePhotoDelegate, UISearchBarDelegate {
@@ -26,6 +27,15 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
     override func viewDidLoad() {
         super.viewDidLoad()
         layout()
+        
+        self.collectionView.es.addPullToRefresh { [unowned self] in
+            print("PullToRefresh")
+//            self.collectionView.es.stopPullToRefresh()
+        }
+        
+        self.collectionView.es.addInfiniteScrolling {
+            print("Infinite Scrolling")
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
