@@ -14,10 +14,4 @@ class ResultCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
     
-    // MARK: - Public Method
-    func setCellImage(by imageRecord: ImageRecord) {
-        pendingOperations.downloadImage(with: imageRecord.imageUrl!) {
-            self.imageView.ej_setImage(with: $0)
-        }
-    }
 }

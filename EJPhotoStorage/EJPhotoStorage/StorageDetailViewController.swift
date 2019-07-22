@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StorageDetailViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class StorageDetailViewController: BasicViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     // MARK: - Property
     var images: [ImageRecord]?
@@ -44,13 +44,12 @@ class StorageDetailViewController: UIViewController, UICollectionViewDataSource,
         collectionView.register(UINib(nibName: "PhotoDetailCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PhotoDetailCollectionViewCell")
     }
     
-    // 얘의 출처는 어디....?
     @objc fileprivate func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
         if let error = error {
-            // we got back an error!
 //            Toast(message: error.localizedDescription).show()
+            self.presentAlert(title: "주의", message: "사진 저장에 오류가 발생했습니다. \n \(error.localizedDescription)")
         } else {
-            print("Image Saved!!")
+            self.presentAlert(title: "알림", message: "사진 저장이 완료되었습니다.")
         }
     }
     
@@ -68,7 +67,7 @@ class StorageDetailViewController: UIViewController, UICollectionViewDataSource,
         guard let imageRecord = images?[indexPath.item] else { return cell }
         cell.imageView.image = imageRecord.image
         cell.imageName.text = ""
-        cell.imageDatetime.text = imageRecord.datetime
+        cell.imageDatetime.text = imageRecord.dateTimeString()
         currentImage = imageRecord
         
         return cell

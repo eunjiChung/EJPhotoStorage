@@ -14,6 +14,7 @@ typealias HTTPHeaders = [String:String]
 typealias JSONDictionary = [String: Any]
 typealias SuccessHandler = (Any) -> ()
 typealias FailureHandler = (Error) -> ()
+typealias ImageCache = [String:UIImage]
 
 // MARK: - API Path
 fileprivate let kakaoHost                       =   "https://dapi.kakao.com"
@@ -30,9 +31,6 @@ public let EJ_SCREEN_HEIGHT_812 : CGFloat       =   812.0
 public let EJ_SCREEN_WIDTH_414: CGFloat         =   414.0
 public let EJ_SCREEN_WIDTH_375: CGFloat         =   375.0
 
-// MARK: - Global Operation Class
-public let pendingOperations = PendingOperations()
-
 // MARK: - Auto Layout
 func EJSize(_ standardSize: CGFloat) -> CGFloat {
     // iPhoneX 기준으로 잡음
@@ -47,8 +45,9 @@ class EJLibrary : NSObject {
     
     // MARK: - Singleton
     static let shared = EJLibrary()
+    let pendingOperations = PendingOperations()
     
-    // MARK: - HTTP Request
+    // MARK: - Request
     func requestImages(keyword: String,
                        page: Int,
                        success: @escaping (Images) -> (),
@@ -59,6 +58,12 @@ class EJLibrary : NSObject {
                                        header: generateRequestHeader(),
                                        success: success,
                                        failure: failure)
+    }
+    
+    func downloadImage(with urlString: String, completion: @escaping (UIImage) -> ()) {
+        pendingOperations.downloadImage(with: urlString) { (image) in
+            completion(image)
+        }
     }
     
     // MARK: - Animation Action

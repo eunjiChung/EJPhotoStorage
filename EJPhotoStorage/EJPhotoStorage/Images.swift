@@ -13,7 +13,6 @@ public class Images: NSObject {
     let identifier: String?
     
     var imageRecords: [ImageRecord] = []
-    var imageCache: [String: UIImage] = [:]
     var page = 0
     
     var isImageEnd = false
@@ -27,7 +26,10 @@ public class Images: NSObject {
     
     // MARK: - Public function
     func appendImageRecords(with vclipRecords: [ImageRecord]) {
-        // append image and vclip records
         vclipRecords.forEach { imageRecords.append($0) }
+    }
+    
+    func sortImagesRecency() {
+        imageRecords.sort { $0.dateTimeInt() > $1.dateTimeInt() }
     }
 }

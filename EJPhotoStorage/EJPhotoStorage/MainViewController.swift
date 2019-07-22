@@ -64,10 +64,9 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
         
         let imageDetail = images.imageRecords[indexPath.item]
         cell.imageView.image = imageDetail.image
-        
-        // 상태 빼버림 ㅋㅋ 
-        cell.setCellImage(by: imageDetail)
-        
+
+        cell.imageView.loadImage(imageDetail.imageUrl!)
+
         return cell
     }
     
@@ -75,6 +74,11 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
     // MARK: - CHTCollectionViewWaterfallLayout Delegate
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         let result = images.imageRecords[indexPath.item]
+        
+        if let width = result.imageWidth, let height = result.imageHeight {
+            return CGSize(width: width, height: height)
+        }
+        
         return result.image.size
     }
     
@@ -82,7 +86,6 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
     // MARK: - Save Photo Delegate
     func saveSelectedPhoto(to images: [ImageRecord]) {
         storedImages = images
-//        print("Photo Saved!!")
     }
     
     // MARK: - UISearchBar Delegate
@@ -90,10 +93,13 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
         // Hide Keyboard
         self.view.endEditing(true)
         
-        // 아무런 검색어도 입력 안했을 때 예외처리!!
         if let searchKeyword = searchBar.text {
-            self.searchKeyword = searchKeyword
-            requestImages(for: searchKeyword)
+            if searchKeyword != "" {
+                self.searchKeyword = searchKeyword
+                requestImages(for: searchKeyword)
+            } else {
+                self.presentAlert(title: "입력 오류!", message: "검색어를 입력해주세요!")
+            }
         }
     }
     
@@ -101,10 +107,12 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
     fileprivate func requestImages(for keyword: String) {
         EJLibrary.shared.requestImages(keyword: keyword, page: 1, success: { (images) in
             self.images = images
+            self.images.sortImagesRecency()
             print("Result!!!!!!!!!!!!!!!!!!", self.images.imageRecords)
             self.images.page = 2
             self.setSearchResultLabel(by: .searched)
             self.collectionView.reloadData()
+            self.scrollToTop()
             self.collectionView.es.stopPullToRefresh()
         }) { (error) in
             self.presentAlert(title: "검색 요청 오류", message: error.localizedDescription)
@@ -118,6 +126,7 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
             self.collectionView.performBatchUpdates({
                 let indexPaths = self.indexPathsForLoadMore(by: resultImages.imageRecords)
                 self.collectionView.insertItems(at: indexPaths)
+                resultImages.sortImagesRecency()
                 self.images.appendImageRecords(with: resultImages.imageRecords)
             }, completion: { (result) in
                 self.collectionView.es.stopLoadingMore()
@@ -179,6 +188,13 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
             if images.imageRecords.count == 0 {
                 searchResultLabel.text = "검색 결과가 없습니다."
             }
+        }
+    }
+    
+    fileprivate func scrollToTop() {
+        DispatchQueue.main.async {
+            let indexPath = IndexPath(item: 0, section: 0)
+            self.collectionView.scrollToItem(at: indexPath, at: .top, animated: true)
         }
     }
 }

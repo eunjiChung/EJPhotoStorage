@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StorageViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class StorageViewController: BasicViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     // MARK: - Property
     var images: [ImageRecord]?
@@ -58,8 +58,10 @@ class StorageViewController: UIViewController, UICollectionViewDataSource, UICol
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! StorageCollectionViewCell
         
+        // 여기는 진짜 저장된 이미지들을 저장!
         if let images = images {
-            cell.imageView.image = images[indexPath.item].image
+            let image = images[indexPath.item]
+            cell.imageView.loadImage(image.imageUrl!)
         }
         
         return cell

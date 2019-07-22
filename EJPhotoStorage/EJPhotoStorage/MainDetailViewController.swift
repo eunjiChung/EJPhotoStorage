@@ -12,7 +12,7 @@ protocol MainDetailViewDelegate: class {
     func saveSelectedPhoto(to images: [ImageRecord])
 }
 
-class MainDetailViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class MainDetailViewController: BasicViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     // MARK: - Delegate
     weak var delegate: MainDetailViewDelegate?
@@ -34,11 +34,8 @@ class MainDetailViewController: UIViewController, UICollectionViewDataSource, UI
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        // 알아보자...
         collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .centeredHorizontally)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
     }
     
     // MARK: - IBAction
@@ -47,17 +44,17 @@ class MainDetailViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     @IBAction func didTouchStoreBtn(_ sender: Any) {
-        if let currentImage = currentImage {
+        if let currentImage = currentImage, let imageUrl = currentImage.imageUrl {
+            // Set으로 다루기
             if !storedImages.contains(currentImage) {
-                storedImages.append(currentImage)
-                delegate?.saveSelectedPhoto(to: storedImages)
+                EJLibrary.shared.downloadImage(with:imageUrl) { (image) in
+                    currentImage.image = image
+                    self.storedImages.append(currentImage)
+                    self.delegate?.saveSelectedPhoto(to: self.storedImages)
+                    // 토스트 띄워보기...
+                }
             }
         }
-    }
-    
-    // MARK: - Private Method
-    fileprivate func registerNib() {
-        collectionView.register(UINib(nibName: ResultDetailCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: ResultDetailCollectionViewCell.identifier)
     }
     
     // MARK: - CollectionView Data Source
@@ -71,9 +68,9 @@ class MainDetailViewController: UIViewController, UICollectionViewDataSource, UI
         
         guard let imageRecord = images?[indexPath.item] else { return cell }
         currentImage = imageRecord
-        cell.imageView.image = imageRecord.image
+        cell.imageView.loadImage(imageRecord.imageUrl!)
         cell.imageName.text = ""
-        cell.imageDatetime.text = imageRecord.datetime
+        cell.imageDatetime.text = imageRecord.dateTimeString()
         
         return cell
     }
@@ -81,6 +78,11 @@ class MainDetailViewController: UIViewController, UICollectionViewDataSource, UI
     // MARK: - CollectionView Delegate Flow Layout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return collectionView.frame.size
+    }
+    
+    // MARK: - Private Method
+    fileprivate func registerNib() {
+        collectionView.register(UINib(nibName: ResultDetailCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: ResultDetailCollectionViewCell.identifier)
     }
     
 }

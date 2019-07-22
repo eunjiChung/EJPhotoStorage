@@ -41,7 +41,6 @@ public class PendingOperations {
             }
             
             DispatchQueue.main.async {
-                // 혼란...여기서 해도 되나?
                 success(imageRequester.images)
             }
         }
@@ -49,16 +48,12 @@ public class PendingOperations {
         requestQueue.addOperation(imageRequester)
     }
     
-    // 이거 진짜 옮기고 싶다...
-    // 일단 넘어가
-    var imageCache: [String: UIImage] = [:]
     func downloadImage(with imageUrl: String, completionHandler: @escaping (UIImage) -> ()) {
         
-        let imageDownloader = ImageDownloader.init(with: imageUrl, imageCache)
-        
+        let imageDownloader = ImageDownloader.init(with: imageUrl)
+    
         imageDownloader.completionBlock = {
-            self.imageCache = imageDownloader.imageCache
-            completionHandler(imageDownloader.imageCache[imageUrl]!)
+            completionHandler(imageDownloader.image!)
         }
         
         downloadQueue.addOperation(imageDownloader)
@@ -69,28 +64,22 @@ public class PendingOperations {
 class ImageDownloader: BlockOperation {
     
     var imageUrl = ""
-    var imageCache: [String: UIImage] = [:]
+    var image = UIImage.init(named: "Placeholder")
     
-    init(with imageUrl: String, _ cache: [String:UIImage]) {
+    init(with imageUrl: String) {
         self.imageUrl = imageUrl
-        self.imageCache = cache
     }
     
     override func main() {
         print("Download start....")
         if let resourceURL = URL(string: imageUrl) {
             
-            // 캐시는 어디에 두지?ㅠㅠ
-            if imageCache[imageUrl] == nil {
-                guard let imageData = try? Data(contentsOf: resourceURL) else { return }
-                
-                if !imageData.isEmpty {
-                    imageCache[imageUrl] = UIImage(data: imageData) // 캐시 처리
-                } else {
-                    imageCache[imageUrl] = UIImage(named: "Failed")!
-                }
+            guard let imageData = try? Data(contentsOf: resourceURL) else { return }
+            
+            if !imageData.isEmpty {
+                self.image = UIImage(data: imageData)! // 캐시 처리
             } else {
-                print("Image Already Exists")
+                self.image = UIImage(named: "Failed")!
             }
         }
     }

@@ -14,6 +14,9 @@ class ImageRecord: NSObject {
     var datetime: String?
     var imageUrl: String?
     
+    var imageWidth: Int?
+    var imageHeight: Int?
+    
     let getDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         // HH와 hh의 차이?
@@ -27,10 +30,18 @@ class ImageRecord: NSObject {
         return formatter
     }()
     
+    let textDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YYYY.MM.DD.hh.mm.ss"
+        return formatter
+    }()
+    
     // MARK: - Initializer
     init(with imageDocument: IMDocuments) {
         self.imageUrl = imageDocument.thumbnailUrl
         self.datetime = imageDocument.datetime
+        self.imageWidth = imageDocument.width
+        self.imageHeight = imageDocument.height
         self.image = UIImage.init(named: "Placeholder")!
     }
     
@@ -41,7 +52,7 @@ class ImageRecord: NSObject {
     }
     
     // MARK: - Public Method
-    public func dateTime() -> Int {
+    public func dateTimeInt() -> Int {
         if let datetime = self.datetime {
             let newDatetime = datetime.components(separatedBy: "+")[0]
             if let date = getDateFormatter.date(from: newDatetime) {
@@ -51,5 +62,16 @@ class ImageRecord: NSObject {
             }
         }
         return 0
+    }
+    
+    public func dateTimeString() -> String {
+        if let datetime = self.datetime {
+            let newDatetime = datetime.components(separatedBy: "+")[0]
+            if let date = getDateFormatter.date(from: newDatetime) {
+                let dateString = textDateFormatter.string(from: date)
+                return dateString
+            }
+        }
+        return ""
     }
 }
