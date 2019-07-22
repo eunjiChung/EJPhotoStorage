@@ -10,6 +10,10 @@ import UIKit
 import ESPullToRefresh
 import CHTCollectionViewWaterfallLayout
 
+enum SearchStatus {
+    case initial, searched
+}
+
 class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLayout, UICollectionViewDataSource, SavePhotoDelegate, UISearchBarDelegate {
     
     // MARK: - Property
@@ -25,6 +29,7 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         layout()
         
         self.collectionView.es.addPullToRefresh { [unowned self] in
@@ -43,7 +48,7 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setSearchStatus()
+        setSearchResultLabel(by: .initial)
     }
     
     // MARK: - CollectionViewDataSource
@@ -55,16 +60,15 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResultCollectionViewCell.identifier, for: indexPath) as! ResultCollectionViewCell
         
         let imageDetail = searchedImages[indexPath.item]
-        cell.imageView.image = imageDetail.image
+        cell.imageView.image = imageDetail.image // 처음엔 placeholder 넣어준다
         
         switch imageDetail.state {
         case .new, .cancel:
-            print("This is new Image or cancled image! Must download it!")
             cell.setCellImage(by: imageDetail)
         case .downloaded:
             print("Already downloaded image")
         case .fail:
-            print("Image Download failed...")
+            cell.imageView.image = UIImage(named: "Failed")
         }
         
         return cell
@@ -75,11 +79,7 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         
         let result = searchedImages[indexPath.item]
-        if let image = result.image {
-            return image.size
-        }
-        
-        return CGSize.zero
+        return result.image.size
     }
     
     
@@ -94,6 +94,7 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
         // Hide Keyboard
         self.view.endEditing(true)
         
+        // 아무런 검색어도 입력 안했을 때 예외처리!!
         if let searchKeyword = searchBar.text {
             self.searchKeyword = searchKeyword
             requestImages(for: searchKeyword)
@@ -102,9 +103,9 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
     
     // MARK: - Private Method
     fileprivate func requestImages(for keyword: String) {
-        pendingOperations.startRequest(for: keyword) { (imageRecords) in
-            self.searchedImages = imageRecords
-            self.setSearchStatus()
+        pendingOperations.startRequest(for: keyword) { resultRecords in
+            self.searchedImages = resultRecords
+            self.setSearchResultLabel(by: .searched)
             self.collectionView.reloadData()
             self.collectionView.es.stopPullToRefresh()
         }
@@ -119,7 +120,6 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
         waterfallLayout.minimumColumnSpacing = 5.0
         waterfallLayout.minimumInteritemSpacing = 5.0
         collectionView.collectionViewLayout = waterfallLayout
-        
         searchBar.placeholder = "검색어 입력"
     }
     
@@ -128,8 +128,7 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
         {
         case .some("main_detail_segue"):
             if let destination = segue.destination as? MainDetailViewController,
-                let cell = sender as? UICollectionViewCell,
-                let indexPath = collectionView.indexPath(for: cell) {
+                let cell = sender as? UICollectionViewCell, let indexPath = collectionView.indexPath(for: cell) {
                 destination.images = searchedImages
                 destination.indexPath = indexPath
                 destination.delegate = self
@@ -142,11 +141,16 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
         }
     }
     
-    fileprivate func setSearchStatus() {
-        if searchedImages.count == 0 {
+    fileprivate func setSearchResultLabel(by status: SearchStatus) {
+        switch status {
+        case .initial:
             searchResultLabel.text = "검색어를 입력해주세요."
-        } else {
-            searchResultLabel.text = ""
+        case .searched:
+            if searchedImages.count == 0 {
+                searchResultLabel.text = "검색 결과가 없습니다."
+            } else {
+                searchResultLabel.text = ""
+            }
         }
     }
 }

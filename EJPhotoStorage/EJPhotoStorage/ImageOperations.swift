@@ -27,33 +27,17 @@ public class PendingOperations {
         guard let keyword = searchKeyword else { return }
         
         let imageRequester = ImageRequester.init(keyword)
-//        let imageDownloader = ImageDownloader()
         
         imageRequester.completionBlock = {
-//            imageDownloader.imageRecords = imageRequester.imageRecords
             DispatchQueue.main.async {
                 success(imageRequester.imageRecords)
             }
         }
         
-//        imageDownloader.completionBlock = {
-//            print("Image Download Completed!!")
-//
-//            // 만약 loadMore라면 append...해야될것 같은데
-//            imageRequester.imageRecords = imageDownloader.downloadedImageRecords
-//            print(imageRequester.imageRecords)
-//
-//            DispatchQueue.main.async {
-//                success(imageRequester.imageRecords)
-//            }
-//        }
-        
-//        imageDownloader.addDependency(imageRequester)
         requestQueue.addOperation(imageRequester)
-//        requestQueue.addOperation(imageDownloader)
     }
     
-    func downloadImage(with imageRecord: ImageRecord, completionHandler: @escaping (UIImage?) -> ()) {
+    func downloadImage(with imageRecord: ImageRecord, completionHandler: @escaping (UIImage) -> ()) {
         
         let imageDownloader = ImageDownloader.init(with: imageRecord)
         
@@ -68,11 +52,8 @@ public class PendingOperations {
 
 class ImageDownloader: BlockOperation {
     
-//    var imageRecords: [ImageRecord] = []
-//    var downloadedImageRecords: [ImageRecord] = []
-
     var imageRecord: ImageRecord
-    var imageCache: [ImageRecord]?
+    var imageCache: [String: UIImage] = [:]
     
     init(with imageRecord: ImageRecord) {
         self.imageRecord = imageRecord
@@ -80,17 +61,23 @@ class ImageDownloader: BlockOperation {
     
     override func main() {
         print("Download start....")
-        
-        if let url = imageRecord.imageUrl,
-            let resourceURL = URL(string: url) {
+        if let url = imageRecord.imageUrl, let resourceURL = URL(string: url) {
             
-            print("Get image url")
+            // 캐시 정보는 어디서 체크하지?
+//            if imageCache[url] == nil {
+//
+//            } else {
+//
+//            }
+            guard let imageData = try? Data(contentsOf: resourceURL) else { return }
             
-            if let imageData = try? Data(contentsOf: resourceURL),
-                let newImage = UIImage(data: imageData) {
-                print("Get new image!!!! YeY!")
-                imageRecord.image = newImage
+            if !imageData.isEmpty {
+                imageRecord.image = UIImage(data: imageData)!
                 imageRecord.state = .downloaded
+                imageCache[url] = UIImage(data: imageData)
+            } else {
+                imageRecord.image = UIImage(named: "Failed")!
+                imageRecord.state = .fail
             }
         }
     }

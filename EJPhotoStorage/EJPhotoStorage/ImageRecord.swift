@@ -14,7 +14,7 @@ enum ImageRecordState {
 
 class ImageRecord: NSObject {
     
-    var image: UIImage?
+    var image: UIImage
     var datetime: String?
     var imageUrl: String?
     var state: ImageRecordState
@@ -35,14 +35,14 @@ class ImageRecord: NSObject {
     init(with imageDocument: IMDocuments) {
         self.imageUrl = imageDocument.thumbnailUrl
         self.datetime = imageDocument.datetime
-        self.image = UIImage.init(named: "Placeholder")
+        self.image = UIImage.init(named: "Placeholder")!
         self.state = .new
     }
     
     init(with vclipDocument: VMDocuments) {
         self.imageUrl = vclipDocument.thumbnail
         self.datetime = vclipDocument.datetime
-        self.image = UIImage.init(named: "Placeholder")
+        self.image = UIImage.init(named: "Placeholder")!
         self.state = .new
     }
     

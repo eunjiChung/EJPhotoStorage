@@ -17,7 +17,7 @@ class ResultCollectionViewCell: UICollectionViewCell {
     // MARK: - Public Method
     func setCellImage(by imageRecord: ImageRecord) {
         pendingOperations.downloadImage(with: imageRecord) {
-            if let image = $0 { self.imageView.ej_setImage(with: image) }
+            self.imageView.ej_setImage(with: $0)
         }
     }
 }
