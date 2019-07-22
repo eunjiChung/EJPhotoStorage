@@ -14,11 +14,10 @@ enum SearchStatus {
     case initial, searched
 }
 
-class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLayout, UICollectionViewDataSource, SavePhotoDelegate, UISearchBarDelegate {
+class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLayout, UICollectionViewDataSource, MainDetailViewDelegate, UISearchBarDelegate {
     
     // MARK: - Property
     var searchedImages: [ImageRecord] = []
-    var loadmoreImages: [ImageRecord] = []
     var storedImages: [ImageRecord] = []
     var searchKeyword = ""
     
@@ -42,8 +41,10 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
         
         self.collectionView.es.addInfiniteScrolling { [unowned self] in
             if self.isEndOfImage {
+                print("isEndofImage")
                 self.collectionView.es.stopLoadingMore()
             } else {
+                print("isNotEnd!!!")
                 self.requestLoadMoreImages()
             }
         }
@@ -63,7 +64,7 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResultCollectionViewCell.identifier, for: indexPath) as! ResultCollectionViewCell
         
         let imageDetail = searchedImages[indexPath.item]
-        cell.imageView.image = imageDetail.image // 처음엔 placeholder 넣어준다
+        cell.imageView.image = imageDetail.image
         
         // 상태 빼버림 ㅋㅋ 
         cell.setCellImage(by: imageDetail)
@@ -82,7 +83,7 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
     // MARK: - Save Photo Delegate
     func saveSelectedPhoto(to images: [ImageRecord]) {
         storedImages = images
-        print("Photo Saved!!")
+//        print("Photo Saved!!")
     }
     
     // MARK: - UISearchBar Delegate
@@ -103,6 +104,8 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
                                        page: 1) { (resultRecords, isEnd) in
             self.searchedImages = resultRecords
             self.isEndOfImage = isEnd
+                                        print("1: ", self.isEndOfImage)
+                                        print("2: ", isEnd)
             self.imagePage = 2
                                         
             self.setSearchResultLabel(by: .searched)
@@ -170,14 +173,17 @@ class MainViewController: UIViewController, CHTCollectionViewDelegateWaterfallLa
     }
     
     fileprivate func setSearchResultLabel(by status: SearchStatus) {
+        
+        searchResultLabel.text = ""
+        
         switch status {
         case .initial:
-            searchResultLabel.text = "검색어를 입력해주세요."
+            if searchedImages.count == 0 {
+                searchResultLabel.text = "검색어를 입력해주세요."
+            }
         case .searched:
             if searchedImages.count == 0 {
                 searchResultLabel.text = "검색 결과가 없습니다."
-            } else {
-                searchResultLabel.text = ""
             }
         }
     }

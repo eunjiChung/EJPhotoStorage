@@ -80,7 +80,6 @@ class ImageDownloader: BlockOperation {
             } else {
                 print("Image Already Exists")
             }
-            
         }
     }
 }
@@ -183,13 +182,16 @@ class ImageRequester: BlockOperation {
             
             if let meta = model.meta, let isEnd = meta.isEnd {
                 self.isImageEnd = isEnd
+                print("isImageEnd:", self.isImageEnd)
             }
         case .vclip:
             let model = VMVclipModel.init(object: data)
             
             if let meta = model.meta, let isEnd = meta.isEnd {
                 self.isVclipEnd = isEnd
+                print("isVclipEnd:", self.isVclipEnd)
                 self.isEnd = self.isImageEnd && self.isVclipEnd
+                print("isEnd:", self.isEnd)
             }
         }
     }

@@ -8,14 +8,14 @@
 
 import UIKit
 
-protocol SavePhotoDelegate: class {
+protocol MainDetailViewDelegate: class {
     func saveSelectedPhoto(to images: [ImageRecord])
 }
 
 class MainDetailViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     // MARK: - Delegate
-    weak var delegate: SavePhotoDelegate?
+    weak var delegate: MainDetailViewDelegate?
     
     // MARK: - Property
     var images: [ImageRecord]?
@@ -35,6 +35,10 @@ class MainDetailViewController: UIViewController, UICollectionViewDataSource, UI
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .centeredHorizontally)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
     }
     
     // MARK: - IBAction
