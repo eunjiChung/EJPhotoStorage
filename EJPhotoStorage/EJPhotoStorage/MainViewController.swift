@@ -11,13 +11,13 @@ import ESPullToRefresh
 import CHTCollectionViewWaterfallLayout
 
 enum SearchStatus {
-    case initial, searched
+    case initial, searching, searched
 }
 
 class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfallLayout, UICollectionViewDataSource, MainDetailViewDelegate, UISearchBarDelegate {
     
     // MARK: - Property
-    var images = Images.init(with: "main")
+    var images = Images.init()
     var searchedImages: [ImageRecord] = []
     var storedImages: [ImageRecord] = []
     var searchKeyword = ""
@@ -26,6 +26,7 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchResultLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     
     // MARK: - View Life Cycle
@@ -35,12 +36,12 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
         layout()
         
         self.collectionView.es.addPullToRefresh { [unowned self] in
-            self.requestImages(for: self.searchKeyword)
+            self.requestImages()
         }
         
         self.collectionView.es.addInfiniteScrolling { [unowned self] in
-            if self.images.isEnd {
-                self.presentAlert(title: "알림", message: "목록의 끝입니다.")
+            if self.images.isRequestEnd() {
+                self.presentAlert(title: "알림", message: "모든 결과를 불러왔습니다.")
                 EJLibrary.shared.delayAnimation {
                     self.collectionView.es.stopLoadingMore()
                 }
@@ -65,9 +66,9 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
         
         let imageDetail = images.imageRecords[indexPath.item]
         cell.imageView.image = imageDetail.image
-
+        
         cell.imageView.loadImageCrossDissolve(imageDetail.imageUrl!)
-
+        
         return cell
     }
     
@@ -93,11 +94,13 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         // Hide Keyboard
         self.view.endEditing(true)
+        activityIndicator.startAnimating()
         
         if let searchKeyword = searchBar.text {
             if searchKeyword != "" {
-                self.searchKeyword = searchKeyword
-                requestImages(for: searchKeyword)
+                self.images = Images.init(with: searchKeyword)
+                setSearchResultLabel(by: .searching)
+                requestImages()
             } else {
                 self.presentAlert(title: "입력 오류!", message: "검색어를 입력해주세요!")
             }
@@ -105,40 +108,49 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
     }
     
     // MARK: - Private Method
-    fileprivate func requestImages(for keyword: String) {
+    fileprivate func requestImages() {
         EJLibrary.shared.requestImages(images: self.images,
-                                       keyword: keyword,
-                                       page: 1,
                                        success: { (images) in
-            self.images = images
-            self.images.sortImagesRecency()
-            print("Result!!!!!!!!!!!!!!!!!!", self.images.imageRecords)
-            self.images.page = 2
-            self.setSearchResultLabel(by: .searched)
-            self.collectionView.reloadData()
-            self.scrollToTop()
-            self.collectionView.es.stopPullToRefresh()
+                                        
+                                        if !images.isImageRecordEmpty()
+                                        {
+                                            self.images = images
+    
+                                            self.setSearchResultLabel(by: .searched)
+                                            self.collectionView.reloadData()
+                                            self.scrollToTop()
+                                            
+                                            self.activityIndicator.stopAnimating()
+                                            self.collectionView.es.stopPullToRefresh()
+                                        } else {
+                                            self.activityIndicator.stopAnimating()
+                                            self.setSearchResultLabel(by: .searched)
+                                        }
+                                        
         }) { (error) in
+            self.activityIndicator.stopAnimating()
             self.presentAlert(title: "검색 요청 오류", message: error.localizedDescription)
         }
     }
     
     fileprivate func requestLoadMoreImages() {
+        
+        self.images.nextPage()
+        
         EJLibrary.shared.requestImages(images: self.images,
-                                       keyword: searchKeyword,
-                                       page: self.images.page+1,
                                        success: { (resultImages) in
-            self.images.page += 1
-            
-            self.collectionView.performBatchUpdates({
-                let indexPaths = self.indexPathsForLoadMore(by: resultImages.imageRecords)
-                self.collectionView.insertItems(at: indexPaths)
-                resultImages.sortImagesRecency()
-                self.images.appendImageRecords(with: resultImages.imageRecords)
-            }, completion: { (result) in
-                self.collectionView.es.stopLoadingMore()
-            })
+                                        self.collectionView.performBatchUpdates({
+                                            let indexPaths = self.indexPathsForLoadMore(by: resultImages.imageRecords)
+                                            self.collectionView.insertItems(at: indexPaths)
+                                            resultImages.sortImagesRecency()
+                                            self.images.appendImageRecords(with: resultImages.imageRecords)
+                                            self.activityIndicator.stopAnimating()
+                                        }, completion: { (result) in
+                                            self.activityIndicator.stopAnimating()
+                                            self.collectionView.es.stopLoadingMore()
+                                        })
         }) { (error) in
+            self.activityIndicator.stopAnimating()
             self.presentAlert(title: "추가 요청 오류", message: error.localizedDescription)
         }
     }
@@ -162,6 +174,7 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
         waterfallLayout.minimumInteritemSpacing = 5.0
         collectionView.collectionViewLayout = waterfallLayout
         searchBar.placeholder = "검색어 입력"
+        activityIndicator.hidesWhenStopped = true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -195,6 +208,8 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
             if images.imageRecords.count == 0 {
                 searchResultLabel.text = "검색 결과가 없습니다."
             }
+        case .searching:
+            searchResultLabel.text = ""
         }
     }
     
@@ -203,5 +218,8 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
             let indexPath = IndexPath(item: 0, section: 0)
             self.collectionView.scrollToItem(at: indexPath, at: .top, animated: true)
         }
+    }
+    
+    fileprivate func removeActivity() {
     }
 }

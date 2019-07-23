@@ -24,6 +24,9 @@
                                 <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="x7f-yb-2Zw">
+                                <rect key="frame" x="177.66666666666666" y="365.66666666666669" width="20" height="20"/>
+                            </activityIndicatorView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ocH-0E-nxY">
                                 <rect key="frame" x="0.0" y="144" width="375" height="668"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -77,9 +80,11 @@
                             <constraint firstItem="ocH-0E-nxY" firstAttribute="top" secondItem="The-oF-vBr" secondAttribute="bottom" id="1f8-Ma-hfZ"/>
                             <constraint firstAttribute="bottom" secondItem="ocH-0E-nxY" secondAttribute="bottom" id="48Z-PZ-qyN"/>
                             <constraint firstItem="The-oF-vBr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="HT8-2z-WaE"/>
+                            <constraint firstItem="x7f-yb-2Zw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Nhb-fo-hqG"/>
                             <constraint firstItem="24z-bt-BJR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Pg5-iA-VE0"/>
                             <constraint firstItem="ocH-0E-nxY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Q8O-eH-Usa"/>
                             <constraint firstItem="The-oF-vBr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="XN5-Rb-Alj"/>
+                            <constraint firstItem="24z-bt-BJR" firstAttribute="top" secondItem="x7f-yb-2Zw" secondAttribute="bottom" constant="10" id="f6y-04-YIy"/>
                             <constraint firstItem="24z-bt-BJR" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="lBx-xc-g64"/>
                             <constraint firstAttribute="trailing" secondItem="The-oF-vBr" secondAttribute="trailing" id="opS-XD-yZD"/>
                         </constraints>
@@ -93,6 +98,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="x7f-yb-2Zw" id="iGO-yw-t2c"/>
                         <outlet property="collectionView" destination="ocH-0E-nxY" id="T5C-eb-01F"/>
                         <outlet property="searchBar" destination="The-oF-vBr" id="Kom-nv-Lgc"/>
                         <outlet property="searchResultLabel" destination="24z-bt-BJR" id="m2Y-aG-ekU"/>

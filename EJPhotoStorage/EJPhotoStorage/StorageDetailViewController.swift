@@ -88,7 +88,7 @@ class StorageDetailViewController: BasicViewController, UICollectionViewDataSour
     @objc fileprivate func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
         if let error = error {
             //            Toast(message: error.localizedDescription).show()
-            self.presentAlert(title: "주의", message: "사진 저장에 오류가 발생했습니다. \n \(error.localizedDescription)")
+            self.presentAlert(title: "주의", message: "사진을 저장할 수 없습니다. \n 사진첩 접근을 허용해주십시오.")
         } else {
             self.presentAlert(title: "알림", message: "사진 저장이 완료되었습니다.")
         }
