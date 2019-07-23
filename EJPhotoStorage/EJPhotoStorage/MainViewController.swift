@@ -41,7 +41,9 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
         
         self.collectionView.es.addInfiniteScrolling { [unowned self] in
             if self.images.isRequestEnd() {
+                
                 self.presentAlert(title: "알림", message: "모든 결과를 불러왔습니다.")
+                
                 EJLibrary.shared.delayAnimation {
                     self.collectionView.es.stopLoadingMore()
                 }
@@ -118,8 +120,8 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
     
                                             self.setSearchResultLabel(by: .searched)
                                             self.collectionView.reloadData()
-                                            self.scrollToTop()
                                             
+                                            self.scrollToTop()
                                             self.activityIndicator.stopAnimating()
                                             self.collectionView.es.stopPullToRefresh()
                                         } else {
@@ -142,8 +144,7 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
                                         self.collectionView.performBatchUpdates({
                                             let indexPaths = self.indexPathsForLoadMore(by: resultImages.imageRecords)
                                             self.collectionView.insertItems(at: indexPaths)
-                                            resultImages.sortImagesRecency()
-                                            self.images.appendImageRecords(with: resultImages.imageRecords)
+                                            self.images = resultImages
                                             self.activityIndicator.stopAnimating()
                                         }, completion: { (result) in
                                             self.activityIndicator.stopAnimating()

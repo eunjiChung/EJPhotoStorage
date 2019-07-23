@@ -8,7 +8,8 @@
 
 import UIKit
 
-class ImageRecord: NSObject {
+// 아예 Codable로 바꾸는 작업이 필요할 듯.....
+class ImageRecord: Codable {
     
     var image: UIImage
     var datetime: String?
@@ -16,25 +17,6 @@ class ImageRecord: NSObject {
     
     var imageWidth: Int?
     var imageHeight: Int?
-    
-    let getDateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        // HH와 hh의 차이?
-        formatter.dateFormat = "YYYY-MM-DD'T'hh:mm:ss.0000"
-        return formatter
-    }()
-    
-    let setDateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "YYYYMMDDHHmmss"
-        return formatter
-    }()
-    
-    let textDateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "YYYY.MM.DD.hh.mm.ss"
-        return formatter
-    }()
     
     // MARK: - Initializer
     init(with imageDocument: IMDocuments) {
@@ -54,24 +36,10 @@ class ImageRecord: NSObject {
     // MARK: - Public Method
     public func dateTimeInt() -> Int {
         if let datetime = self.datetime {
-            let newDatetime = datetime.components(separatedBy: "+")[0]
-            if let date = getDateFormatter.date(from: newDatetime) {
-                print("THIS IS DATE!!!!!!!", date)
-                let dateString = setDateFormatter.string(from: date)
-                return Int(dateString)!
-            }
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
         }
         return 0
     }
     
-    public func dateTimeString() -> String {
-        if let datetime = self.datetime {
-            let newDatetime = datetime.components(separatedBy: "+")[0]
-            if let date = getDateFormatter.date(from: newDatetime) {
-                let dateString = textDateFormatter.string(from: date)
-                return dateString
-            }
-        }
-        return ""
-    }
 }
