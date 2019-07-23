@@ -18,7 +18,6 @@ class StorageDetailViewController: BasicViewController, UICollectionViewDataSour
     // MARK: - IBOutlets
     @IBOutlet weak var collectionView: UICollectionView!
     
-    
     // MARK: - Status Bar
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -58,7 +57,7 @@ class StorageDetailViewController: BasicViewController, UICollectionViewDataSour
             self.presentAlert(title: "알림", message: "사진 저장이 완료되었습니다.")
         }
     }
-    
+
     // MARK: - CollectionView DataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let images = images {
@@ -81,7 +80,7 @@ class StorageDetailViewController: BasicViewController, UICollectionViewDataSour
     
     // MARK: - UICollectionView Delegate Flow Layout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return collectionView.frame.size
+        return collectionView.bounds.size // frame 사이즈는 설정해주면, 위치도 바뀐다
     }
-
+    
 }

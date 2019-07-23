@@ -26,10 +26,8 @@ class MainDetailViewController: BasicViewController, UICollectionViewDataSource,
     // MARK: - IBOutlets
     @IBOutlet weak var collectionView: UICollectionView!
     
-    @IBOutlet weak var alcLeadingOfSaveLabel: NSLayoutConstraint!
-    @IBOutlet weak var alcTopOfCloseButton: NSLayoutConstraint!
-    @IBOutlet weak var alcTrailingOfCloseButton: NSLayoutConstraint!
-    @IBOutlet weak var alcHeightOfNavigationView: NSLayoutConstraint!
+    // MARK: - Alc Of Layout Constraints
+    @IBOutlet weak var alcHeightOfNaviView: NSLayoutConstraint!
     
     
     // MARK: - Status Bar
@@ -41,7 +39,7 @@ class MainDetailViewController: BasicViewController, UICollectionViewDataSource,
     override func viewDidLoad() {
         super.viewDidLoad()
         registerNib()
-        layout()
+        alcHeightOfNaviView.constant = EJSizeHeight(56.0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -89,19 +87,16 @@ class MainDetailViewController: BasicViewController, UICollectionViewDataSource,
     
     // MARK: - CollectionView Delegate Flow Layout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return collectionView.frame.size
+        // 그냥 collectionView.bounds.size하면 무조건 처음 설정된 값이 나오면서
+        // 셀 크기가 고정된다!!
+        let width = collectionView.bounds.size.width
+        let height = collectionView.bounds.size.height
+        let cellCGSize = CGSize(width: EJSizeWidth(width), height: EJSizeHeight(height))
+        return cellCGSize
     }
     
     // MARK: - Private Method
     fileprivate func registerNib() {
         collectionView.register(UINib(nibName: ResultDetailCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: ResultDetailCollectionViewCell.identifier)
     }
-    
-    fileprivate func layout() {
-        alcHeightOfNavigationView.constant = EJSizeHeight(97.0)
-        alcTopOfCloseButton.constant = EJSizeHeight(19.0)
-        alcLeadingOfSaveLabel.constant = EJSize(19.0)
-        alcTrailingOfCloseButton.constant = EJSize(19.0)
-    }
-    
 }
