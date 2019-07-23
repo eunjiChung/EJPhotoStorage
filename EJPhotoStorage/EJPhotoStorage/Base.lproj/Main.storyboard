@@ -149,7 +149,7 @@
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oiE-p9-6wU">
                                 <rect key="frame" x="0.0" y="97" width="375" height="681"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="kz0-1w-ylT">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -176,6 +176,10 @@
                         <viewLayoutGuide key="safeArea" id="m2e-8l-neA"/>
                     </view>
                     <connections>
+                        <outlet property="alcHeightOfNavigationView" destination="Wxa-Zx-ojv" id="aPf-Cn-Uee"/>
+                        <outlet property="alcLeadingOfSaveLabel" destination="BRh-QP-RnU" id="fRQ-GQ-GSx"/>
+                        <outlet property="alcTopOfCloseButton" destination="Sny-Qe-bW3" id="vdZ-Lq-Pp9"/>
+                        <outlet property="alcTrailingOfCloseButton" destination="YXA-ui-7rd" id="e63-xr-7AZ"/>
                         <outlet property="collectionView" destination="oiE-p9-6wU" id="ent-OD-Les"/>
                     </connections>
                 </viewController>
@@ -304,7 +308,7 @@
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SMa-Cb-6Wf">
                                 <rect key="frame" x="0.0" y="97" width="375" height="681"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="FQZ-Qy-6G6">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>

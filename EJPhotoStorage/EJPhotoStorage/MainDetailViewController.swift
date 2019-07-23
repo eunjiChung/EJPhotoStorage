@@ -26,10 +26,22 @@ class MainDetailViewController: BasicViewController, UICollectionViewDataSource,
     // MARK: - IBOutlets
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var alcLeadingOfSaveLabel: NSLayoutConstraint!
+    @IBOutlet weak var alcTopOfCloseButton: NSLayoutConstraint!
+    @IBOutlet weak var alcTrailingOfCloseButton: NSLayoutConstraint!
+    @IBOutlet weak var alcHeightOfNavigationView: NSLayoutConstraint!
+    
+    
+    // MARK: - Status Bar
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         registerNib()
+        layout()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -83,6 +95,13 @@ class MainDetailViewController: BasicViewController, UICollectionViewDataSource,
     // MARK: - Private Method
     fileprivate func registerNib() {
         collectionView.register(UINib(nibName: ResultDetailCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: ResultDetailCollectionViewCell.identifier)
+    }
+    
+    fileprivate func layout() {
+        alcHeightOfNavigationView.constant = EJSizeHeight(97.0)
+        alcTopOfCloseButton.constant = EJSizeHeight(19.0)
+        alcLeadingOfSaveLabel.constant = EJSize(19.0)
+        alcTrailingOfCloseButton.constant = EJSize(19.0)
     }
     
 }
