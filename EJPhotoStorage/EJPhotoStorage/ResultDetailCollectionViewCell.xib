@@ -22,44 +22,34 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KTA-F0-o3b" userLabel="Container View">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="681"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qdk-aB-gUG">
-                                <rect key="frame" x="0.0" y="16" width="375" height="586"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="586" id="4Em-Re-8Mj"/>
-                                    <constraint firstAttribute="width" secondItem="Qdk-aB-gUG" secondAttribute="height" multiplier="375:586" id="owM-hf-QNc"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2019.07.19" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pNr-kn-gCd">
-                                <rect key="frame" x="32" y="645" width="311" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="pNr-kn-gCd" secondAttribute="height" multiplier="311:20" id="L73-Tc-pnA"/>
-                                    <constraint firstAttribute="height" constant="20" id="t1C-hP-KKJ"/>
-                                </constraints>
+                                <rect key="frame" x="16" y="629" width="343" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cG0-Ma-ycA">
-                                <rect key="frame" x="32" y="612" width="311" height="28"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="NLD-cy-to2"/>
-                                </constraints>
+                                <rect key="frame" x="16" y="596" width="343" height="28"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qdk-aB-gUG">
+                                <rect key="frame" x="0.0" y="16" width="375" height="570"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="cG0-Ma-ycA" firstAttribute="trailing" secondItem="pNr-kn-gCd" secondAttribute="trailing" id="JEA-an-Zwl"/>
                             <constraint firstItem="pNr-kn-gCd" firstAttribute="top" secondItem="cG0-Ma-ycA" secondAttribute="bottom" constant="5" id="KMc-OO-IfP"/>
                             <constraint firstItem="Qdk-aB-gUG" firstAttribute="top" secondItem="KTA-F0-o3b" secondAttribute="top" constant="16" id="Nm6-NV-Bzx"/>
-                            <constraint firstItem="pNr-kn-gCd" firstAttribute="centerX" secondItem="KTA-F0-o3b" secondAttribute="centerX" id="aec-Lg-rdW"/>
+                            <constraint firstAttribute="trailing" secondItem="pNr-kn-gCd" secondAttribute="trailing" constant="16" id="Z5Z-lJ-5t4"/>
                             <constraint firstItem="cG0-Ma-ycA" firstAttribute="leading" secondItem="pNr-kn-gCd" secondAttribute="leading" id="dLt-fk-5SB"/>
+                            <constraint firstItem="pNr-kn-gCd" firstAttribute="leading" secondItem="KTA-F0-o3b" secondAttribute="leading" constant="16" id="jr6-pX-A9J"/>
                             <constraint firstItem="cG0-Ma-ycA" firstAttribute="top" secondItem="Qdk-aB-gUG" secondAttribute="bottom" constant="10" id="oKY-XU-4pp"/>
                             <constraint firstItem="Qdk-aB-gUG" firstAttribute="leading" secondItem="KTA-F0-o3b" secondAttribute="leading" id="qT6-3e-JBO"/>
                             <constraint firstAttribute="trailing" secondItem="Qdk-aB-gUG" secondAttribute="trailing" id="tWD-JU-UHz"/>
-                            <constraint firstAttribute="bottom" secondItem="pNr-kn-gCd" secondAttribute="bottom" constant="16" id="wcX-OA-iCB"/>
+                            <constraint firstAttribute="bottom" secondItem="pNr-kn-gCd" secondAttribute="bottom" constant="32" id="wcX-OA-iCB"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -73,9 +63,7 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>
                 <outlet property="alcBottomOfDatetime" destination="wcX-OA-iCB" id="6tc-6Z-MiD"/>
-                <outlet property="alcHeightOfImageDatetime" destination="t1C-hP-KKJ" id="PQs-a0-fCI"/>
-                <outlet property="alcHeightOfImageName" destination="NLD-cy-to2" id="7VX-nv-Unb"/>
-                <outlet property="alcHeightOfImageView" destination="4Em-Re-8Mj" id="Xsp-2N-qYV"/>
+                <outlet property="alcLeadingOfDatetime" destination="Z5Z-lJ-5t4" id="xAA-OF-shk"/>
                 <outlet property="alcTopOfDateTime" destination="KMc-OO-IfP" id="q5V-OB-9oz"/>
                 <outlet property="alcTopOfImageView" destination="Nm6-NV-Bzx" id="yxX-Ty-FSB"/>
                 <outlet property="alcTopOfNameLabel" destination="oKY-XU-4pp" id="Toc-JL-BH6"/>

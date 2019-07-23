@@ -27,8 +27,6 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchResultLabel: UILabel!
     
-    // MARK: - Alc Of Layout Constraints
-    
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {

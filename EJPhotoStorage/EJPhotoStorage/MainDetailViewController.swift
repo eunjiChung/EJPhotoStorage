@@ -28,7 +28,11 @@ class MainDetailViewController: BasicViewController, UICollectionViewDataSource,
     
     // MARK: - Alc Of Layout Constraints
     @IBOutlet weak var alcHeightOfNaviView: NSLayoutConstraint!
+    @IBOutlet weak var alcTopOfSaveButton: NSLayoutConstraint!
     
+    @IBOutlet weak var alcLeadingOfSaveButton: NSLayoutConstraint!
+    @IBOutlet weak var alcBottomOfSaveButton: NSLayoutConstraint!
+    @IBOutlet weak var alcTrailingOfCloseButton: NSLayoutConstraint!
     
     // MARK: - Status Bar
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -39,7 +43,6 @@ class MainDetailViewController: BasicViewController, UICollectionViewDataSource,
     override func viewDidLoad() {
         super.viewDidLoad()
         registerNib()
-        alcHeightOfNaviView.constant = EJSizeHeight(56.0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,7 +82,7 @@ class MainDetailViewController: BasicViewController, UICollectionViewDataSource,
         guard let imageRecord = images?[indexPath.item] else { return cell }
         currentImage = imageRecord
         cell.imageView.loadImage(imageRecord.imageUrl!)
-        cell.imageName.text = ""
+        cell.imageName.text = "이미지"
         cell.imageDatetime.text = imageRecord.dateTimeString()
         
         return cell
@@ -87,8 +90,6 @@ class MainDetailViewController: BasicViewController, UICollectionViewDataSource,
     
     // MARK: - CollectionView Delegate Flow Layout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        // 그냥 collectionView.bounds.size하면 무조건 처음 설정된 값이 나오면서
-        // 셀 크기가 고정된다!!
         let width = collectionView.bounds.size.width
         let height = collectionView.bounds.size.height
         let cellCGSize = CGSize(width: EJSizeWidth(width), height: EJSizeHeight(height))
@@ -98,5 +99,13 @@ class MainDetailViewController: BasicViewController, UICollectionViewDataSource,
     // MARK: - Private Method
     fileprivate func registerNib() {
         collectionView.register(UINib(nibName: ResultDetailCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: ResultDetailCollectionViewCell.identifier)
+    }
+    
+    fileprivate func layout() {
+        alcHeightOfNaviView.constant = EJSizeHeight(56.0)
+        alcTopOfSaveButton.constant = EJSizeHeight(11.0)
+        alcLeadingOfSaveButton.constant = EJSizeWidth(25.0)
+        alcBottomOfSaveButton.constant = EJSizeHeight(12.0)
+        alcTrailingOfCloseButton.constant = EJSizeWidth(25.0)
     }
 }

@@ -123,7 +123,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DyF-wW-feX">
-                                        <rect key="frame" x="25" y="11" width="31" height="33"/>
+                                        <rect key="frame" x="25" y="11" width="30" height="33"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
                                         <state key="normal" title="저장">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -137,7 +137,7 @@
                                 <constraints>
                                     <constraint firstItem="DyF-wW-feX" firstAttribute="top" secondItem="tdp-Ka-CA0" secondAttribute="top" constant="11" id="Cci-yb-gZs"/>
                                     <constraint firstAttribute="bottom" secondItem="DyF-wW-feX" secondAttribute="bottom" constant="12" id="RzA-uB-B9N"/>
-                                    <constraint firstItem="aWl-P8-mEu" firstAttribute="leading" secondItem="DyF-wW-feX" secondAttribute="trailing" constant="275" id="aZN-jV-Ncs"/>
+                                    <constraint firstItem="aWl-P8-mEu" firstAttribute="leading" secondItem="DyF-wW-feX" secondAttribute="trailing" priority="249" constant="275" id="aZN-jV-Ncs"/>
                                     <constraint firstAttribute="trailing" secondItem="aWl-P8-mEu" secondAttribute="trailing" constant="25" id="egh-oC-LYd"/>
                                     <constraint firstItem="Y5T-tx-waQ" firstAttribute="centerX" secondItem="aWl-P8-mEu" secondAttribute="centerX" id="oc5-t9-21l"/>
                                     <constraint firstAttribute="height" constant="56" id="q05-ot-KFg"/>
@@ -146,9 +146,9 @@
                                     <constraint firstItem="aWl-P8-mEu" firstAttribute="centerY" secondItem="DyF-wW-feX" secondAttribute="centerY" id="xxR-Ne-0dg"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oiE-p9-6wU">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oiE-p9-6wU">
                                 <rect key="frame" x="0.0" y="100" width="375" height="678"/>
-                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="kz0-1w-ylT">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -175,7 +175,11 @@
                         <viewLayoutGuide key="safeArea" id="m2e-8l-neA"/>
                     </view>
                     <connections>
+                        <outlet property="alcBottomOfSaveButton" destination="RzA-uB-B9N" id="D27-v6-sHP"/>
                         <outlet property="alcHeightOfNaviView" destination="q05-ot-KFg" id="IjF-8V-ywE"/>
+                        <outlet property="alcLeadingOfSaveButton" destination="sdQ-TS-q7s" id="mN2-RD-9ez"/>
+                        <outlet property="alcTopOfSaveButton" destination="Cci-yb-gZs" id="GAc-tV-dhR"/>
+                        <outlet property="alcTrailingOfCloseButton" destination="egh-oC-LYd" id="5yx-w9-3QA"/>
                         <outlet property="collectionView" destination="oiE-p9-6wU" id="ent-OD-Les"/>
                     </connections>
                 </viewController>
@@ -266,23 +270,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gUq-uW-9oE">
-                                <rect key="frame" x="0.0" y="44" width="375" height="53"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="56"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_close" translatesAutoresizingMaskIntoConstraints="NO" id="mhY-fc-B9a">
-                                        <rect key="frame" x="331" y="16" width="19" height="20"/>
+                                        <rect key="frame" x="331" y="17.666666666666664" width="19" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="mhY-fc-B9a" secondAttribute="height" multiplier="19:20" id="n2F-Sv-jQL"/>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W85-RE-72v">
-                                        <rect key="frame" x="325.66666666666669" y="11" width="30" height="30"/>
+                                        <rect key="frame" x="325.66666666666669" y="12.666666666666664" width="30" height="30"/>
                                         <connections>
                                             <action selector="didTouchCloseBtn:" destination="In2-Mg-umi" eventType="touchUpInside" id="gQA-iP-aka"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IMx-xA-VdF">
-                                        <rect key="frame" x="24.999999999999996" y="11" width="33.666666666666657" height="30"/>
-                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
+                                        <rect key="frame" x="25" y="11" width="30" height="33"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
                                         <state key="normal" title="저장">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -300,12 +304,12 @@
                                     <constraint firstAttribute="trailing" secondItem="mhY-fc-B9a" secondAttribute="trailing" constant="25" id="TV7-Iu-UWF"/>
                                     <constraint firstItem="mhY-fc-B9a" firstAttribute="centerY" secondItem="IMx-xA-VdF" secondAttribute="centerY" id="Uki-A5-75Z"/>
                                     <constraint firstItem="W85-RE-72v" firstAttribute="centerY" secondItem="mhY-fc-B9a" secondAttribute="centerY" id="poc-bR-Ndd"/>
-                                    <constraint firstItem="W85-RE-72v" firstAttribute="leading" secondItem="IMx-xA-VdF" secondAttribute="trailing" constant="266.67000000000002" id="rX3-Xa-cGZ"/>
+                                    <constraint firstItem="W85-RE-72v" firstAttribute="leading" secondItem="IMx-xA-VdF" secondAttribute="trailing" priority="249" constant="266.67000000000002" id="rX3-Xa-cGZ"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SMa-Cb-6Wf">
-                                <rect key="frame" x="0.0" y="97" width="375" height="681"/>
-                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SMa-Cb-6Wf">
+                                <rect key="frame" x="0.0" y="100" width="375" height="678"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="FQZ-Qy-6G6">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -322,7 +326,6 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="SMa-Cb-6Wf" firstAttribute="top" secondItem="gUq-uW-9oE" secondAttribute="bottom" id="3g7-Gd-kHr"/>
-                            <constraint firstItem="SMa-Cb-6Wf" firstAttribute="centerX" secondItem="e3r-yJ-xy8" secondAttribute="centerX" id="6Hv-j2-6QH"/>
                             <constraint firstItem="gUq-uW-9oE" firstAttribute="trailing" secondItem="kB4-fi-fKR" secondAttribute="trailing" id="S12-xX-Zvg"/>
                             <constraint firstItem="SMa-Cb-6Wf" firstAttribute="trailing" secondItem="kB4-fi-fKR" secondAttribute="trailing" id="Sr2-cV-Elc"/>
                             <constraint firstItem="SMa-Cb-6Wf" firstAttribute="leading" secondItem="kB4-fi-fKR" secondAttribute="leading" id="Yvo-NJ-EoP"/>
@@ -333,6 +336,10 @@
                         <viewLayoutGuide key="safeArea" id="kB4-fi-fKR"/>
                     </view>
                     <connections>
+                        <outlet property="alcBottomOfSaveButton" destination="3SE-rL-glf" id="pA6-e6-jzF"/>
+                        <outlet property="alcLeadingOfSaveButton" destination="OyT-Io-5uy" id="jA6-ZR-Q0C"/>
+                        <outlet property="alcTopOfSaveButton" destination="BCG-P8-dic" id="HF0-yn-HMr"/>
+                        <outlet property="alcTrailingOfCloseButton" destination="TV7-Iu-UWF" id="4m7-Uq-ZYP"/>
                         <outlet property="collectionView" destination="SMa-Cb-6Wf" id="ukH-9q-1xV"/>
                     </connections>
                 </viewController>

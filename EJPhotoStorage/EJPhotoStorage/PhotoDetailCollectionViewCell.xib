@@ -23,16 +23,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="681"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4yF-rh-zBN">
-                                <rect key="frame" x="0.0" y="16" width="375" height="585.66666666666663"/>
+                                <rect key="frame" x="0.0" y="16" width="375" height="569.66666666666663"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2019.07.19" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z4M-P3-KVA">
-                                <rect key="frame" x="32" y="644.66666666666663" width="311" height="20.333333333333371"/>
+                                <rect key="frame" x="16" y="628.66666666666663" width="343" height="20.333333333333371"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSs-WD-sfy">
-                                <rect key="frame" x="32" y="611.66666666666663" width="311" height="28"/>
+                                <rect key="frame" x="16" y="595.66666666666663" width="343" height="28"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -40,16 +40,16 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="Z4M-P3-KVA" secondAttribute="bottom" constant="16" id="4Tl-F2-MNm"/>
-                            <constraint firstItem="4yF-rh-zBN" firstAttribute="leading" secondItem="1BQ-ks-4YS" secondAttribute="leading" id="7rR-zl-vst"/>
-                            <constraint firstItem="Z4M-P3-KVA" firstAttribute="top" secondItem="DSs-WD-sfy" secondAttribute="bottom" constant="5" id="9JB-WP-WMS"/>
-                            <constraint firstAttribute="trailing" secondItem="4yF-rh-zBN" secondAttribute="trailing" id="AL6-5B-Gz8"/>
-                            <constraint firstItem="DSs-WD-sfy" firstAttribute="leading" secondItem="Z4M-P3-KVA" secondAttribute="leading" id="Cax-ri-vJE"/>
-                            <constraint firstItem="DSs-WD-sfy" firstAttribute="trailing" secondItem="Z4M-P3-KVA" secondAttribute="trailing" id="EdJ-To-Vqe"/>
-                            <constraint firstItem="DSs-WD-sfy" firstAttribute="top" secondItem="4yF-rh-zBN" secondAttribute="bottom" constant="10" id="HOO-gi-2ff"/>
-                            <constraint firstItem="4yF-rh-zBN" firstAttribute="top" secondItem="1BQ-ks-4YS" secondAttribute="top" constant="16" id="V2h-OW-Afq"/>
-                            <constraint firstAttribute="trailing" secondItem="Z4M-P3-KVA" secondAttribute="trailing" constant="32" id="hiq-um-Lwd"/>
-                            <constraint firstItem="Z4M-P3-KVA" firstAttribute="leading" secondItem="1BQ-ks-4YS" secondAttribute="leading" constant="32" id="xem-Fp-fGL"/>
+                            <constraint firstItem="4yF-rh-zBN" firstAttribute="top" secondItem="1BQ-ks-4YS" secondAttribute="top" constant="16" id="6tz-Sr-uSb"/>
+                            <constraint firstItem="4yF-rh-zBN" firstAttribute="leading" secondItem="1BQ-ks-4YS" secondAttribute="leading" id="A6m-6j-QIc"/>
+                            <constraint firstAttribute="trailing" secondItem="Z4M-P3-KVA" secondAttribute="trailing" constant="16" id="DDe-Z6-Kri"/>
+                            <constraint firstItem="DSs-WD-sfy" firstAttribute="leading" secondItem="Z4M-P3-KVA" secondAttribute="leading" id="HRn-HX-DAq"/>
+                            <constraint firstAttribute="bottom" secondItem="Z4M-P3-KVA" secondAttribute="bottom" constant="32" id="ZCh-I6-PMN"/>
+                            <constraint firstItem="Z4M-P3-KVA" firstAttribute="top" secondItem="DSs-WD-sfy" secondAttribute="bottom" constant="5" id="a1f-h6-IKR"/>
+                            <constraint firstItem="DSs-WD-sfy" firstAttribute="trailing" secondItem="Z4M-P3-KVA" secondAttribute="trailing" id="bxR-61-R56"/>
+                            <constraint firstItem="DSs-WD-sfy" firstAttribute="top" secondItem="4yF-rh-zBN" secondAttribute="bottom" constant="10" id="mnG-3j-m6e"/>
+                            <constraint firstAttribute="trailing" secondItem="4yF-rh-zBN" secondAttribute="trailing" id="sCe-in-lOZ"/>
+                            <constraint firstItem="Z4M-P3-KVA" firstAttribute="leading" secondItem="1BQ-ks-4YS" secondAttribute="leading" constant="16" id="sII-lU-rhz"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -63,6 +63,11 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="168" height="219"/>
             <connections>
+                <outlet property="alcBottomOfImageDatetime" destination="ZCh-I6-PMN" id="zqY-k4-0YP"/>
+                <outlet property="alcLeadingOfDatetime" destination="DDe-Z6-Kri" id="xXd-Fg-q89"/>
+                <outlet property="alcTopOfImageDatetime" destination="a1f-h6-IKR" id="hZm-F9-UU6"/>
+                <outlet property="alcTopOfImageName" destination="mnG-3j-m6e" id="hPA-a3-3nJ"/>
+                <outlet property="alcTopOfImageView" destination="6tz-Sr-uSb" id="CEP-Mb-MP0"/>
                 <outlet property="imageDatetime" destination="Z4M-P3-KVA" id="hk6-u3-5Ud"/>
                 <outlet property="imageName" destination="DSs-WD-sfy" id="zOf-8B-Tah"/>
                 <outlet property="imageView" destination="4yF-rh-zBN" id="yQz-il-2q5"/>

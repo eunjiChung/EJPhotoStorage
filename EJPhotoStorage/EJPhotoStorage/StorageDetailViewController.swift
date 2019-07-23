@@ -18,6 +18,13 @@ class StorageDetailViewController: BasicViewController, UICollectionViewDataSour
     // MARK: - IBOutlets
     @IBOutlet weak var collectionView: UICollectionView!
     
+    // MARK: - Alc Of Layout Constraints
+    @IBOutlet weak var alcBottomOfSaveButton: NSLayoutConstraint!
+    @IBOutlet weak var alcTopOfSaveButton: NSLayoutConstraint!
+    @IBOutlet weak var alcLeadingOfSaveButton: NSLayoutConstraint!
+    @IBOutlet weak var alcTrailingOfCloseButton: NSLayoutConstraint!
+    
+    
     // MARK: - Status Bar
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -27,6 +34,7 @@ class StorageDetailViewController: BasicViewController, UICollectionViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         registerNib()
+        layout()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,20 +51,6 @@ class StorageDetailViewController: BasicViewController, UICollectionViewDataSour
         guard let image = currentImage?.image else { return }
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
     }
-    
-    // MARK: - Private Method
-    fileprivate func registerNib() {
-        collectionView.register(UINib(nibName: "PhotoDetailCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PhotoDetailCollectionViewCell")
-    }
-    
-    @objc fileprivate func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
-        if let error = error {
-//            Toast(message: error.localizedDescription).show()
-            self.presentAlert(title: "주의", message: "사진 저장에 오류가 발생했습니다. \n \(error.localizedDescription)")
-        } else {
-            self.presentAlert(title: "알림", message: "사진 저장이 완료되었습니다.")
-        }
-    }
 
     // MARK: - CollectionView DataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -71,7 +65,7 @@ class StorageDetailViewController: BasicViewController, UICollectionViewDataSour
         
         guard let imageRecord = images?[indexPath.item] else { return cell }
         cell.imageView.image = imageRecord.image
-        cell.imageName.text = ""
+        cell.imageName.text = "이미지"
         cell.imageDatetime.text = imageRecord.dateTimeString()
         currentImage = imageRecord
         
@@ -80,7 +74,31 @@ class StorageDetailViewController: BasicViewController, UICollectionViewDataSour
     
     // MARK: - UICollectionView Delegate Flow Layout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return collectionView.bounds.size // frame 사이즈는 설정해주면, 위치도 바뀐다
+        let width = collectionView.bounds.size.width
+        let height = collectionView.bounds.size.height
+        let cellCGSize = CGSize(width: EJSizeWidth(width), height: EJSizeHeight(height))
+        return cellCGSize
+    }
+    
+    // MARK: - Private Method
+    fileprivate func registerNib() {
+        collectionView.register(UINib(nibName: "PhotoDetailCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PhotoDetailCollectionViewCell")
+    }
+    
+    @objc fileprivate func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
+        if let error = error {
+            //            Toast(message: error.localizedDescription).show()
+            self.presentAlert(title: "주의", message: "사진 저장에 오류가 발생했습니다. \n \(error.localizedDescription)")
+        } else {
+            self.presentAlert(title: "알림", message: "사진 저장이 완료되었습니다.")
+        }
+    }
+    
+    fileprivate func layout() {
+        alcTopOfSaveButton.constant = EJSizeHeight(11.0)
+        alcLeadingOfSaveButton.constant = EJSizeWidth(25.0)
+        alcBottomOfSaveButton.constant = EJSizeHeight(12.0)
+        alcTrailingOfCloseButton.constant = EJSizeWidth(25.0)
     }
     
 }
