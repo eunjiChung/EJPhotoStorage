@@ -25,15 +25,14 @@
 		9989ACFD22E21696005F05E8 /* StorageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989ACFB22E21696005F05E8 /* StorageCollectionViewCell.swift */; };
 		9989AD0422E22895005F05E8 /* EJLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989AD0322E22895005F05E8 /* EJLibrary.swift */; };
 		9989AD2722E35B0C005F05E8 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989AD2622E35B0C005F05E8 /* NetworkManager.swift */; };
-		9989AD3222E38A91005F05E8 /* VMVclipModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989AD2C22E38A91005F05E8 /* VMVclipModel.swift */; };
-		9989AD3422E38A91005F05E8 /* IMImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989AD2E22E38A91005F05E8 /* IMImageModel.swift */; };
-		9989AD3522E38A91005F05E8 /* Meta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989AD2F22E38A91005F05E8 /* Meta.swift */; };
 		9989ADA122E4D29E005F05E8 /* ImageOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989AD9F22E4D29E005F05E8 /* ImageOperations.swift */; };
-		9989ADA222E4D29E005F05E8 /* ImageRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989ADA022E4D29E005F05E8 /* ImageRecord.swift */; };
 		9989ADA422E5A3F5005F05E8 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989ADA322E5A3F5005F05E8 /* Extension.swift */; };
 		9989ADA922E5F5D2005F05E8 /* BasicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989ADA822E5F5D1005F05E8 /* BasicViewController.swift */; };
-		9989ADAC22E5FFA8005F05E8 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989ADAB22E5FFA8005F05E8 /* Images.swift */; };
 		99C9B40922E76CAD000090C5 /* AnyDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C9B40822E76CAD000090C5 /* AnyDocument.swift */; };
+		99C9B40C22E77E77000090C5 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C9B40B22E77E77000090C5 /* SearchResult.swift */; };
+		99C9B40E22E77E9E000090C5 /* Meta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C9B40D22E77E9E000090C5 /* Meta.swift */; };
+		99C9B41022E77EA9000090C5 /* SearchOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C9B40F22E77EA9000090C5 /* SearchOperator.swift */; };
+		99C9B41422E78E44000090C5 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C9B41322E78E44000090C5 /* Document.swift */; };
 		D81490B2A79784323CE418B5 /* Pods_EJPhotoStorage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42D1A0CF25182978566AA8B5 /* Pods_EJPhotoStorage.framework */; };
 /* End PBXBuildFile section */
 
@@ -73,15 +72,14 @@
 		9989ACFB22E21696005F05E8 /* StorageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageCollectionViewCell.swift; sourceTree = "<group>"; };
 		9989AD0322E22895005F05E8 /* EJLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EJLibrary.swift; sourceTree = "<group>"; };
 		9989AD2622E35B0C005F05E8 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		9989AD2C22E38A91005F05E8 /* VMVclipModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VMVclipModel.swift; sourceTree = "<group>"; };
-		9989AD2E22E38A91005F05E8 /* IMImageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMImageModel.swift; sourceTree = "<group>"; };
-		9989AD2F22E38A91005F05E8 /* Meta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meta.swift; sourceTree = "<group>"; };
 		9989AD9F22E4D29E005F05E8 /* ImageOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageOperations.swift; sourceTree = "<group>"; };
-		9989ADA022E4D29E005F05E8 /* ImageRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageRecord.swift; sourceTree = "<group>"; };
 		9989ADA322E5A3F5005F05E8 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		9989ADA822E5F5D1005F05E8 /* BasicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicViewController.swift; sourceTree = "<group>"; };
-		9989ADAB22E5FFA8005F05E8 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		99C9B40822E76CAD000090C5 /* AnyDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyDocument.swift; sourceTree = "<group>"; };
+		99C9B40B22E77E77000090C5 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
+		99C9B40D22E77E9E000090C5 /* Meta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meta.swift; sourceTree = "<group>"; };
+		99C9B40F22E77EA9000090C5 /* SearchOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchOperator.swift; sourceTree = "<group>"; };
+		99C9B41322E78E44000090C5 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		B54F93242DABF9B32A356C98 /* Pods-EJPhotoStorage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EJPhotoStorage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EJPhotoStorage/Pods-EJPhotoStorage.debug.xcconfig"; sourceTree = "<group>"; };
 		BF3732A40D799A4D421B94AB /* Pods-EJPhotoStorage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EJPhotoStorage.release.xcconfig"; path = "Pods/Target Support Files/Pods-EJPhotoStorage/Pods-EJPhotoStorage.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -175,8 +173,7 @@
 		9989ACF222E20524005F05E8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				9989ADAB22E5FFA8005F05E8 /* Images.swift */,
-				9989ADA022E4D29E005F05E8 /* ImageRecord.swift */,
+				99C9B40A22E77E6A000090C5 /* Codable */,
 				9989AD2B22E388C4005F05E8 /* SwifyJSON */,
 			);
 			name = Model;
@@ -232,9 +229,6 @@
 		9989AD2B22E388C4005F05E8 /* SwifyJSON */ = {
 			isa = PBXGroup;
 			children = (
-				9989AD2E22E38A91005F05E8 /* IMImageModel.swift */,
-				9989AD2F22E38A91005F05E8 /* Meta.swift */,
-				9989AD2C22E38A91005F05E8 /* VMVclipModel.swift */,
 				99C9B40822E76CAD000090C5 /* AnyDocument.swift */,
 			);
 			name = SwifyJSON;
@@ -246,6 +240,17 @@
 				9989ADA322E5A3F5005F05E8 /* Extension.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		99C9B40A22E77E6A000090C5 /* Codable */ = {
+			isa = PBXGroup;
+			children = (
+				99C9B40F22E77EA9000090C5 /* SearchOperator.swift */,
+				99C9B40B22E77E77000090C5 /* SearchResult.swift */,
+				99C9B40D22E77E9E000090C5 /* Meta.swift */,
+				99C9B41322E78E44000090C5 /* Document.swift */,
+			);
+			name = Codable;
 			sourceTree = "<group>";
 		};
 		C2FF821B67B5754D770CC5B9 /* Pods */ = {
@@ -455,16 +460,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				9989ACEB22E202B0005F05E8 /* MainDetailViewController.swift in Sources */,
+				99C9B40C22E77E77000090C5 /* SearchResult.swift in Sources */,
 				9989AD2722E35B0C005F05E8 /* NetworkManager.swift in Sources */,
 				9989ACF722E2075D005F05E8 /* ResultCollectionViewCell.swift in Sources */,
-				9989ADAC22E5FFA8005F05E8 /* Images.swift in Sources */,
+				99C9B41422E78E44000090C5 /* Document.swift in Sources */,
+				99C9B40E22E77E9E000090C5 /* Meta.swift in Sources */,
 				9989AD0422E22895005F05E8 /* EJLibrary.swift in Sources */,
 				9989ACED22E202E2005F05E8 /* StorageDetailViewController.swift in Sources */,
-				9989AD3222E38A91005F05E8 /* VMVclipModel.swift in Sources */,
-				9989AD3522E38A91005F05E8 /* Meta.swift in Sources */,
-				9989ADA222E4D29E005F05E8 /* ImageRecord.swift in Sources */,
 				9989ACE822E2023F005F05E8 /* StorageViewController.swift in Sources */,
-				9989AD3422E38A91005F05E8 /* IMImageModel.swift in Sources */,
+				99C9B41022E77EA9000090C5 /* SearchOperator.swift in Sources */,
 				9989ACE222E201C3005F05E8 /* PhotoDetailCollectionViewCell.swift in Sources */,
 				99C9B40922E76CAD000090C5 /* AnyDocument.swift in Sources */,
 				9989ADA122E4D29E005F05E8 /* ImageOperations.swift in Sources */,
