@@ -106,7 +106,10 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
     
     // MARK: - Private Method
     fileprivate func requestImages(for keyword: String) {
-        EJLibrary.shared.requestImages(keyword: keyword, page: 1, success: { (images) in
+        EJLibrary.shared.requestImages(images: self.images,
+                                       keyword: keyword,
+                                       page: 1,
+                                       success: { (images) in
             self.images = images
             self.images.sortImagesRecency()
             print("Result!!!!!!!!!!!!!!!!!!", self.images.imageRecords)
@@ -121,7 +124,10 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
     }
     
     fileprivate func requestLoadMoreImages() {
-        EJLibrary.shared.requestImages(keyword: searchKeyword, page: self.images.page+1, success: { (resultImages) in
+        EJLibrary.shared.requestImages(images: self.images,
+                                       keyword: searchKeyword,
+                                       page: self.images.page+1,
+                                       success: { (resultImages) in
             self.images.page += 1
             
             self.collectionView.performBatchUpdates({

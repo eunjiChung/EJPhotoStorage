@@ -22,14 +22,16 @@ public class PendingOperations {
         return queue
     }()
     
-    func startRequest(imagePath: String,
+    func startRequest(images: Images,
+                      imagePath: String,
                       vclipPath: String,
                       query: [URLQueryItem],
                       header: HTTPHeaders,
                       success: @escaping (Images) -> (),
                       failure: @escaping (Error) -> ()) {
 
-        let imageRequester = ImageRequester.init(imagePath: imagePath,
+        let imageRequester = ImageRequester.init(images: images,
+                                                 imagePath: imagePath,
                                                  vclipPath: vclipPath,
                                                  query: query,
                                                  header: header)
@@ -101,12 +103,17 @@ class ImageRequester: BlockOperation {
     var header: HTTPHeaders
     var error: Error?
     
-    var images = Images.init(with: "temp")
+    var images = Images.init(with: "new")
     
     let group = DispatchGroup()
     
     // MARK: - Initializer
-    init(imagePath: String, vclipPath: String, query: [URLQueryItem], header: HTTPHeaders) {
+    init(images: Images,
+         imagePath: String,
+         vclipPath: String,
+         query: [URLQueryItem],
+         header: HTTPHeaders) {
+        self.images = images
         self.imagePath = imagePath
         self.vclipPath = vclipPath
         self.query = query
@@ -116,20 +123,22 @@ class ImageRequester: BlockOperation {
     // MARK: - Operation Execution
     override func main() {
         print("Request Image")
+ 
+        if !images.isImageEnd {
+            group.enter()
+            requestImage()
+        }
         
-        group.enter()
-        requestImage()
-        
-        group.enter()
-        requestVclip()
+        if !images.isVclipEnd {
+            group.enter()
+            requestVclip()
+        }
         
         print("Request finished!!")
         group.wait()
-        // 이 밑으로 아무것도 넣지 마세요...
     }
     
     // MARK: - Private Method
-    // 둘 중 하나의 결과가 먼저 떨어진다면?
     fileprivate func requestImage() {
         networkManager.GETRequest(path: imagePath, query: query, header: header, success: { (data) in
             self.appendImages(of: data, by: .image)
@@ -154,6 +163,7 @@ class ImageRequester: BlockOperation {
     
     fileprivate func appendImages(of data: Any, by type: requestType) {
         
+        // 자료 append 더 잘 할 수 있을 것 같은데...
         switch type {
         case .image:
             let result = IMImageModel.init(object: data)
