@@ -25,11 +25,17 @@ public class Images: NSObject {
     }
     
     // MARK: - Public function
-    func appendImageRecords(with vclipRecords: [ImageRecord]) {
-        vclipRecords.forEach { imageRecords.append($0) }
+    // 얘는 둘 중 하나라도 없으면 못해...
+    func appendImageRecords(with newRecords: [ImageRecord]) {
+        newRecords.forEach { imageRecords.append($0) }
     }
     
     func sortImagesRecency() {
         imageRecords.sort { $0.dateTimeInt() > $1.dateTimeInt() }
+    }
+    
+    func isRequestEnd() -> Bool {
+        isEnd = isImageEnd && isVclipEnd
+        return isEnd
     }
 }

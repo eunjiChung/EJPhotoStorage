@@ -13,7 +13,37 @@ var imageCache = NSCache<AnyObject, AnyObject>()
 
 extension UIImageView {
     
-    func loadImage(_ urlString: String) {
+    func loadImageNone(_ urlString: String) {
+        // 뭐하러...
+        let tinyDelay = DispatchTime.now() + Double(Int64(0.001 * Float(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        
+        if let cacheImage = imageCache.object(forKey: urlString as AnyObject) as? UIImage {
+            self.run(with: cacheImage)
+            return
+        }
+        
+        guard let url = URL(string: urlString) else { return }
+        
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let error = error {
+                print("Couldn't download image: ", error)
+                return
+            }
+            
+            guard let data = data else { return }
+            let image = UIImage(data: data)!
+            imageCache.setObject(image, forKey: urlString as AnyObject)
+            
+            //            DispatchQueue.main.asyncAfter(deadline: tinyDelay) {
+            //                self.run(with: image)
+            //            }
+            DispatchQueue.main.async {
+                self.image = image
+            }
+            }.resume()
+    }
+    
+    func loadImageCrossDissolve(_ urlString: String) {
         
         // 뭐하러...
         let tinyDelay = DispatchTime.now() + Double(Int64(0.001 * Float(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
@@ -35,7 +65,10 @@ extension UIImageView {
             let image = UIImage(data: data)!
             imageCache.setObject(image, forKey: urlString as AnyObject)
             
-            DispatchQueue.main.asyncAfter(deadline: tinyDelay) {
+//            DispatchQueue.main.asyncAfter(deadline: tinyDelay) {
+//                self.run(with: image)
+//            }
+            DispatchQueue.main.async {
                 self.run(with: image)
             }
         }.resume()

@@ -81,7 +81,7 @@ class MainDetailViewController: BasicViewController, UICollectionViewDataSource,
         
         guard let imageRecord = images?[indexPath.item] else { return cell }
         currentImage = imageRecord
-        cell.imageView.loadImage(imageRecord.imageUrl!)
+        cell.imageView.loadImageNone(imageRecord.imageUrl!)
         cell.imageName.text = "이미지"
         cell.imageDatetime.text = imageRecord.dateTimeString()
         

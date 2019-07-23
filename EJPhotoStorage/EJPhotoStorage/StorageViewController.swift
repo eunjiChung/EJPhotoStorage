@@ -61,7 +61,7 @@ class StorageViewController: BasicViewController, UICollectionViewDataSource, UI
         // 여기는 진짜 저장된 이미지들을 저장!
         if let images = images {
             let image = images[indexPath.item]
-            cell.imageView.loadImage(image.imageUrl!)
+            cell.imageView.loadImageNone(image.imageUrl!)
         }
         
         return cell

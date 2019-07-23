@@ -66,7 +66,7 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
         let imageDetail = images.imageRecords[indexPath.item]
         cell.imageView.image = imageDetail.image
 
-        cell.imageView.loadImage(imageDetail.imageUrl!)
+        cell.imageView.loadImageCrossDissolve(imageDetail.imageUrl!)
 
         return cell
     }
