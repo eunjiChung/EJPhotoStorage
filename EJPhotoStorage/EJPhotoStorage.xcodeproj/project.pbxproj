@@ -286,6 +286,7 @@
 				9989ACB422E1FF0F005F05E8 /* Frameworks */,
 				9989ACB522E1FF0F005F05E8 /* Resources */,
 				4B66590868FC0ABEA076B4AF /* [CP] Embed Pods Frameworks */,
+				99C9B40522E69602000090C5 /* Auto Increment Build Version */,
 			);
 			buildRules = (
 			);
@@ -397,6 +398,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EJPhotoStorage/Pods-EJPhotoStorage-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		99C9B40522E69602000090C5 /* Auto Increment Build Version */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Auto Increment Build Version";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [ \"${CONFIGURATION}\" = \"Debug\" ]; then\n\n#Debug & Release\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\nappVersion=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"${PROJECT_DIR}/Info.plist\")\n\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n\n#BETA\n#/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/Beta-Info.plist\"\n#/usr/libexec/PlistBuddy -c \"Set :CFBundleShortVersionString $appVersion\" \"${PROJECT_DIR}/Beta-Info.plist\"\n\nfi\n";
 		};
 		9EC4F0EAC19E20A0D2E62646 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
