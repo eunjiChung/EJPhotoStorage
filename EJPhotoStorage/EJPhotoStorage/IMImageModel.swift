@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyJSON
 
-public final class IMImageModel: NSCoding {
+public final class IMImageModel: Codable {
 
   // MARK: Declaration for string constants to be used to decode and also serialize.
   private struct SerializationKeys {
@@ -18,7 +18,7 @@ public final class IMImageModel: NSCoding {
 
   // MARK: Properties
   public var documents: [IMDocuments]?
-  public var meta: IMMeta?
+  public var meta: Meta?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -34,7 +34,7 @@ public final class IMImageModel: NSCoding {
   /// - parameter json: JSON object from SwiftyJSON.
   public required init(json: JSON) {
     if let items = json[SerializationKeys.documents].array { documents = items.map { IMDocuments(json: $0) } }
-    meta = IMMeta(json: json[SerializationKeys.meta])
+    meta = Meta(json: json[SerializationKeys.meta])
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -50,7 +50,7 @@ public final class IMImageModel: NSCoding {
   // MARK: NSCoding Protocol
   required public init(coder aDecoder: NSCoder) {
     self.documents = aDecoder.decodeObject(forKey: SerializationKeys.documents) as? [IMDocuments]
-    self.meta = aDecoder.decodeObject(forKey: SerializationKeys.meta) as? IMMeta
+    self.meta = aDecoder.decodeObject(forKey: SerializationKeys.meta) as? Meta
   }
 
   public func encode(with aCoder: NSCoder) {

@@ -26,9 +26,8 @@
 		9989AD0422E22895005F05E8 /* EJLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989AD0322E22895005F05E8 /* EJLibrary.swift */; };
 		9989AD2722E35B0C005F05E8 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989AD2622E35B0C005F05E8 /* NetworkManager.swift */; };
 		9989AD3222E38A91005F05E8 /* VMVclipModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989AD2C22E38A91005F05E8 /* VMVclipModel.swift */; };
-		9989AD3322E38A91005F05E8 /* VMMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989AD2D22E38A91005F05E8 /* VMMeta.swift */; };
 		9989AD3422E38A91005F05E8 /* IMImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989AD2E22E38A91005F05E8 /* IMImageModel.swift */; };
-		9989AD3522E38A91005F05E8 /* IMMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989AD2F22E38A91005F05E8 /* IMMeta.swift */; };
+		9989AD3522E38A91005F05E8 /* Meta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989AD2F22E38A91005F05E8 /* Meta.swift */; };
 		9989AD3622E38A91005F05E8 /* IMDocuments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989AD3022E38A91005F05E8 /* IMDocuments.swift */; };
 		9989AD3722E38A91005F05E8 /* VMDocuments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989AD3122E38A91005F05E8 /* VMDocuments.swift */; };
 		9989ADA122E4D29E005F05E8 /* ImageOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989AD9F22E4D29E005F05E8 /* ImageOperations.swift */; };
@@ -76,9 +75,8 @@
 		9989AD0322E22895005F05E8 /* EJLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EJLibrary.swift; sourceTree = "<group>"; };
 		9989AD2622E35B0C005F05E8 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		9989AD2C22E38A91005F05E8 /* VMVclipModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VMVclipModel.swift; sourceTree = "<group>"; };
-		9989AD2D22E38A91005F05E8 /* VMMeta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VMMeta.swift; sourceTree = "<group>"; };
 		9989AD2E22E38A91005F05E8 /* IMImageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMImageModel.swift; sourceTree = "<group>"; };
-		9989AD2F22E38A91005F05E8 /* IMMeta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMMeta.swift; sourceTree = "<group>"; };
+		9989AD2F22E38A91005F05E8 /* Meta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meta.swift; sourceTree = "<group>"; };
 		9989AD3022E38A91005F05E8 /* IMDocuments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMDocuments.swift; sourceTree = "<group>"; };
 		9989AD3122E38A91005F05E8 /* VMDocuments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VMDocuments.swift; sourceTree = "<group>"; };
 		9989AD9F22E4D29E005F05E8 /* ImageOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageOperations.swift; sourceTree = "<group>"; };
@@ -238,9 +236,8 @@
 			children = (
 				9989AD3022E38A91005F05E8 /* IMDocuments.swift */,
 				9989AD2E22E38A91005F05E8 /* IMImageModel.swift */,
-				9989AD2F22E38A91005F05E8 /* IMMeta.swift */,
+				9989AD2F22E38A91005F05E8 /* Meta.swift */,
 				9989AD3122E38A91005F05E8 /* VMDocuments.swift */,
-				9989AD2D22E38A91005F05E8 /* VMMeta.swift */,
 				9989AD2C22E38A91005F05E8 /* VMVclipModel.swift */,
 			);
 			name = SwifyJSON;
@@ -467,12 +464,11 @@
 				9989AD0422E22895005F05E8 /* EJLibrary.swift in Sources */,
 				9989ACED22E202E2005F05E8 /* StorageDetailViewController.swift in Sources */,
 				9989AD3222E38A91005F05E8 /* VMVclipModel.swift in Sources */,
-				9989AD3522E38A91005F05E8 /* IMMeta.swift in Sources */,
+				9989AD3522E38A91005F05E8 /* Meta.swift in Sources */,
 				9989ADA222E4D29E005F05E8 /* ImageRecord.swift in Sources */,
 				9989ACE822E2023F005F05E8 /* StorageViewController.swift in Sources */,
 				9989AD3422E38A91005F05E8 /* IMImageModel.swift in Sources */,
 				9989ACE222E201C3005F05E8 /* PhotoDetailCollectionViewCell.swift in Sources */,
-				9989AD3322E38A91005F05E8 /* VMMeta.swift in Sources */,
 				9989ADA122E4D29E005F05E8 /* ImageOperations.swift in Sources */,
 				9989ADA922E5F5D2005F05E8 /* BasicViewController.swift in Sources */,
 				9989AD3722E38A91005F05E8 /* VMDocuments.swift in Sources */,

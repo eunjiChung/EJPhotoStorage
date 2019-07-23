@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyJSON
 
-public final class VMVclipModel: NSCoding {
+public final class VMVclipModel: Codable {
 
   // MARK: Declaration for string constants to be used to decode and also serialize.
   private struct SerializationKeys {
@@ -18,7 +18,7 @@ public final class VMVclipModel: NSCoding {
 
   // MARK: Properties
   public var documents: [VMDocuments]?
-  public var meta: VMMeta?
+  public var meta: Meta?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -34,7 +34,7 @@ public final class VMVclipModel: NSCoding {
   /// - parameter json: JSON object from SwiftyJSON.
   public required init(json: JSON) {
     if let items = json[SerializationKeys.documents].array { documents = items.map { VMDocuments(json: $0) } }
-    meta = VMMeta(json: json[SerializationKeys.meta])
+    meta = Meta(json: json[SerializationKeys.meta])
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -50,7 +50,7 @@ public final class VMVclipModel: NSCoding {
   // MARK: NSCoding Protocol
   required public init(coder aDecoder: NSCoder) {
     self.documents = aDecoder.decodeObject(forKey: SerializationKeys.documents) as? [VMDocuments]
-    self.meta = aDecoder.decodeObject(forKey: SerializationKeys.meta) as? VMMeta
+    self.meta = aDecoder.decodeObject(forKey: SerializationKeys.meta) as? Meta
   }
 
   public func encode(with aCoder: NSCoder) {

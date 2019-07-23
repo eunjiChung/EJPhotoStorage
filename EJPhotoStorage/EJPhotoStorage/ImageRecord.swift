@@ -9,7 +9,7 @@
 import UIKit
 
 // 아예 Codable로 바꾸는 작업이 필요할 듯.....
-class ImageRecord: Codable {
+class ImageRecord {
     
     var image: UIImage
     var datetime: String?
@@ -36,8 +36,6 @@ class ImageRecord: Codable {
     // MARK: - Public Method
     public func dateTimeInt() -> Int {
         if let datetime = self.datetime {
-            let decoder = JSONDecoder()
-            decoder.dateDecodingStrategy = .iso8601
         }
         return 0
     }
