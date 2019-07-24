@@ -10,11 +10,28 @@ import Foundation
 
 class SearchResult: Decodable {
     
-    // MARK: - Decodable Property
-    var meta: Meta
-    var documents: [Document]
-    
     enum CodingKeys: CodingKey {
         case meta, documents
+    }
+    
+    // MARK: - Decodable Property
+    let meta: Meta
+    var documents: [Document]
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+
+        meta = try container.decode(Meta.self, forKey: .meta)
+        
+        var documentArray = try container.nestedUnkeyedContainer(forKey: .documents)
+        
+        var array: [Document] = []
+        
+        while !documentArray.isAtEnd {
+            let document = try documentArray.decode(Document.self)
+            array.append(document)
+        }
+        
+        documents = array
     }
 }

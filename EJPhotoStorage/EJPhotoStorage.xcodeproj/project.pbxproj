@@ -33,6 +33,8 @@
 		99C9B40E22E77E9E000090C5 /* Meta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C9B40D22E77E9E000090C5 /* Meta.swift */; };
 		99C9B41022E77EA9000090C5 /* SearchOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C9B40F22E77EA9000090C5 /* SearchOperator.swift */; };
 		99C9B41422E78E44000090C5 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C9B41322E78E44000090C5 /* Document.swift */; };
+		99DCFA3C22E7FDA5003A44E4 /* ImageDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DCFA3B22E7FDA5003A44E4 /* ImageDocument.swift */; };
+		99DCFA3E22E7FDAE003A44E4 /* VclipDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DCFA3D22E7FDAE003A44E4 /* VclipDocument.swift */; };
 		D81490B2A79784323CE418B5 /* Pods_EJPhotoStorage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42D1A0CF25182978566AA8B5 /* Pods_EJPhotoStorage.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +82,8 @@
 		99C9B40D22E77E9E000090C5 /* Meta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meta.swift; sourceTree = "<group>"; };
 		99C9B40F22E77EA9000090C5 /* SearchOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchOperator.swift; sourceTree = "<group>"; };
 		99C9B41322E78E44000090C5 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
+		99DCFA3B22E7FDA5003A44E4 /* ImageDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDocument.swift; sourceTree = "<group>"; };
+		99DCFA3D22E7FDAE003A44E4 /* VclipDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VclipDocument.swift; sourceTree = "<group>"; };
 		B54F93242DABF9B32A356C98 /* Pods-EJPhotoStorage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EJPhotoStorage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EJPhotoStorage/Pods-EJPhotoStorage.debug.xcconfig"; sourceTree = "<group>"; };
 		BF3732A40D799A4D421B94AB /* Pods-EJPhotoStorage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EJPhotoStorage.release.xcconfig"; path = "Pods/Target Support Files/Pods-EJPhotoStorage/Pods-EJPhotoStorage.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -174,7 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				99C9B40A22E77E6A000090C5 /* Codable */,
-				9989AD2B22E388C4005F05E8 /* SwifyJSON */,
+				9989AD2B22E388C4005F05E8 /* Document */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -226,12 +230,14 @@
 			name = Services;
 			sourceTree = "<group>";
 		};
-		9989AD2B22E388C4005F05E8 /* SwifyJSON */ = {
+		9989AD2B22E388C4005F05E8 /* Document */ = {
 			isa = PBXGroup;
 			children = (
 				99C9B40822E76CAD000090C5 /* AnyDocument.swift */,
+				99DCFA3B22E7FDA5003A44E4 /* ImageDocument.swift */,
+				99DCFA3D22E7FDAE003A44E4 /* VclipDocument.swift */,
 			);
-			name = SwifyJSON;
+			name = Document;
 			sourceTree = "<group>";
 		};
 		9989ADAA22E5FBE5005F05E8 /* Extensions */ = {
@@ -460,6 +466,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9989ACEB22E202B0005F05E8 /* MainDetailViewController.swift in Sources */,
+				99DCFA3E22E7FDAE003A44E4 /* VclipDocument.swift in Sources */,
 				99C9B40C22E77E77000090C5 /* SearchResult.swift in Sources */,
 				9989AD2722E35B0C005F05E8 /* NetworkManager.swift in Sources */,
 				9989ACF722E2075D005F05E8 /* ResultCollectionViewCell.swift in Sources */,
@@ -475,6 +482,7 @@
 				9989ADA922E5F5D2005F05E8 /* BasicViewController.swift in Sources */,
 				9989ACBB22E1FF0F005F05E8 /* AppDelegate.swift in Sources */,
 				9989ADA422E5A3F5005F05E8 /* Extension.swift in Sources */,
+				99DCFA3C22E7FDA5003A44E4 /* ImageDocument.swift in Sources */,
 				9989ACFD22E21696005F05E8 /* StorageCollectionViewCell.swift in Sources */,
 				9989ACF022E20313005F05E8 /* ResultDetailCollectionViewCell.swift in Sources */,
 				9989ACE622E20231005F05E8 /* MainViewController.swift in Sources */,

@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 class SearchOperator {
 
     // MARK: - Class Property
@@ -33,28 +34,40 @@ class SearchOperator {
     }
     
     // MARK: - Public function
-    func decodeData() {
+    func decodeData(with status: SearchStatus) {
         let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
     
-        if let imageData = imageData {
-            print("image:", imageData)
-            
-            newImageResult = try! decoder.decode(SearchResult.self, from: imageData)
-        }
-        if let vclipData = vclipData {
-            newVclipresult = try! decoder.decode(SearchResult.self, from: vclipData)
+        switch status {
+        case .initial:
+            if let imageData = imageData {
+                imageResult = try! decoder.decode(SearchResult.self, from: imageData)
+            }
+            if let vclipData = vclipData {
+                vclipResult = try! decoder.decode(SearchResult.self, from: vclipData)
+            }
+        case .loading:
+            if let imageData = imageData {
+                newImageResult = try! decoder.decode(SearchResult.self, from: imageData)
+            }
+            if let vclipData = vclipData {
+                newVclipresult = try! decoder.decode(SearchResult.self, from: vclipData)
+            }
+        default:
+            print("Status Nothing")
         }
     }
     
     func combineResults() {
         if let image = imageResult {
+            print("Image result:", image)
             image.documents.forEach { images.append($0) }
         }
         
         if let vclip = vclipResult {
             vclip.documents.forEach { images.append($0) }
         }
+        
+        print("Images: ", images)
         
         // 따로 빼야해
         images.sort { (document1, document2) -> Bool in

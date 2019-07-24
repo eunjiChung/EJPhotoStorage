@@ -10,40 +10,40 @@ import Foundation
 
 struct Document: Decodable {
     
-    var datetime: Date
-    var imageUrl: String
+    var datetime: String
+    var imageUrl: String?
+    
+    var width: Int?
+    var height: Int?
+    var detailUrl: String?
     
     enum CodingKeys: String, CodingKey {
-        case datetime, thumbnail, thumbnailUrl = "thumbnail_url"
+        case datetime, thumbnail, thumbnailUrl = "thumbnail_url", width, height, detailUrl = "image_url"
     }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        let containerKeys = Set(container.allKeys)
-        let imageKeys = Set<CodingKeys>([.datetime, .thumbnailUrl])
-        let vclipKeys = Set<CodingKeys>([.datetime, .thumbnail])
+        datetime = try container.decode(String.self, forKey: .datetime)
         
-        switch containerKeys {
-        case imageKeys:
-            datetime = try container.decode(Date.self, forKey: .datetime)
-            imageUrl = try container.decode(String.self, forKey: .thumbnailUrl)
-        case vclipKeys:
-            datetime = try container.decode(Date.self, forKey: .datetime)
-            imageUrl = try container.decode(String.self, forKey: .thumbnail)
-        default:
-            let context = DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Not enough keys!")
-            throw DecodingError.dataCorrupted(context)
+        if container.contains(.thumbnail) {
+            imageUrl = try container.decodeIfPresent(String.self, forKey: .thumbnail)
+        } else {
+            imageUrl = try container.decodeIfPresent(String.self, forKey: .thumbnailUrl)
         }
+        
+        width = try container.decodeIfPresent(Int.self, forKey: .width)
+        height = try container.decodeIfPresent(Int.self, forKey: .height)
+        detailUrl = try container.decodeIfPresent(String.self, forKey: .detailUrl)
     }
     
     func dateToString() -> String {
         print("Date:", datetime)
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY-MM-DD'T'HH:mm:ss.SSSZZZZZ"
+        dateFormatter.dateFormat = "YYYY-MM-DD'T'HH:mm:ss.SSS+XX:XX"
         dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-        
-        print("String:", dateFormatter.string(from: datetime))
-        return dateFormatter.string(from: datetime)
+        return ""
+//        print("String:", dateFormatter.string(from: datetime))
+//        return dateFormatter.string(from: datetime)
     }
 }

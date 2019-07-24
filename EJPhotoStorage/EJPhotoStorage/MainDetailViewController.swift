@@ -58,8 +58,8 @@ class MainDetailViewController: BasicViewController, UICollectionViewDataSource,
     
     @IBAction func didTouchStoreBtn(_ sender: Any) {
         if let currentImage = currentImage,
-            !storedImageUrls.contains(currentImage.imageUrl) {
-            self.delegate?.saveSelectedImage(by: currentImage.imageUrl)
+            !storedImageUrls.contains(currentImage.imageUrl!) {
+            self.delegate?.saveSelectedImage(by: currentImage.imageUrl!)
         }
     }
     
@@ -72,7 +72,7 @@ class MainDetailViewController: BasicViewController, UICollectionViewDataSource,
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResultDetailCollectionViewCell.identifier, for: indexPath) as! ResultDetailCollectionViewCell
         
         let image = documents[indexPath.item]
-        cell.imageView.loadImageNone(image.imageUrl)
+        cell.imageView.loadImageNone(image.imageUrl!)
         cell.imageName.text = "이미지"
         cell.imageDatetime.text = image.dateToString()
         

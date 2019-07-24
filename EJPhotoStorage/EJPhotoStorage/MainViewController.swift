@@ -11,7 +11,7 @@ import ESPullToRefresh
 import CHTCollectionViewWaterfallLayout
 
 enum SearchStatus {
-    case initial, searching, searched
+    case initial, loading, searched
 }
 
 class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfallLayout, UICollectionViewDataSource, MainDetailViewDelegate, UISearchBarDelegate {
@@ -65,7 +65,7 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
         if let searchKeyword = searchBar.text {
             if searchKeyword != "" {
                 searchOperator = SearchOperator.init(with: searchKeyword)
-                setSearchResultLabel(by: .searching)
+                setSearchResultLabel(by: .loading)
                 requestImages()
             } else {
                 self.presentAlert(title: "입력 오류!", message: "검색어를 입력해주세요!")
@@ -84,7 +84,7 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
         let imageDetail = searchOperator.images[indexPath.item]
         cell.imageView.image = UIImage(named: "Placeholder")! // 이거 클래스에서 바꿀 순 없나? 구조체라서 안되나..?
         
-        cell.imageView.loadImageCrossDissolve(imageDetail.imageUrl)
+        cell.imageView.loadImageCrossDissolve(imageDetail.imageUrl!)
         
         return cell
     }
@@ -94,12 +94,11 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         let result = searchOperator.images[indexPath.item]
         
-//        if let width = result.imageWidth, let height = result.imageHeight {
-//            return CGSize(width: width, height: height)
-//        }
+        if let width = result.width, let height = result.height {
+            return CGSize(width: width, height: height)
+        }
         
-//        return result.image.size/
-        return CGSize.zero // 사이즈 결정하기 ㅠㅠ
+        return UIImage(named: "Placeholder")?.size ?? CGSize.zero
     }
     
     
@@ -115,7 +114,7 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
         EJLibrary.shared.requestImages(searchOperator: self.searchOperator,
                                        success: { (resultOperator) in
                                         
-                                        resultOperator.decodeData()
+                                        resultOperator.decodeData(with: .initial)
                                         resultOperator.appendNewResult()
                                         resultOperator.combineResults()
                                         
@@ -124,7 +123,7 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
                                             self.setSearchResultLabel(by: .searched)
                                             self.collectionView.reloadData()
                                             
-                                            self.scrollToTop()
+//                                            self.scrollToTop()
                                             self.activityIndicator.stopAnimating()
                                             self.collectionView.es.stopPullToRefresh()
                                         } else {
@@ -145,7 +144,7 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
         EJLibrary.shared.requestImages(searchOperator: self.searchOperator,
                                        success: { (resultOperator) in
                                         
-                                        resultOperator.decodeData()
+                                        resultOperator.decodeData(with: .loading)
                                         resultOperator.appendNewResult()
                                         resultOperator.combineResults()
                                         
@@ -217,7 +216,7 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
             if searchOperator.isResultEmpty() {
                 searchResultLabel.text = "검색 결과가 없습니다."
             }
-        case .searching:
+        case .loading:
             searchResultLabel.text = ""
         }
     }
