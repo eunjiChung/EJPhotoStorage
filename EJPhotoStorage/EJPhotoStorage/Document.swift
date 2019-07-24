@@ -10,7 +10,7 @@ import Foundation
 
 struct Document: Decodable {
     
-    var datetime: String
+    var datetime: Date
     var imageUrl: String?
     
     var width: Int?
@@ -24,7 +24,7 @@ struct Document: Decodable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        datetime = try container.decode(String.self, forKey: .datetime)
+        datetime = try container.decode(Date.self, forKey: .datetime)
         
         if container.contains(.thumbnail) {
             imageUrl = try container.decodeIfPresent(String.self, forKey: .thumbnail)
@@ -38,12 +38,11 @@ struct Document: Decodable {
     }
     
     func dateToString() -> String {
-        print("Date:", datetime)
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY-MM-DD'T'HH:mm:ss.SSS+XX:XX"
+        dateFormatter.dateFormat = "yyyy.MM.dd"
+        dateFormatter.calendar = Calendar(identifier: .iso8601)
         dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-        return ""
-//        print("String:", dateFormatter.string(from: datetime))
-//        return dateFormatter.string(from: datetime)
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        return dateFormatter.string(from: datetime)
     }
 }

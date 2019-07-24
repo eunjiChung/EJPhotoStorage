@@ -36,14 +36,23 @@ class SearchOperator {
     // MARK: - Public function
     func decodeData(with status: SearchStatus) {
         let decoder = JSONDecoder()
-    
+        decoder.dateDecodingStrategy = .formatted(DateFormatter.iso8601Full)
+        
         switch status {
         case .initial:
             if let imageData = imageData {
-                imageResult = try! decoder.decode(SearchResult.self, from: imageData)
+                do {
+                    imageResult = try decoder.decode(SearchResult.self, from: imageData)
+                } catch {
+                    print("Got Error whild decoding imageData: \(error)")
+                }
             }
             if let vclipData = vclipData {
-                vclipResult = try! decoder.decode(SearchResult.self, from: vclipData)
+                do {
+                    vclipResult = try decoder.decode(SearchResult.self, from: vclipData)
+                } catch {
+                    print("Got Error while decoding vclipData: \(error)")
+                }
             }
         case .loading:
             if let imageData = imageData {
@@ -52,6 +61,7 @@ class SearchOperator {
             if let vclipData = vclipData {
                 newVclipresult = try! decoder.decode(SearchResult.self, from: vclipData)
             }
+            appendNewResult()
         default:
             print("Status Nothing")
         }
@@ -69,11 +79,7 @@ class SearchOperator {
         
         print("Images: ", images)
         
-        // 따로 빼야해
-        images.sort { (document1, document2) -> Bool in
-            
-            return true
-        }
+        images.sort { $0.datetime.compare($1.datetime) == .orderedDescending }
     }
     
     func appendNewResult() {
@@ -144,4 +150,16 @@ class SearchOperator {
         page += 1
     }
     
+}
+
+
+extension DateFormatter {
+    static let iso8601Full: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.000xxx"
+        formatter.calendar = Calendar(identifier: .iso8601)
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.locale = Locale(identifier: "ko_KR")
+        return formatter
+    }()
 }
