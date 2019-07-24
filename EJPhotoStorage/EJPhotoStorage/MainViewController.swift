@@ -35,6 +35,7 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
         
         self.collectionView.es.addPullToRefresh { [unowned self] in
             self.searchOperator.reset()
+            self.collectionView.isUserInteractionEnabled = false
             self.requestImages()
         }
         
@@ -125,9 +126,11 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
                                             
                                             self.scrollToTop()
                                             self.activityIndicator.stopAnimating()
+                                            self.collectionView.isUserInteractionEnabled = true
                                             self.collectionView.es.stopPullToRefresh()
                                         } else {
                                             self.activityIndicator.stopAnimating()
+                                            self.collectionView.isUserInteractionEnabled = true
                                             self.setSearchResultLabel(by: .searched)
                                         }
                                         
