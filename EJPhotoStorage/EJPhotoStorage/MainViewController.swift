@@ -8,17 +8,15 @@
 
 import UIKit
 import ESPullToRefresh
-import CHTCollectionViewWaterfallLayout
-
 enum SearchStatus {
     case initial, loading, searched
 }
 
-class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfallLayout, UICollectionViewDataSource, MainDetailViewDelegate, UISearchBarDelegate {
+class MainViewController: BasicViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, MainDetailViewDelegate, UISearchBarDelegate {
     
     // MARK: - Property
     var searchOperator = SearchOperator.init()
-    var storedImages: [UIImage] = [] // 캐시여야 하나?
+    var storedImages: [UIImage] = []
     
     // MARK: - IBOutlet
     @IBOutlet weak var collectionView: UICollectionView!
@@ -60,7 +58,6 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
     
     // MARK: - UISearchBar Delegate
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        // Hide Keyboard
         self.view.endEditing(true)
         activityIndicator.startAnimating()
         
@@ -95,17 +92,12 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
         performSegue(withIdentifier: "main_detail_segue", sender: indexPath)
     }
     
-    
-    // MARK: - CHTCollectionViewWaterfallLayout Delegate
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
-        let result = searchOperator.images[indexPath.item]
-        
-        if let width = result.width, let height = result.height {
-            return CGSize(width: width, height: height)
-        }
-        
-        return UIImage(named: "Placeholder")?.size ?? CGSize.zero
+    // MARK: - CollectionView Delegate Flow Layout
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = (EJSizeWidth(collectionView.bounds.width) - 2.0) / 3
+        return CGSize(width: width, height: width)
     }
+
     
     
     // MARK: - Save Photo Delegate
@@ -113,7 +105,6 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
         if let image = imageCache.object(forKey: url as NSString) {
             self.storedImages.append(image)
         } else {
-            print("No IMAGE in ImageCache!!")
             EJLibrary.shared.downloadImage(with: url) { (image) in
                 imageCache.setObject(image, forKey: url as NSString)
                 self.storedImages.append(image)
@@ -186,10 +177,6 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
     }
     
     fileprivate func layout() {
-        let waterfallLayout = CHTCollectionViewWaterfallLayout()
-        waterfallLayout.minimumColumnSpacing = 5.0
-        waterfallLayout.minimumInteritemSpacing = 5.0
-        collectionView.collectionViewLayout = waterfallLayout
         searchBar.placeholder = "검색어 입력"
         activityIndicator.hidesWhenStopped = true
     }

@@ -86,8 +86,6 @@ class SearchOperator {
             vclip.documents.forEach { images.append($0) }
         }
         
-        print("Images: ", images.count)
-        
         images.sort { $0.datetime.compare($1.datetime) == .orderedDescending }
     }
     
@@ -102,12 +100,19 @@ class SearchOperator {
     
     // MARK: - Image Info    
     func countLoadedImages() -> Int {
-        if let images = newImageResult, let vclips = newVclipresult {
-            print("Loaded image:", images.documents.count + vclips.documents.count)
-            return images.documents.count + vclips.documents.count
+        
+        var image = 0
+        var vclip = 0
+        
+        if let newImages = newImageResult {
+            image = newImages.documents.count
         }
         
-        return 1
+        if let newVclips = newVclipresult {
+            vclip = newVclips.documents.count
+        }
+        
+        return image + vclip
     }
     
     func numOfLoadedImages() -> Int {

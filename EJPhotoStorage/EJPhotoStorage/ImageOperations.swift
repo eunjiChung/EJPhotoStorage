@@ -39,8 +39,6 @@ public class PendingOperations {
                                                  header: header)
         
         imageRequester.completionBlock = {
-            print("Request finished!!")
-            
             
             if let error = imageRequester.error {
                 failure(error)
@@ -77,7 +75,6 @@ class ImageDownloader: BlockOperation {
     }
     
     override func main() {
-        print("Download start....")
         if let resourceURL = URL(string: imageUrl) {
             
             guard let imageData = try? Data(contentsOf: resourceURL) else { return }
@@ -141,8 +138,6 @@ class ImageRequester: BlockOperation {
     
     // MARK: - Private Method
     fileprivate func requestImage() {
-        print("Request Image")
-        
         networkManager.GETRequest(path: imagePath,
                                   query: query,
                                   header: header,
@@ -156,8 +151,6 @@ class ImageRequester: BlockOperation {
     }
     
     fileprivate func requestVclip() {
-        print("Request Vclip")
-        
         networkManager.GETRequest(path: vclipPath,
                                   query: query,
                                   header: header,

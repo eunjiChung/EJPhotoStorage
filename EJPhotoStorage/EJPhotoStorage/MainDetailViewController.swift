@@ -22,6 +22,7 @@ class MainDetailViewController: BasicViewController, UICollectionViewDataSource,
     var storedImageUrls = [String]()
     var currentImage : Document?
     var indexPath : IndexPath?
+    var currentIndexPath: Int?
     
     // MARK: - IBOutlets
     @IBOutlet weak var collectionView: UICollectionView!
@@ -56,7 +57,7 @@ class MainDetailViewController: BasicViewController, UICollectionViewDataSource,
     }
     
     @IBAction func didTouchStoreBtn(_ sender: Any) {
-        if let currentImage = currentImage {
+        if let currentImage = currentImage, let currentIndex = currentIndexPath {
 
             let url:String
             if let detailUrl = currentImage.detailUrl {
@@ -68,7 +69,6 @@ class MainDetailViewController: BasicViewController, UICollectionViewDataSource,
             if storedImageUrls.contains(url) {
                 self.presentAlert(title: "알림", message: "이미 저장한 이미지입니다")
             } else {
-                print("Saving Image Url:", url)
                 self.delegate?.saveSelectedImage(by: url)
                 storedImageUrls.append(url)
                 self.presentAlert(title: "알림", message: "사진을 보관함에 저장하였습니다")
@@ -91,12 +91,11 @@ class MainDetailViewController: BasicViewController, UICollectionViewDataSource,
         } else {
             cell.imageView.loadImageNone(image.imageUrl!)
         }
-        cell.imageName.text = "이미지"
+        cell.imageName.text = ""
         cell.imageDatetime.text = image.dateToString()
         
         currentImage = image
-        print("Current Image:", currentImage?.imageUrl)
-//        print("Current Image2:", currentImage?.detailUrl)
+        currentIndexPath = indexPath.item
         
         return cell
     }
