@@ -128,8 +128,8 @@
 				9989ACBA22E1FF0F005F05E8 /* AppDelegate.swift */,
 				9989AD0322E22895005F05E8 /* EJLibrary.swift */,
 				9989ACDA22E20190005F05E8 /* View */,
+				99DCFA3F22E88CB4003A44E4 /* Controller */,
 				9989ACF222E20524005F05E8 /* Model */,
-				9989AD2522E35AE1005F05E8 /* Services */,
 				9989ADAA22E5FBE5005F05E8 /* Extensions */,
 				9989ACE422E201EF005F05E8 /* Supporting Files */,
 			);
@@ -149,7 +149,6 @@
 			isa = PBXGroup;
 			children = (
 				9989ACBE22E1FF0F005F05E8 /* Main.storyboard */,
-				9989ADA822E5F5D1005F05E8 /* BasicViewController.swift */,
 				9989ACFF22E21EFE005F05E8 /* MainView */,
 				9989AD0022E21F0A005F05E8 /* MainDetailView */,
 				9989AD0122E21F1C005F05E8 /* StorageView */,
@@ -171,6 +170,7 @@
 		9989ACF222E20524005F05E8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9989AD2522E35AE1005F05E8 /* Services */,
 				99C9B40A22E77E6A000090C5 /* Codable */,
 			);
 			name = Model;
@@ -179,7 +179,6 @@
 		9989ACFF22E21EFE005F05E8 /* MainView */ = {
 			isa = PBXGroup;
 			children = (
-				9989ACE522E20231005F05E8 /* MainViewController.swift */,
 				9989ACF522E2075D005F05E8 /* ResultCollectionViewCell.swift */,
 			);
 			name = MainView;
@@ -188,7 +187,6 @@
 		9989AD0022E21F0A005F05E8 /* MainDetailView */ = {
 			isa = PBXGroup;
 			children = (
-				9989ACEA22E202B0005F05E8 /* MainDetailViewController.swift */,
 				9989ACEE22E20313005F05E8 /* ResultDetailCollectionViewCell.swift */,
 				9989ACEF22E20313005F05E8 /* ResultDetailCollectionViewCell.xib */,
 			);
@@ -198,7 +196,6 @@
 		9989AD0122E21F1C005F05E8 /* StorageView */ = {
 			isa = PBXGroup;
 			children = (
-				9989ACE722E2023F005F05E8 /* StorageViewController.swift */,
 				9989ACFB22E21696005F05E8 /* StorageCollectionViewCell.swift */,
 			);
 			name = StorageView;
@@ -207,7 +204,6 @@
 		9989AD0222E21F23005F05E8 /* StorageDetailView */ = {
 			isa = PBXGroup;
 			children = (
-				9989ACEC22E202E2005F05E8 /* StorageDetailViewController.swift */,
 				9989ACE022E201C3005F05E8 /* PhotoDetailCollectionViewCell.swift */,
 				9989ACE122E201C3005F05E8 /* PhotoDetailCollectionViewCell.xib */,
 			);
@@ -240,6 +236,18 @@
 				99C9B41322E78E44000090C5 /* Document.swift */,
 			);
 			name = Codable;
+			sourceTree = "<group>";
+		};
+		99DCFA3F22E88CB4003A44E4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9989ADA822E5F5D1005F05E8 /* BasicViewController.swift */,
+				9989ACE522E20231005F05E8 /* MainViewController.swift */,
+				9989ACEA22E202B0005F05E8 /* MainDetailViewController.swift */,
+				9989ACE722E2023F005F05E8 /* StorageViewController.swift */,
+				9989ACEC22E202E2005F05E8 /* StorageDetailViewController.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 		C2FF821B67B5754D770CC5B9 /* Pods */ = {
