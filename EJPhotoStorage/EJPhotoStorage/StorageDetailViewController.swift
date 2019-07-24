@@ -13,7 +13,8 @@ class StorageDetailViewController: BasicViewController, UICollectionViewDataSour
     // MARK: - Property
     var images: [UIImage]?
     var indexPath: IndexPath?
-    var currentImage: UIImage?
+    var currentIndexPath: IndexPath?
+//    var currentImage: UIImage?
     
     // MARK: - IBOutlets
     @IBOutlet weak var collectionView: UICollectionView!
@@ -48,9 +49,13 @@ class StorageDetailViewController: BasicViewController, UICollectionViewDataSour
     }
     
     @IBAction func didTouchStoreBtn(_ sender: Any) {
-        if let image = currentImage {
-            UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+        if let images = images, let index = currentIndexPath{
+            let storeImage = images[index.item] 
+            UIImageWriteToSavedPhotosAlbum(storeImage, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
         }
+//        if let image = currentImage {
+//            UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+//        }
     }
 
     // MARK: - CollectionView DataSource
@@ -66,7 +71,8 @@ class StorageDetailViewController: BasicViewController, UICollectionViewDataSour
         
         guard let image = images?[indexPath.item] else { return cell }
         cell.imageView.image = image
-        currentImage = image
+//        currentImage = image
+        self.currentIndexPath = indexPath
         
         return cell
     }
