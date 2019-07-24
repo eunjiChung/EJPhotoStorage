@@ -23,9 +23,7 @@
 
 
 ## 화면
-![메인화면](./EJPhotoStorage/main.jpeg)
-![상세화면](./EJPhotoStorage/detail.jpeg)
-![보관함](./EJPhotoStorage/storage.jpeg)
+![메인화면](./EJPhotoStorage/main.jpeg) ![상세화면](./EJPhotoStorage/detail.jpeg) ![보관함](./EJPhotoStorage/storage.jpeg)
 
 
 ## 사용한 CocoaPod Library
