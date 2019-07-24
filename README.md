@@ -2,7 +2,7 @@
 
 
 ### 나만의 사진 보관함:fireworks:
-github:
+github: https://github.com/eunjiChung/EJPhotoStorage.git
 
 이미지를 검색하여 나만의 사진보관함을 만듭니다 
 사진 보관함에서 카메라롤에 저장도 가능합니다
