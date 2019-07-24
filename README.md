@@ -23,7 +23,9 @@
 
 
 ## 화면
-![메인화면](https://blog.naver.com/PostView.nhn?blogId=twih&Redirect=View&logNo=221594564489&categoryNo=67&isAfterWrite=true&isMrblogPost=false&isHappyBeanLeverage=true&contentLength=6539#)
+![메인화면](./EJPhotoStorage/main.jpeg)
+![상세화면](./EJPhotoStorage/detail.jpeg)
+![보관함](./EJPhotoStorage/storage.jpeg)
 
 
 ## 사용한 CocoaPod Library
