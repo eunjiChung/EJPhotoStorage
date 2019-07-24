@@ -10,7 +10,7 @@ import Foundation
 
 
 class SearchOperator {
-
+    
     // MARK: - Class Property
     var keyword = ""
     var page = 1
@@ -24,6 +24,8 @@ class SearchOperator {
     
     var images: [Document] = []
     
+    
+    
     // MARK: - Init
     init() {
         
@@ -34,47 +36,60 @@ class SearchOperator {
     }
     
     // MARK: - Public function
-    func decodeData(with status: SearchStatus) {
+    func generateData(with status: SearchStatus) {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .formatted(DateFormatter.iso8601Full)
         
-        switch status {
-        case .initial:
-            if let imageData = imageData {
-                do {
-                    imageResult = try decoder.decode(SearchResult.self, from: imageData)
-                } catch {
-                    print("Got Error whild decoding imageData: \(error)")
-                }
+        if let imageData = imageData {
+            do {
+                imageResult = try decoder.decode(SearchResult.self, from: imageData)
+            } catch {
+                print("Got Error whild decoding imageData: \(error)")
             }
-            if let vclipData = vclipData {
-                do {
-                    vclipResult = try decoder.decode(SearchResult.self, from: vclipData)
-                } catch {
-                    print("Got Error while decoding vclipData: \(error)")
-                }
-            }
-        case .loading:
-            if let imageData = imageData {
-                newImageResult = try! decoder.decode(SearchResult.self, from: imageData)
-            }
-            if let vclipData = vclipData {
-                newVclipresult = try! decoder.decode(SearchResult.self, from: vclipData)
-            }
-            appendNewResult()
-        default:
-            print("Status Nothing")
         }
-    }
-    
-    func combineResults() {
-        if let image = imageResult {
-            print("Image result:", image)
-            image.documents.forEach { images.append($0) }
+        if let vclipData = vclipData {
+            do {
+                vclipResult = try decoder.decode(SearchResult.self, from: vclipData)
+            } catch {
+                print("Got Error while decoding vclipData: \(error)")
+            }
         }
         
-        if let vclip = vclipResult {
+        combineResults(imageResult, vclipResult)
+    }
+    
+    func generateLoadedData() {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(DateFormatter.iso8601Full)
+        
+        if let imageData = imageData {
+            do {
+                newImageResult = try decoder.decode(SearchResult.self, from: imageData)
+            } catch {
+                print("Got Error whild decoding imageData: \(error)")
+            }
+        }
+        if let vclipData = vclipData {
+            do {
+                newVclipresult = try decoder.decode(SearchResult.self, from: vclipData)
+            } catch {
+                print("Got Error while decoding vclipData: \(error)")
+            }
+        }
+        
+//        appendNewResults()
+//        combineResults(newImageResult, newVclipresult)
+    }
+    
+    func combineResults(_ first: SearchResult?, _ second: SearchResult?) {
+        if let image = first {
+            image.documents.forEach { images.append($0) }
+            self.newImageResult = nil
+        }
+        
+        if let vclip = second {
             vclip.documents.forEach { images.append($0) }
+            self.newVclipresult = nil
         }
         
         print("Images: ", images)
@@ -82,7 +97,7 @@ class SearchOperator {
         images.sort { $0.datetime.compare($1.datetime) == .orderedDescending }
     }
     
-    func appendNewResult() {
+    func appendNewResults() {
         if let newImage = newImageResult {
             newImage.documents.forEach {
                 self.imageResult?.documents.append($0)
@@ -96,6 +111,8 @@ class SearchOperator {
             }
             self.newVclipresult = nil
         }
+        
+        combineResults(imageResult, vclipResult)
     }
     
     // MARK: - Request Action
@@ -107,12 +124,20 @@ class SearchOperator {
         images = []
     }
     
-    // MARK: - Image Info
-    func numOfLoadedImages() -> Int {
-        // 새로 로드된 이미지 갯수
-        return 0
+    // MARK: - Image Info    
+    func countLoadedImages() -> Int {
+        if let images = newImageResult, let vclips = newVclipresult {
+            print("Loaded image:", images.documents.count + vclips.documents.count)
+            return images.documents.count + vclips.documents.count
+        }
+        
+        return 1
     }
-
+    
+    func numOfLoadedImages() -> Int {
+        return countLoadedImages()
+    }
+    
     // MARK: - isEnd Decision
     func isImageEnd() -> Bool {
         if let result = imageResult {
@@ -138,7 +163,7 @@ class SearchOperator {
     func isDocumentEmpty() -> Bool {
         return images.isEmpty
     }
-
+    
     func isResultEmpty() -> Bool {
         if isAllRequestEnd() {
             if let image = imageResult, let vclip = vclipResult {
@@ -148,10 +173,10 @@ class SearchOperator {
         
         return false
     }
-
+    
     
     // MARK: - Page operation
-    func nextPage() {
+    func goToNextPage() {
         page += 1
     }
     

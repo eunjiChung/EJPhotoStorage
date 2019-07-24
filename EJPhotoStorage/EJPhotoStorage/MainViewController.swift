@@ -115,15 +115,15 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
         EJLibrary.shared.requestImages(searchOperator: self.searchOperator,
                                        success: { (resultOperator) in
                                         
-                                        resultOperator.decodeData(with: .initial)
-                                        resultOperator.combineResults()
+                                        resultOperator.generateData(with: .initial)
                                         
                                         if !resultOperator.isResultEmpty()
                                         {
+                                            self.searchOperator = resultOperator
                                             self.setSearchResultLabel(by: .searched)
                                             self.collectionView.reloadData()
                                             
-//                                            self.scrollToTop()
+                                            self.scrollToTop()
                                             self.activityIndicator.stopAnimating()
                                             self.collectionView.es.stopPullToRefresh()
                                         } else {
@@ -139,18 +139,17 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
     
     fileprivate func requestLoadMoreImages() {
         
-        searchOperator.nextPage()
-        
+        searchOperator.goToNextPage()
         EJLibrary.shared.requestImages(searchOperator: self.searchOperator,
                                        success: { (resultOperator) in
                                         
-                                        resultOperator.decodeData(with: .loading)
-                                        resultOperator.appendNewResult()
-                                        resultOperator.combineResults()
+                                        // 로딩한 데이타만 generate한다 & sorting
+                                        resultOperator.generateLoadedData()
                                         
                                         self.collectionView.performBatchUpdates({
-                                            // 안돼 ㅠㅠ 새로운 이미지만 넣어야해....
-                                            let indexPaths = self.indexPathsForLoadMore(by: resultOperator.numOfLoadedImages())
+                                            let indexPaths = self.indexPathsForLoadMore(by: resultOperator.images.count, to: resultOperator.numOfLoadedImages())
+//                                            resultOperator.appendNewResults()
+//                                            self.searchOperator = resultOperator
                                             self.collectionView.insertItems(at: indexPaths)
                                             self.activityIndicator.stopAnimating()
                                         }, completion: { (result) in
@@ -164,12 +163,11 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
     }
     
     
-    fileprivate func indexPathsForLoadMore(by newImagesCount: Int) -> [IndexPath] {
+    fileprivate func indexPathsForLoadMore(by start:Int, to newImagesCount: Int) -> [IndexPath] {
         var moreIndexPaths: [IndexPath] = []
-        let startIndex = self.searchOperator.images.count
         
         for index in 0..<newImagesCount {
-            let indexPath = IndexPath.init(item: startIndex+index, section: 0)
+            let indexPath = IndexPath.init(item: start+index, section: 0)
             moreIndexPaths.append(indexPath)
         }
         
