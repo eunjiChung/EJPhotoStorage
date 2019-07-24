@@ -26,6 +26,8 @@
 ![메인화면](https://blog.naver.com/PostView.nhn?blogId=twih&Redirect=View&logNo=221594564489&categoryNo=67&isAfterWrite=true&isMrblogPost=false&isHappyBeanLeverage=true&contentLength=6539#)
 
 
+## 사용한 CocoaPod Library
+- ESPullToRefresh : CollectionView를 refresh하고 infiniteScrolling을 가능하게 해준다
 
 ## 구성
 
