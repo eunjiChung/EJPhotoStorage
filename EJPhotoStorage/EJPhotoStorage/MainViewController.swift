@@ -18,7 +18,7 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
     
     // MARK: - Property
     var searchOperator = SearchOperator.init()
-    var storedImages: [UIImage] = []
+    var storedImages: [UIImage] = [] // 캐시여야 하나?
     
     // MARK: - IBOutlet
     @IBOutlet weak var collectionView: UICollectionView!

@@ -56,9 +56,18 @@ class MainDetailViewController: BasicViewController, UICollectionViewDataSource,
     }
     
     @IBAction func didTouchStoreBtn(_ sender: Any) {
-        if let currentImage = currentImage,
-            !storedImageUrls.contains(currentImage.imageUrl!) {
-            self.delegate?.saveSelectedImage(by: currentImage.imageUrl!)
+        if let currentImage = currentImage {
+            
+            let url:String = currentImage.imageUrl!
+//            if let detailUrl = currentImage.detailUrl {
+//                url = detailUrl
+//            } else {
+//                url = currentImage.imageUrl!
+//            }
+            
+            print("Saving Image Url:", url)
+            self.delegate?.saveSelectedImage(by: url)
+            storedImageUrls.append(url)
             self.presentAlert(title: "알림", message: "사진을 보관함에 저장하였습니다")
         }
     }
@@ -82,6 +91,8 @@ class MainDetailViewController: BasicViewController, UICollectionViewDataSource,
         cell.imageDatetime.text = image.dateToString()
         
         currentImage = image
+        print("Current Image:", currentImage?.imageUrl)
+//        print("Current Image2:", currentImage?.detailUrl)
         
         return cell
     }
