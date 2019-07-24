@@ -91,6 +91,10 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "main_detail_segue", sender: indexPath)
+    }
+    
     
     // MARK: - CHTCollectionViewWaterfallLayout Delegate
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
@@ -195,9 +199,9 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
         {
         case .some("main_detail_segue"):
             if let destination = segue.destination as? MainDetailViewController,
-                let cell = sender as? ResultCollectionViewCell, let indexPath = collectionView.indexPath(for: cell) {
+                let selectedIndexPath = sender as? IndexPath {
                 destination.documents = self.searchOperator.images
-                destination.indexPath = indexPath // waterFallLayout이 정렬하다보니까...
+                destination.indexPath = selectedIndexPath 
                 destination.delegate = self
             }
         case "main_storage_segue":

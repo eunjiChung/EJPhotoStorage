@@ -56,7 +56,6 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="imageView" destination="dc7-C6-C0t" id="he3-Rp-9cv"/>
-                                            <segue destination="YKk-EL-3U1" kind="presentation" identifier="main_detail_segue" modalTransitionStyle="crossDissolve" id="Og5-JO-DFO"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -101,6 +100,7 @@
                         <outlet property="collectionView" destination="ocH-0E-nxY" id="T5C-eb-01F"/>
                         <outlet property="searchBar" destination="The-oF-vBr" id="Kom-nv-Lgc"/>
                         <outlet property="searchResultLabel" destination="24z-bt-BJR" id="m2Y-aG-ekU"/>
+                        <segue destination="YKk-EL-3U1" kind="presentation" identifier="main_detail_segue" modalTransitionStyle="crossDissolve" id="LC4-vV-h0a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -236,7 +236,6 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="imageView" destination="bDl-rm-ydO" id="HFH-Qv-dgM"/>
-                                            <segue destination="In2-Mg-umi" kind="presentation" identifier="storage_detail_segue" id="5Av-eT-jGd"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -260,6 +259,7 @@
                     <connections>
                         <outlet property="collectionView" destination="Geq-Jk-Wv4" id="xPX-AX-j3A"/>
                         <outlet property="noImageDescLabel" destination="d81-Wp-e3I" id="vLq-PH-Mko"/>
+                        <segue destination="In2-Mg-umi" kind="presentation" identifier="storage_detail_segue" modalTransitionStyle="crossDissolve" id="Nq3-Cq-Xo5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IcA-cA-K4A" userLabel="First Responder" sceneMemberID="firstResponder"/>

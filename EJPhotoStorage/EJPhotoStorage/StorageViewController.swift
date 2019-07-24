@@ -38,10 +38,9 @@ class StorageViewController: BasicViewController, UICollectionViewDataSource, UI
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "storage_detail_segue" {
             if let destination = segue.destination as? StorageDetailViewController,
-                let cell = sender as? PhotoDetailCollectionViewCell,
-                let indexPath = collectionView.indexPath(for: cell) {
+                let selectedIndexPath = sender as? IndexPath {
                 destination.images = images
-                destination.indexPath = indexPath
+                destination.indexPath = selectedIndexPath
             }
         }
     }
@@ -63,6 +62,10 @@ class StorageViewController: BasicViewController, UICollectionViewDataSource, UI
         }
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "storage_detail_segue", sender: indexPath)
     }
     
     // MARK: - CollectionView Delegate Flow Layout
