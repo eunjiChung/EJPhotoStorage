@@ -47,7 +47,6 @@ class MainDetailViewController: BasicViewController, UICollectionViewDataSource,
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // 알아보자...
         collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .centeredHorizontally)
     }
     
@@ -73,7 +72,12 @@ class MainDetailViewController: BasicViewController, UICollectionViewDataSource,
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResultDetailCollectionViewCell.identifier, for: indexPath) as! ResultDetailCollectionViewCell
         
         let image = documents[indexPath.item]
-        cell.imageView.loadImageNone(image.imageUrl!)
+        
+        if let detailImage = image.detailUrl {
+            cell.imageView.loadImageNone(detailImage)
+        } else {
+            cell.imageView.loadImageNone(image.imageUrl!)
+        }
         cell.imageName.text = "이미지"
         cell.imageDatetime.text = image.dateToString()
         

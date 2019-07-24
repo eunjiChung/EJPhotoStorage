@@ -8,6 +8,8 @@
 
 import UIKit
 
+let imageCache = NSCache<NSString, UIImage>()
+
 public class PendingOperations {
     
     lazy var downloadQueue: OperationQueue = {

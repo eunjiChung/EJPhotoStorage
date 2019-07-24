@@ -84,8 +84,8 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResultCollectionViewCell.identifier, for: indexPath) as! ResultCollectionViewCell
         
         let imageDetail = searchOperator.images[indexPath.item]
-        cell.imageView.image = UIImage(named: "Placeholder")! // 이거 클래스에서 바꿀 순 없나? 구조체라서 안되나..?
         
+        cell.imageView.image = UIImage(named: "Placeholder")!
         cell.imageView.loadImageNone(imageDetail.imageUrl!)
         
         return cell
@@ -106,8 +106,10 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
     
     // MARK: - Save Photo Delegate
     func saveSelectedImage(by url: String) {
-        EJLibrary.shared.downloadImage(with: url) { (image) in
+        if let image = imageCache.object(forKey: url as NSString) {
             self.storedImages.append(image)
+        } else {
+            print("No IMAGE in ImageCache!!")
         }
     }
     
