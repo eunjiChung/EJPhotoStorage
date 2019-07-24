@@ -22,7 +22,6 @@ class MainDetailViewController: BasicViewController, UICollectionViewDataSource,
     var storedImageUrls = [String]()
     var currentImage : Document?
     var indexPath : IndexPath?
-    var currentIndexPath: Int?
     
     // MARK: - IBOutlets
     @IBOutlet weak var collectionView: UICollectionView!
@@ -57,7 +56,7 @@ class MainDetailViewController: BasicViewController, UICollectionViewDataSource,
     }
     
     @IBAction func didTouchStoreBtn(_ sender: Any) {
-        if let currentImage = currentImage, let currentIndex = currentIndexPath {
+        if let currentImage = currentImage {
 
             let url:String
             if let detailUrl = currentImage.detailUrl {
@@ -95,7 +94,6 @@ class MainDetailViewController: BasicViewController, UICollectionViewDataSource,
         cell.imageDatetime.text = image.dateToString()
         
         currentImage = image
-        currentIndexPath = indexPath.item
         
         return cell
     }

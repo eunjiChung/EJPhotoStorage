@@ -7,33 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		051F31D497FFAF1441C3117C8114CB73 /* icon_pull_to_refresh_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E1A7A4807A8ECC1CA4FC4C6D473ED10 /* icon_pull_to_refresh_arrow@2x.png */; };
-		089D6C19F9A86A0D468C9179CDA29B46 /* ESRefreshComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2B67E23648D3A15AE51FF9DEC5D7BA /* ESRefreshComponent.swift */; };
-		17A0ADC7BC64D6DB74386B63E4249DA4 /* ESPullToRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495FD022FD1E6ACEFB9A6F30C3AAB324 /* ESPullToRefresh.swift */; };
-		2112BF6E1539CE46D82052A5772FB44B /* ESPullToRefresh-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E12ACAC331FF08F93322D944DD5B93C /* ESPullToRefresh-dummy.m */; };
-		2A57DBA46DD1B24A4A87B9922563AB12 /* SwiftyJSON-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 10AED5D2A81D7BE0420879FC27DF6C07 /* SwiftyJSON-dummy.m */; };
-		2E09F274A9454D4964C6D01887FE3749 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
-		3101AD5E9F0497AB8C6633B5E9BCA06A /* SwiftyJSON-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BA6558B3EAF67853198C0B0129DAFE1 /* SwiftyJSON-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		32BA7C617804760D1AA01B9D028E1AC3 /* Pods-EJPhotoStorage-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D8F5C0AB81A667516D62EFF17E3B392E /* Pods-EJPhotoStorage-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		341330923587FE231DEA3915F96A8C72 /* ESRefreshProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89929D68F768BAA352F344D82C7CD74C /* ESRefreshProtocol.swift */; };
-		42B895D3C0BE8364D5D0E77EB323135C /* Pods-EJPhotoStorage-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5777C1BBE2DC1BF0EBA8DA0D9E94EE30 /* Pods-EJPhotoStorage-dummy.m */; };
-		45B6977B6B9DB6EF7365B897290BB33D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
+		051F31D497FFAF1441C3117C8114CB73 /* icon_pull_to_refresh_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B07DD6FBC37C969BE8BC1D9B24EF359 /* icon_pull_to_refresh_arrow@2x.png */; };
+		089D6C19F9A86A0D468C9179CDA29B46 /* ESRefreshComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED7AE9238169B69182C8CE64C8DD6F0 /* ESRefreshComponent.swift */; };
+		17A0ADC7BC64D6DB74386B63E4249DA4 /* ESPullToRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4E412191109692EC5B1740DA5B35FC /* ESPullToRefresh.swift */; };
+		19A2DA49BAE6F0C6FAA0BFE929F41602 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
+		2112BF6E1539CE46D82052A5772FB44B /* ESPullToRefresh-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C0719A5A10E8A3B0F0129CD6D04303 /* ESPullToRefresh-dummy.m */; };
+		341330923587FE231DEA3915F96A8C72 /* ESRefreshProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56F93826BA1BC2D46D4B7275AB9FCFC /* ESRefreshProtocol.swift */; };
+		373D6AA31F7ECCD15F764A020C467A40 /* Pods-EJPhotoStorage-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5777C1BBE2DC1BF0EBA8DA0D9E94EE30 /* Pods-EJPhotoStorage-dummy.m */; };
 		568BF84BE08A465FAC5DE778CC560920 /* Pods-EJPhotoStorageTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D20B2D3D97077EB754BA01E958186909 /* Pods-EJPhotoStorageTests-dummy.m */; };
-		5D96D498C71CD9B88C0D42BD6D93E294 /* CHTCollectionViewWaterfallLayout-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E09DADD0ECDBC183AB9564C030188A25 /* CHTCollectionViewWaterfallLayout-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		618BF2583AAC3B19D3B077E154BC6592 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
 		6A0D9517F13AC909EA9E33DF1327BA75 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
-		7D4258A7B8DE5B14B7B4B91D6B955029 /* CHTCollectionViewWaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09489B61683124E8C22020BAC1432895 /* CHTCollectionViewWaterfallLayout.swift */; };
-		7F71FE7F19DF3C9245F4ECCCD1661A81 /* ESPullToRefresh+Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1276ED695E79B45C47D6552CCB821C2F /* ESPullToRefresh+Manager.swift */; };
-		7FE1D6A94F600103F15C7727FD5B861A /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EE48F035C40EF4A257B0204EEF5EE0 /* SwiftyJSON.swift */; };
-		9ADD4DF3CFFCEE16AF31D89127BDF4F6 /* ESPullToRefresh-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 440097ED94BC47C4D5FD9E7163B82A19 /* ESPullToRefresh-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AC2580A8426D2A0899714238142E1376 /* ESRefreshHeaderAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1649B864E09E42AE0ADB91001D906F6 /* ESRefreshHeaderAnimator.swift */; };
-		BEC3C5C24840F5394909F85E9F5B0EC0 /* ESRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DB34C3050ED2C90E6184D2EF1CED9C /* ESRefreshAnimator.swift */; };
+		7A863816C2B763D8366C6D2CAA4A6416 /* Pods-EJPhotoStorage-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D8F5C0AB81A667516D62EFF17E3B392E /* Pods-EJPhotoStorage-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7F71FE7F19DF3C9245F4ECCCD1661A81 /* ESPullToRefresh+Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD7D2A6413DEAE63EA4CB4BB961B54 /* ESPullToRefresh+Manager.swift */; };
+		9ADD4DF3CFFCEE16AF31D89127BDF4F6 /* ESPullToRefresh-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 700ED5B2813860A6B25D4AFB5838EB21 /* ESPullToRefresh-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AC2580A8426D2A0899714238142E1376 /* ESRefreshHeaderAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9396ED1FF0183869A8BE1A1253B8A71 /* ESRefreshHeaderAnimator.swift */; };
+		BEC3C5C24840F5394909F85E9F5B0EC0 /* ESRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E939D8D62AE27828C6B8B898E4942D /* ESRefreshAnimator.swift */; };
 		C56B4BFDF49B2A5871D92C602F5D2103 /* Pods-EJPhotoStorageTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BDA40452C96D89059D4EA43460E2DBF5 /* Pods-EJPhotoStorageTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CC69A7EACE3D422FC066FDE86B1A37AF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
-		CD5E4D782A8BED6744F29F6D5A6C2651 /* CHTCollectionViewWaterfallLayout-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C10E9BC14B6493DCA1572EF7DBF218A /* CHTCollectionViewWaterfallLayout-dummy.m */; };
-		E1E6D8EBF2966F5203D842C515E45E64 /* ES.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81988D0C52C8BABB5CCA4C82EBE256DE /* ES.swift */; };
-		ECD5D5FC81CF02155AC3FE0C4EFA7C4E /* ESPullToRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1902187CC30C68B5D3F40ED003F55709 /* ESPullToRefresh.bundle */; };
-		F39A32593CD6946D80EC9908617FB417 /* ESRefreshFooterAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E20CA44EBA14C8B07E9D06C83AA437 /* ESRefreshFooterAnimator.swift */; };
+		E1E6D8EBF2966F5203D842C515E45E64 /* ES.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0681BD9D3CECA3314F52A96CAC1F37 /* ES.swift */; };
+		ECD5D5FC81CF02155AC3FE0C4EFA7C4E /* ESPullToRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BF4EA2EEBE898C59863560E156324865 /* ESPullToRefresh.bundle */; };
+		F39A32593CD6946D80EC9908617FB417 /* ESRefreshFooterAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D18351433BD671930DC3689FA55CE8 /* ESRefreshFooterAnimator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,15 +33,15 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 651A2E1C593C7E14A094E03D5714F302;
+			remoteGlobalIDString = 3EF41B641E568568C820E5B7131DB171;
 			remoteInfo = "Pods-EJPhotoStorage";
 		};
-		4653E0B1F4779099371ACA1F4BE5BB15 /* PBXContainerItemProxy */ = {
+		3FAB553A5C6407B4E633B0C4F16D2869 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 9753CF21669F641619AF10670AA8B5C1;
-			remoteInfo = SwiftyJSON;
+			remoteGlobalIDString = 2AAC70897269009701EA2ADFE2CB50C2;
+			remoteInfo = ESPullToRefresh;
 		};
 		9A796E68171A2606CA170B39634C90BA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -58,81 +50,51 @@
 			remoteGlobalIDString = D1CFA156DF9AD56A6424A8B5DDDCC42B;
 			remoteInfo = "ESPullToRefresh-ESPullToRefresh";
 		};
-		C6D6AA1A93EB725F30D99A371425DC00 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2AAC70897269009701EA2ADFE2CB50C2;
-			remoteInfo = ESPullToRefresh;
-		};
-		D424E4D82AD85C26333C0E3A0A3117E3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 83DBBCE523C3F780DFE1B689B272DDE8;
-			remoteInfo = CHTCollectionViewWaterfallLayout;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		01279FE5C67AA17E344222A5506CC084 /* ESPullToRefresh.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ESPullToRefresh.modulemap; sourceTree = "<group>"; };
 		05504159E7F46F6B1EED45976AB24D81 /* Pods-EJPhotoStorage-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-EJPhotoStorage-acknowledgements.markdown"; sourceTree = "<group>"; };
-		0558060B45EE2B0E6C28334F2E5FC206 /* SwiftyJSON.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftyJSON.modulemap; sourceTree = "<group>"; };
-		09489B61683124E8C22020BAC1432895 /* CHTCollectionViewWaterfallLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CHTCollectionViewWaterfallLayout.swift; sourceTree = "<group>"; };
-		0E1A7A4807A8ECC1CA4FC4C6D473ED10 /* icon_pull_to_refresh_arrow@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "icon_pull_to_refresh_arrow@2x.png"; path = "Sources/Animator/icon_pull_to_refresh_arrow@2x.png"; sourceTree = "<group>"; };
-		10AED5D2A81D7BE0420879FC27DF6C07 /* SwiftyJSON-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyJSON-dummy.m"; sourceTree = "<group>"; };
-		1276ED695E79B45C47D6552CCB821C2F /* ESPullToRefresh+Manager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ESPullToRefresh+Manager.swift"; path = "Sources/ESPullToRefresh+Manager.swift"; sourceTree = "<group>"; };
-		1902187CC30C68B5D3F40ED003F55709 /* ESPullToRefresh.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = ESPullToRefresh.bundle; path = "ESPullToRefresh-ESPullToRefresh.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F9C2D5E40E962D9C59EC9C1FC25AF88 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		199170F64AB25B3C2F29E67A8DFE2635 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		21953C111B960005D98DA59EF1D7C657 /* ESPullToRefresh.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ESPullToRefresh.modulemap; sourceTree = "<group>"; };
-		2441129F13CEDD1CFC3DDF4030CF775B /* Pods_EJPhotoStorage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_EJPhotoStorage.framework; path = "Pods-EJPhotoStorage.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		25B26291CAC9F35D11CC0E354C60A9FD /* CHTCollectionViewWaterfallLayout.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = CHTCollectionViewWaterfallLayout.modulemap; sourceTree = "<group>"; };
-		27002BABD0796F34E88D98B36FAA233D /* ESPullToRefresh-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ESPullToRefresh-prefix.pch"; sourceTree = "<group>"; };
-		29FC08A0DBD2958BC60C141071C700AA /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B07DD6FBC37C969BE8BC1D9B24EF359 /* icon_pull_to_refresh_arrow@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "icon_pull_to_refresh_arrow@2x.png"; path = "Sources/Animator/icon_pull_to_refresh_arrow@2x.png"; sourceTree = "<group>"; };
+		22E939D8D62AE27828C6B8B898E4942D /* ESRefreshAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ESRefreshAnimator.swift; path = Sources/ESRefreshAnimator.swift; sourceTree = "<group>"; };
 		33B52FAA1D595D29D01FDFC30E33EBF2 /* Pods-EJPhotoStorageTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-EJPhotoStorageTests.debug.xcconfig"; sourceTree = "<group>"; };
-		38A1A8809FDCCF2FBCB7CD0402C73DB1 /* SwiftyJSON-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-prefix.pch"; sourceTree = "<group>"; };
-		3C10DA10D06CEEF02C0425D36DD2F6D8 /* ResourceBundle-ESPullToRefresh-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-ESPullToRefresh-Info.plist"; sourceTree = "<group>"; };
-		440097ED94BC47C4D5FD9E7163B82A19 /* ESPullToRefresh-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ESPullToRefresh-umbrella.h"; sourceTree = "<group>"; };
-		495FD022FD1E6ACEFB9A6F30C3AAB324 /* ESPullToRefresh.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ESPullToRefresh.swift; path = Sources/ESPullToRefresh.swift; sourceTree = "<group>"; };
-		4A2B67E23648D3A15AE51FF9DEC5D7BA /* ESRefreshComponent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ESRefreshComponent.swift; path = Sources/ESRefreshComponent.swift; sourceTree = "<group>"; };
-		4E12ACAC331FF08F93322D944DD5B93C /* ESPullToRefresh-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ESPullToRefresh-dummy.m"; sourceTree = "<group>"; };
-		52E20CA44EBA14C8B07E9D06C83AA437 /* ESRefreshFooterAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ESRefreshFooterAnimator.swift; path = Sources/Animator/ESRefreshFooterAnimator.swift; sourceTree = "<group>"; };
 		55D2B4A01378B4AB925119D058654144 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5777C1BBE2DC1BF0EBA8DA0D9E94EE30 /* Pods-EJPhotoStorage-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-EJPhotoStorage-dummy.m"; sourceTree = "<group>"; };
+		5982E73DE26FAB398CA17CDBA04E09AE /* ESPullToRefresh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ESPullToRefresh.framework; path = ESPullToRefresh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		5ED7AE9238169B69182C8CE64C8DD6F0 /* ESRefreshComponent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ESRefreshComponent.swift; path = Sources/ESRefreshComponent.swift; sourceTree = "<group>"; };
+		647E103EBE24C316762771BD5486AB01 /* Pods_EJPhotoStorage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_EJPhotoStorage.framework; path = "Pods-EJPhotoStorage.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A901A99FAD66CEF40D209B708B82D0C /* Pods-EJPhotoStorageTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EJPhotoStorageTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		6B43647AF855674DE7D39781DC0A192F /* Pods-EJPhotoStorageTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-EJPhotoStorageTests.release.xcconfig"; sourceTree = "<group>"; };
+		700ED5B2813860A6B25D4AFB5838EB21 /* ESPullToRefresh-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ESPullToRefresh-umbrella.h"; sourceTree = "<group>"; };
 		7A15340C500647C44E1BACD9489BE737 /* Pods-EJPhotoStorageTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-EJPhotoStorageTests.modulemap"; sourceTree = "<group>"; };
-		7A5FF544D570BFB7A3B376C10090D4B9 /* CHTCollectionViewWaterfallLayout-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CHTCollectionViewWaterfallLayout-prefix.pch"; sourceTree = "<group>"; };
-		7C10E9BC14B6493DCA1572EF7DBF218A /* CHTCollectionViewWaterfallLayout-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CHTCollectionViewWaterfallLayout-dummy.m"; sourceTree = "<group>"; };
-		81988D0C52C8BABB5CCA4C82EBE256DE /* ES.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ES.swift; path = Sources/ES.swift; sourceTree = "<group>"; };
-		828536357DA982BFC9934572E6504C57 /* CHTCollectionViewWaterfallLayout.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CHTCollectionViewWaterfallLayout.xcconfig; sourceTree = "<group>"; };
-		87B659C5CC91887F74EF3E84ACB43207 /* SwiftyJSON.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyJSON.xcconfig; sourceTree = "<group>"; };
 		894C04AD68CB9B1EFB8A2F272BD5D745 /* Pods-EJPhotoStorageTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-EJPhotoStorageTests-frameworks.sh"; sourceTree = "<group>"; };
-		89929D68F768BAA352F344D82C7CD74C /* ESRefreshProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ESRefreshProtocol.swift; path = Sources/ESRefreshProtocol.swift; sourceTree = "<group>"; };
-		9336A5A9D7AF3F7EC7F4760A68F8C393 /* CHTCollectionViewWaterfallLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CHTCollectionViewWaterfallLayout.framework; path = CHTCollectionViewWaterfallLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		93EE48F035C40EF4A257B0204EEF5EE0 /* SwiftyJSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Source/SwiftyJSON/SwiftyJSON.swift; sourceTree = "<group>"; };
-		9BA6558B3EAF67853198C0B0129DAFE1 /* SwiftyJSON-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-umbrella.h"; sourceTree = "<group>"; };
 		9E148AE977FA0D146121437DAB1CA992 /* Pods-EJPhotoStorageTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-EJPhotoStorageTests-resources.sh"; sourceTree = "<group>"; };
 		A24A94C61484D582196090225BE28531 /* Pods-EJPhotoStorageTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-EJPhotoStorageTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		A87FB0F176BDC5AE87CFDF9D57391A8C /* ESPullToRefresh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ESPullToRefresh.framework; path = ESPullToRefresh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B1649B864E09E42AE0ADB91001D906F6 /* ESRefreshHeaderAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ESRefreshHeaderAnimator.swift; path = Sources/Animator/ESRefreshHeaderAnimator.swift; sourceTree = "<group>"; };
-		B3DB34C3050ED2C90E6184D2EF1CED9C /* ESRefreshAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ESRefreshAnimator.swift; path = Sources/ESRefreshAnimator.swift; sourceTree = "<group>"; };
-		B5CC6DA893E5C63DD03B7A916F40C89A /* ESPullToRefresh.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ESPullToRefresh.xcconfig; sourceTree = "<group>"; };
+		A56F93826BA1BC2D46D4B7275AB9FCFC /* ESRefreshProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ESRefreshProtocol.swift; path = Sources/ESRefreshProtocol.swift; sourceTree = "<group>"; };
 		B6FAAA4ABD38714E3AFFBCD1AE1CE0F9 /* Pods-EJPhotoStorage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-EJPhotoStorage.debug.xcconfig"; sourceTree = "<group>"; };
 		BDA40452C96D89059D4EA43460E2DBF5 /* Pods-EJPhotoStorageTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-EJPhotoStorageTests-umbrella.h"; sourceTree = "<group>"; };
-		BFEE84DD11B5682AE8114CE558C79BBE /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C1A86A8B1B05C6785C26E5FFECE70977 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF4EA2EEBE898C59863560E156324865 /* ESPullToRefresh.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = ESPullToRefresh.bundle; path = "ESPullToRefresh-ESPullToRefresh.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C57821BE66BC942D0C9179A8F85E84C2 /* Pods-EJPhotoStorage-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EJPhotoStorage-acknowledgements.plist"; sourceTree = "<group>"; };
+		CBCD7D2A6413DEAE63EA4CB4BB961B54 /* ESPullToRefresh+Manager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ESPullToRefresh+Manager.swift"; path = "Sources/ESPullToRefresh+Manager.swift"; sourceTree = "<group>"; };
+		CC16C190871776723D2D50A5E1EBCB8B /* ESPullToRefresh.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ESPullToRefresh.xcconfig; sourceTree = "<group>"; };
 		D1538FA8405C3EFF8371585FCE135A2C /* Pods-EJPhotoStorage.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-EJPhotoStorage.modulemap"; sourceTree = "<group>"; };
 		D20B2D3D97077EB754BA01E958186909 /* Pods-EJPhotoStorageTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-EJPhotoStorageTests-dummy.m"; sourceTree = "<group>"; };
-		D3D6F7A83D4E74CC61F8C9C8DC4F8C4B /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyJSON.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8F5C0AB81A667516D62EFF17E3B392E /* Pods-EJPhotoStorage-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-EJPhotoStorage-umbrella.h"; sourceTree = "<group>"; };
-		E09DADD0ECDBC183AB9564C030188A25 /* CHTCollectionViewWaterfallLayout-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CHTCollectionViewWaterfallLayout-umbrella.h"; sourceTree = "<group>"; };
+		DF4E412191109692EC5B1740DA5B35FC /* ESPullToRefresh.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ESPullToRefresh.swift; path = Sources/ESPullToRefresh.swift; sourceTree = "<group>"; };
 		E21F554C0ADDB6A8E3FEBBA38E28FF6F /* Pods-EJPhotoStorage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-EJPhotoStorage.release.xcconfig"; sourceTree = "<group>"; };
 		E2FAAC27F98233874B5D45DA4BA9E1E2 /* Pods-EJPhotoStorage-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-EJPhotoStorage-frameworks.sh"; sourceTree = "<group>"; };
-		F261E1497D275398578DA9F24D86C437 /* Pods_EJPhotoStorageTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_EJPhotoStorageTests.framework; path = "Pods-EJPhotoStorageTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3D18351433BD671930DC3689FA55CE8 /* ESRefreshFooterAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ESRefreshFooterAnimator.swift; path = Sources/Animator/ESRefreshFooterAnimator.swift; sourceTree = "<group>"; };
+		E7C0719A5A10E8A3B0F0129CD6D04303 /* ESPullToRefresh-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ESPullToRefresh-dummy.m"; sourceTree = "<group>"; };
+		E9396ED1FF0183869A8BE1A1253B8A71 /* ESRefreshHeaderAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ESRefreshHeaderAnimator.swift; path = Sources/Animator/ESRefreshHeaderAnimator.swift; sourceTree = "<group>"; };
+		EA0681BD9D3CECA3314F52A96CAC1F37 /* ES.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ES.swift; path = Sources/ES.swift; sourceTree = "<group>"; };
+		ED0300AF6B5B9055FA4C74F916121996 /* ResourceBundle-ESPullToRefresh-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-ESPullToRefresh-Info.plist"; sourceTree = "<group>"; };
 		F46BBC41B13E20991B4D2D1ECB2C2C9F /* Pods-EJPhotoStorage-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-EJPhotoStorage-resources.sh"; sourceTree = "<group>"; };
+		F5C83C932584F051012D9519B1126910 /* ESPullToRefresh-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ESPullToRefresh-prefix.pch"; sourceTree = "<group>"; };
+		F741BC4AFFFC9CDC2ED3873391C1F3F3 /* Pods_EJPhotoStorageTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_EJPhotoStorageTests.framework; path = "Pods-EJPhotoStorageTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,30 +113,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		50CB7D8952FBA600F0FFCF23257341B9 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				618BF2583AAC3B19D3B077E154BC6592 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		55A62AFAAA3306C730862F417CF48F93 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				45B6977B6B9DB6EF7365B897290BB33D /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		91BFDB4A6E3904E12117A6A3985B708C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2E09F274A9454D4964C6D01887FE3749 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		A9FE4E5F7654F71B166B6A85DDE758E9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -183,22 +121,38 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E945BC2AE998FFA622DCE19E8FF1A2EF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19A2DA49BAE6F0C6FAA0BFE929F41602 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2EC4B51826179E6ACC75D587B697C394 /* Support Files */ = {
+		2798B817A2C51935721E349BD2AA0206 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				21953C111B960005D98DA59EF1D7C657 /* ESPullToRefresh.modulemap */,
-				B5CC6DA893E5C63DD03B7A916F40C89A /* ESPullToRefresh.xcconfig */,
-				4E12ACAC331FF08F93322D944DD5B93C /* ESPullToRefresh-dummy.m */,
-				27002BABD0796F34E88D98B36FAA233D /* ESPullToRefresh-prefix.pch */,
-				440097ED94BC47C4D5FD9E7163B82A19 /* ESPullToRefresh-umbrella.h */,
-				C1A86A8B1B05C6785C26E5FFECE70977 /* Info.plist */,
-				3C10DA10D06CEEF02C0425D36DD2F6D8 /* ResourceBundle-ESPullToRefresh-Info.plist */,
+				01279FE5C67AA17E344222A5506CC084 /* ESPullToRefresh.modulemap */,
+				CC16C190871776723D2D50A5E1EBCB8B /* ESPullToRefresh.xcconfig */,
+				E7C0719A5A10E8A3B0F0129CD6D04303 /* ESPullToRefresh-dummy.m */,
+				F5C83C932584F051012D9519B1126910 /* ESPullToRefresh-prefix.pch */,
+				700ED5B2813860A6B25D4AFB5838EB21 /* ESPullToRefresh-umbrella.h */,
+				0F9C2D5E40E962D9C59EC9C1FC25AF88 /* Info.plist */,
+				ED0300AF6B5B9055FA4C74F916121996 /* ResourceBundle-ESPullToRefresh-Info.plist */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/ESPullToRefresh";
+			sourceTree = "<group>";
+		};
+		4484EE94FACA60FB39573C3FBF0978EA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1B07DD6FBC37C969BE8BC1D9B24EF359 /* icon_pull_to_refresh_arrow@2x.png */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		4A0E0C144D43D10E8057EC174A6A52CD /* Targets Support Files */ = {
@@ -208,20 +162,6 @@
 				51B15245001D9B79DDB7A39CD18B5E08 /* Pods-EJPhotoStorageTests */,
 			);
 			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		4B05E6914F39C805D228FEBCD6BF7E95 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				BFEE84DD11B5682AE8114CE558C79BBE /* Info.plist */,
-				0558060B45EE2B0E6C28334F2E5FC206 /* SwiftyJSON.modulemap */,
-				87B659C5CC91887F74EF3E84ACB43207 /* SwiftyJSON.xcconfig */,
-				10AED5D2A81D7BE0420879FC27DF6C07 /* SwiftyJSON-dummy.m */,
-				38A1A8809FDCCF2FBCB7CD0402C73DB1 /* SwiftyJSON-prefix.pch */,
-				9BA6558B3EAF67853198C0B0129DAFE1 /* SwiftyJSON-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/SwiftyJSON";
 			sourceTree = "<group>";
 		};
 		51B15245001D9B79DDB7A39CD18B5E08 /* Pods-EJPhotoStorageTests */ = {
@@ -242,14 +182,22 @@
 			path = "Target Support Files/Pods-EJPhotoStorageTests";
 			sourceTree = "<group>";
 		};
-		5DA107C01A8BDACA11036522580A7EEF /* SwiftyJSON */ = {
+		5CD5762B746720765695D4D3635C4501 /* ESPullToRefresh */ = {
 			isa = PBXGroup;
 			children = (
-				93EE48F035C40EF4A257B0204EEF5EE0 /* SwiftyJSON.swift */,
-				4B05E6914F39C805D228FEBCD6BF7E95 /* Support Files */,
+				EA0681BD9D3CECA3314F52A96CAC1F37 /* ES.swift */,
+				DF4E412191109692EC5B1740DA5B35FC /* ESPullToRefresh.swift */,
+				CBCD7D2A6413DEAE63EA4CB4BB961B54 /* ESPullToRefresh+Manager.swift */,
+				22E939D8D62AE27828C6B8B898E4942D /* ESRefreshAnimator.swift */,
+				5ED7AE9238169B69182C8CE64C8DD6F0 /* ESRefreshComponent.swift */,
+				E3D18351433BD671930DC3689FA55CE8 /* ESRefreshFooterAnimator.swift */,
+				E9396ED1FF0183869A8BE1A1253B8A71 /* ESRefreshHeaderAnimator.swift */,
+				A56F93826BA1BC2D46D4B7275AB9FCFC /* ESRefreshProtocol.swift */,
+				4484EE94FACA60FB39573C3FBF0978EA /* Resources */,
+				2798B817A2C51935721E349BD2AA0206 /* Support Files */,
 			);
-			name = SwiftyJSON;
-			path = SwiftyJSON;
+			name = ESPullToRefresh;
+			path = ESPullToRefresh;
 			sourceTree = "<group>";
 		};
 		5E0D919E635D23B70123790B8308F8EF /* iOS */ = {
@@ -260,22 +208,12 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		67520012A1096D198D3AD0F531E74869 /* ESPullToRefresh */ = {
+		75306E3A9D458437608D2B66E88F8A1E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				81988D0C52C8BABB5CCA4C82EBE256DE /* ES.swift */,
-				495FD022FD1E6ACEFB9A6F30C3AAB324 /* ESPullToRefresh.swift */,
-				1276ED695E79B45C47D6552CCB821C2F /* ESPullToRefresh+Manager.swift */,
-				B3DB34C3050ED2C90E6184D2EF1CED9C /* ESRefreshAnimator.swift */,
-				4A2B67E23648D3A15AE51FF9DEC5D7BA /* ESRefreshComponent.swift */,
-				52E20CA44EBA14C8B07E9D06C83AA437 /* ESRefreshFooterAnimator.swift */,
-				B1649B864E09E42AE0ADB91001D906F6 /* ESRefreshHeaderAnimator.swift */,
-				89929D68F768BAA352F344D82C7CD74C /* ESRefreshProtocol.swift */,
-				C710ACC243AB17E3CF7D30A86B7DCC36 /* Resources */,
-				2EC4B51826179E6ACC75D587B697C394 /* Support Files */,
+				5CD5762B746720765695D4D3635C4501 /* ESPullToRefresh */,
 			);
-			name = ESPullToRefresh;
-			path = ESPullToRefresh;
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -283,18 +221,10 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				E58B9022C8977474DD31D01EEF50F76B /* Pods */,
-				D8E52FF5F28F2FFBA1C46C73244B4EA5 /* Products */,
+				75306E3A9D458437608D2B66E88F8A1E /* Pods */,
+				F50812A5070E497B62C494E805A02E68 /* Products */,
 				4A0E0C144D43D10E8057EC174A6A52CD /* Targets Support Files */,
 			);
-			sourceTree = "<group>";
-		};
-		A0BFA99A4E0C1BEBA6F77AA0423D4A93 /* Swift */ = {
-			isa = PBXGroup;
-			children = (
-				09489B61683124E8C22020BAC1432895 /* CHTCollectionViewWaterfallLayout.swift */,
-			);
-			name = Swift;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -303,51 +233,6 @@
 				5E0D919E635D23B70123790B8308F8EF /* iOS */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		C710ACC243AB17E3CF7D30A86B7DCC36 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				0E1A7A4807A8ECC1CA4FC4C6D473ED10 /* icon_pull_to_refresh_arrow@2x.png */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		D8E52FF5F28F2FFBA1C46C73244B4EA5 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				9336A5A9D7AF3F7EC7F4760A68F8C393 /* CHTCollectionViewWaterfallLayout.framework */,
-				1902187CC30C68B5D3F40ED003F55709 /* ESPullToRefresh.bundle */,
-				A87FB0F176BDC5AE87CFDF9D57391A8C /* ESPullToRefresh.framework */,
-				2441129F13CEDD1CFC3DDF4030CF775B /* Pods_EJPhotoStorage.framework */,
-				F261E1497D275398578DA9F24D86C437 /* Pods_EJPhotoStorageTests.framework */,
-				D3D6F7A83D4E74CC61F8C9C8DC4F8C4B /* SwiftyJSON.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		E58B9022C8977474DD31D01EEF50F76B /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				F5077522A157AC92BA5ACC701653C1D4 /* CHTCollectionViewWaterfallLayout */,
-				67520012A1096D198D3AD0F531E74869 /* ESPullToRefresh */,
-				5DA107C01A8BDACA11036522580A7EEF /* SwiftyJSON */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		E9AA9AD93D33FC58CC57E2421FC08388 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				25B26291CAC9F35D11CC0E354C60A9FD /* CHTCollectionViewWaterfallLayout.modulemap */,
-				828536357DA982BFC9934572E6504C57 /* CHTCollectionViewWaterfallLayout.xcconfig */,
-				7C10E9BC14B6493DCA1572EF7DBF218A /* CHTCollectionViewWaterfallLayout-dummy.m */,
-				7A5FF544D570BFB7A3B376C10090D4B9 /* CHTCollectionViewWaterfallLayout-prefix.pch */,
-				E09DADD0ECDBC183AB9564C030188A25 /* CHTCollectionViewWaterfallLayout-umbrella.h */,
-				29FC08A0DBD2958BC60C141071C700AA /* Info.plist */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/CHTCollectionViewWaterfallLayout";
 			sourceTree = "<group>";
 		};
 		ECC01BD257FB1B0A4FDD490CBCF3D0BB /* Pods-EJPhotoStorage */ = {
@@ -368,27 +253,20 @@
 			path = "Target Support Files/Pods-EJPhotoStorage";
 			sourceTree = "<group>";
 		};
-		F5077522A157AC92BA5ACC701653C1D4 /* CHTCollectionViewWaterfallLayout */ = {
+		F50812A5070E497B62C494E805A02E68 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E9AA9AD93D33FC58CC57E2421FC08388 /* Support Files */,
-				A0BFA99A4E0C1BEBA6F77AA0423D4A93 /* Swift */,
+				BF4EA2EEBE898C59863560E156324865 /* ESPullToRefresh.bundle */,
+				5982E73DE26FAB398CA17CDBA04E09AE /* ESPullToRefresh.framework */,
+				647E103EBE24C316762771BD5486AB01 /* Pods_EJPhotoStorage.framework */,
+				F741BC4AFFFC9CDC2ED3873391C1F3F3 /* Pods_EJPhotoStorageTests.framework */,
 			);
-			name = CHTCollectionViewWaterfallLayout;
-			path = CHTCollectionViewWaterfallLayout;
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		018CB2A9294FE633ED6E720BBF69691C /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				32BA7C617804760D1AA01B9D028E1AC3 /* Pods-EJPhotoStorage-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		1F3F62DC4EC5424D3ED5F7A5256D6756 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -405,19 +283,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8B3F7A107EAB9666AA11D68CEC9DD7B7 /* Headers */ = {
+		FA7FFA422313026D656AF74CFE60C03F /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3101AD5E9F0497AB8C6633B5E9BCA06A /* SwiftyJSON-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8D491E5A3CFF71BD9C173CBBECE1076D /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5D96D498C71CD9B88C0D42BD6D93E294 /* CHTCollectionViewWaterfallLayout-umbrella.h in Headers */,
+				7A863816C2B763D8366C6D2CAA4A6416 /* Pods-EJPhotoStorage-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,61 +310,25 @@
 			);
 			name = ESPullToRefresh;
 			productName = ESPullToRefresh;
-			productReference = A87FB0F176BDC5AE87CFDF9D57391A8C /* ESPullToRefresh.framework */;
+			productReference = 5982E73DE26FAB398CA17CDBA04E09AE /* ESPullToRefresh.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		651A2E1C593C7E14A094E03D5714F302 /* Pods-EJPhotoStorage */ = {
+		3EF41B641E568568C820E5B7131DB171 /* Pods-EJPhotoStorage */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 915286070B78FC34A6F03E75F63961E2 /* Build configuration list for PBXNativeTarget "Pods-EJPhotoStorage" */;
+			buildConfigurationList = CA58D07B7E075D82DFC95C287D9C882E /* Build configuration list for PBXNativeTarget "Pods-EJPhotoStorage" */;
 			buildPhases = (
-				F40524C939F693A27B3D72E0C449E5C6 /* Sources */,
-				91BFDB4A6E3904E12117A6A3985B708C /* Frameworks */,
-				018CB2A9294FE633ED6E720BBF69691C /* Headers */,
+				0651F4414EE18FE67405FB0A74C2CA46 /* Sources */,
+				E945BC2AE998FFA622DCE19E8FF1A2EF /* Frameworks */,
+				FA7FFA422313026D656AF74CFE60C03F /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				1F6A4ED3E91803493CAD58CCD01B420B /* PBXTargetDependency */,
-				7BC024AD91170B0D54D52029B139A61D /* PBXTargetDependency */,
-				99A14CCAD2696751EC394B61F9C6D328 /* PBXTargetDependency */,
+				7C175F84812374DC5C68270A320EAA7A /* PBXTargetDependency */,
 			);
 			name = "Pods-EJPhotoStorage";
 			productName = "Pods-EJPhotoStorage";
-			productReference = 2441129F13CEDD1CFC3DDF4030CF775B /* Pods_EJPhotoStorage.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		83DBBCE523C3F780DFE1B689B272DDE8 /* CHTCollectionViewWaterfallLayout */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7151B549D788AB03287452A1205A14CD /* Build configuration list for PBXNativeTarget "CHTCollectionViewWaterfallLayout" */;
-			buildPhases = (
-				586A662234293D7F6DA248DF5EB34FE2 /* Sources */,
-				55A62AFAAA3306C730862F417CF48F93 /* Frameworks */,
-				8D491E5A3CFF71BD9C173CBBECE1076D /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = CHTCollectionViewWaterfallLayout;
-			productName = CHTCollectionViewWaterfallLayout;
-			productReference = 9336A5A9D7AF3F7EC7F4760A68F8C393 /* CHTCollectionViewWaterfallLayout.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		9753CF21669F641619AF10670AA8B5C1 /* SwiftyJSON */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 724104C97FEE4999155C5253D2E32D3C /* Build configuration list for PBXNativeTarget "SwiftyJSON" */;
-			buildPhases = (
-				4BAB8DEAB4359166F446202404AA47C5 /* Sources */,
-				50CB7D8952FBA600F0FFCF23257341B9 /* Frameworks */,
-				8B3F7A107EAB9666AA11D68CEC9DD7B7 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = SwiftyJSON;
-			productName = SwiftyJSON;
-			productReference = D3D6F7A83D4E74CC61F8C9C8DC4F8C4B /* SwiftyJSON.framework */;
+			productReference = 647E103EBE24C316762771BD5486AB01 /* Pods_EJPhotoStorage.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		BDF607B826AC2D1787D03B4DABA1E1C7 /* Pods-EJPhotoStorageTests */ = {
@@ -512,7 +346,7 @@
 			);
 			name = "Pods-EJPhotoStorageTests";
 			productName = "Pods-EJPhotoStorageTests";
-			productReference = F261E1497D275398578DA9F24D86C437 /* Pods_EJPhotoStorageTests.framework */;
+			productReference = F741BC4AFFFC9CDC2ED3873391C1F3F3 /* Pods_EJPhotoStorageTests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		D1CFA156DF9AD56A6424A8B5DDDCC42B /* ESPullToRefresh-ESPullToRefresh */ = {
@@ -529,7 +363,7 @@
 			);
 			name = "ESPullToRefresh-ESPullToRefresh";
 			productName = "ESPullToRefresh-ESPullToRefresh";
-			productReference = 1902187CC30C68B5D3F40ED003F55709 /* ESPullToRefresh.bundle */;
+			productReference = BF4EA2EEBE898C59863560E156324865 /* ESPullToRefresh.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -549,16 +383,14 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = D8E52FF5F28F2FFBA1C46C73244B4EA5 /* Products */;
+			productRefGroup = F50812A5070E497B62C494E805A02E68 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				83DBBCE523C3F780DFE1B689B272DDE8 /* CHTCollectionViewWaterfallLayout */,
 				2AAC70897269009701EA2ADFE2CB50C2 /* ESPullToRefresh */,
 				D1CFA156DF9AD56A6424A8B5DDDCC42B /* ESPullToRefresh-ESPullToRefresh */,
-				651A2E1C593C7E14A094E03D5714F302 /* Pods-EJPhotoStorage */,
+				3EF41B641E568568C820E5B7131DB171 /* Pods-EJPhotoStorage */,
 				BDF607B826AC2D1787D03B4DABA1E1C7 /* Pods-EJPhotoStorageTests */,
-				9753CF21669F641619AF10670AA8B5C1 /* SwiftyJSON */,
 			);
 		};
 /* End PBXProject section */
@@ -590,6 +422,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0651F4414EE18FE67405FB0A74C2CA46 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				373D6AA31F7ECCD15F764A020C467A40 /* Pods-EJPhotoStorage-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		17703F86AC58E7ED19B65F083AC62AF3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -606,37 +446,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4BAB8DEAB4359166F446202404AA47C5 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2A57DBA46DD1B24A4A87B9922563AB12 /* SwiftyJSON-dummy.m in Sources */,
-				7FE1D6A94F600103F15C7727FD5B861A /* SwiftyJSON.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		586A662234293D7F6DA248DF5EB34FE2 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CD5E4D782A8BED6744F29F6D5A6C2651 /* CHTCollectionViewWaterfallLayout-dummy.m in Sources */,
-				7D4258A7B8DE5B14B7B4B91D6B955029 /* CHTCollectionViewWaterfallLayout.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		A7AB71DCF6F48757FBFE5C6CA274D204 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				568BF84BE08A465FAC5DE778CC560920 /* Pods-EJPhotoStorageTests-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F40524C939F693A27B3D72E0C449E5C6 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				42B895D3C0BE8364D5D0E77EB323135C /* Pods-EJPhotoStorage-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -649,29 +463,17 @@
 			target = D1CFA156DF9AD56A6424A8B5DDDCC42B /* ESPullToRefresh-ESPullToRefresh */;
 			targetProxy = 9A796E68171A2606CA170B39634C90BA /* PBXContainerItemProxy */;
 		};
-		1F6A4ED3E91803493CAD58CCD01B420B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = CHTCollectionViewWaterfallLayout;
-			target = 83DBBCE523C3F780DFE1B689B272DDE8 /* CHTCollectionViewWaterfallLayout */;
-			targetProxy = D424E4D82AD85C26333C0E3A0A3117E3 /* PBXContainerItemProxy */;
-		};
-		7BC024AD91170B0D54D52029B139A61D /* PBXTargetDependency */ = {
+		7C175F84812374DC5C68270A320EAA7A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = ESPullToRefresh;
 			target = 2AAC70897269009701EA2ADFE2CB50C2 /* ESPullToRefresh */;
-			targetProxy = C6D6AA1A93EB725F30D99A371425DC00 /* PBXContainerItemProxy */;
+			targetProxy = 3FAB553A5C6407B4E633B0C4F16D2869 /* PBXContainerItemProxy */;
 		};
 		8132E24D9943C219773C7C44CECA5ACF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-EJPhotoStorage";
-			target = 651A2E1C593C7E14A094E03D5714F302 /* Pods-EJPhotoStorage */;
+			target = 3EF41B641E568568C820E5B7131DB171 /* Pods-EJPhotoStorage */;
 			targetProxy = 2B82DE8299C67702FE95D5DE1A0E7E8F /* PBXContainerItemProxy */;
-		};
-		99A14CCAD2696751EC394B61F9C6D328 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SwiftyJSON;
-			target = 9753CF21669F641619AF10670AA8B5C1 /* SwiftyJSON */;
-			targetProxy = 4653E0B1F4779099371ACA1F4BE5BB15 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -707,45 +509,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		16FAD96A93E742F7CC826F66F8147A1F /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E21F554C0ADDB6A8E3FEBBA38E28FF6F /* Pods-EJPhotoStorage.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-EJPhotoStorage/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-EJPhotoStorage/Pods-EJPhotoStorage.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -818,7 +581,7 @@
 		};
 		1E62366BE1F7C644F12BB092A64CA2F0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B5CC6DA893E5C63DD03B7A916F40C89A /* ESPullToRefresh.xcconfig */;
+			baseConfigurationReference = CC16C190871776723D2D50A5E1EBCB8B /* ESPullToRefresh.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ESPullToRefresh";
@@ -832,45 +595,9 @@
 			};
 			name = Release;
 		};
-		1E7B4B05827F1E973E36378F6BBCFA8A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 828536357DA982BFC9934572E6504C57 /* CHTCollectionViewWaterfallLayout.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/CHTCollectionViewWaterfallLayout/CHTCollectionViewWaterfallLayout-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/CHTCollectionViewWaterfallLayout/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/CHTCollectionViewWaterfallLayout/CHTCollectionViewWaterfallLayout.modulemap";
-				PRODUCT_MODULE_NAME = CHTCollectionViewWaterfallLayout;
-				PRODUCT_NAME = CHTCollectionViewWaterfallLayout;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		2AEAA88246F70E5F0E02550C86A6C84E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B5CC6DA893E5C63DD03B7A916F40C89A /* ESPullToRefresh.xcconfig */;
+			baseConfigurationReference = CC16C190871776723D2D50A5E1EBCB8B /* ESPullToRefresh.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -906,7 +633,7 @@
 		};
 		2E3D080E9D06AD37A4C7C8BBCAB77E8F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B5CC6DA893E5C63DD03B7A916F40C89A /* ESPullToRefresh.xcconfig */;
+			baseConfigurationReference = CC16C190871776723D2D50A5E1EBCB8B /* ESPullToRefresh.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ESPullToRefresh";
@@ -920,10 +647,11 @@
 			};
 			name = Debug;
 		};
-		4BD2F8F93272BBC1A60050BAC3491B6F /* Debug */ = {
+		64EA073DA7E28F2CB83B72AEA3C62B85 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 87B659C5CC91887F74EF3E84ACB43207 /* SwiftyJSON.xcconfig */;
+			baseConfigurationReference = B6FAAA4ABD38714E3AFFBCD1AE1CE0F9 /* Pods-EJPhotoStorage.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -933,23 +661,25 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftyJSON/SwiftyJSON-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftyJSON/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-EJPhotoStorage/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MODULEMAP_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON.modulemap";
-				PRODUCT_MODULE_NAME = SwiftyJSON;
-				PRODUCT_NAME = SwiftyJSON;
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-EJPhotoStorage/Pods-EJPhotoStorage.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -993,48 +723,9 @@
 			};
 			name = Debug;
 		};
-		8A58713DF269ABEC6EA62A240C6EB300 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B6FAAA4ABD38714E3AFFBCD1AE1CE0F9 /* Pods-EJPhotoStorage.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-EJPhotoStorage/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-EJPhotoStorage/Pods-EJPhotoStorage.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		C841586D585B8CA65DE53D1F4627D60A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B5CC6DA893E5C63DD03B7A916F40C89A /* ESPullToRefresh.xcconfig */;
+			baseConfigurationReference = CC16C190871776723D2D50A5E1EBCB8B /* ESPullToRefresh.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1069,10 +760,11 @@
 			};
 			name = Release;
 		};
-		E17B7E5DFA56234AFCEEF70E55343C26 /* Release */ = {
+		D7CCE8EC55C0762C51C3BA53F9A158AF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 828536357DA982BFC9934572E6504C57 /* CHTCollectionViewWaterfallLayout.xcconfig */;
+			baseConfigurationReference = E21F554C0ADDB6A8E3FEBBA38E28FF6F /* Pods-EJPhotoStorage.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -1082,23 +774,24 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/CHTCollectionViewWaterfallLayout/CHTCollectionViewWaterfallLayout-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/CHTCollectionViewWaterfallLayout/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-EJPhotoStorage/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MODULEMAP_FILE = "Target Support Files/CHTCollectionViewWaterfallLayout/CHTCollectionViewWaterfallLayout.modulemap";
-				PRODUCT_MODULE_NAME = CHTCollectionViewWaterfallLayout;
-				PRODUCT_NAME = CHTCollectionViewWaterfallLayout;
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-EJPhotoStorage/Pods-EJPhotoStorage.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1164,43 +857,6 @@
 			};
 			name = Release;
 		};
-		FE4A33AA988A0BC1C1A822BB438B6D43 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 87B659C5CC91887F74EF3E84ACB43207 /* SwiftyJSON.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftyJSON/SwiftyJSON-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftyJSON/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON.modulemap";
-				PRODUCT_MODULE_NAME = SwiftyJSON;
-				PRODUCT_NAME = SwiftyJSON;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1222,38 +878,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7151B549D788AB03287452A1205A14CD /* Build configuration list for PBXNativeTarget "CHTCollectionViewWaterfallLayout" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1E7B4B05827F1E973E36378F6BBCFA8A /* Debug */,
-				E17B7E5DFA56234AFCEEF70E55343C26 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		724104C97FEE4999155C5253D2E32D3C /* Build configuration list for PBXNativeTarget "SwiftyJSON" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4BD2F8F93272BBC1A60050BAC3491B6F /* Debug */,
-				FE4A33AA988A0BC1C1A822BB438B6D43 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		915286070B78FC34A6F03E75F63961E2 /* Build configuration list for PBXNativeTarget "Pods-EJPhotoStorage" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8A58713DF269ABEC6EA62A240C6EB300 /* Debug */,
-				16FAD96A93E742F7CC826F66F8147A1F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		B6452CC4D07338379A036C5A848C503F /* Build configuration list for PBXNativeTarget "Pods-EJPhotoStorageTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				66B7BBF165D8F271D9B4FF9B63CE0C47 /* Debug */,
 				102E36033BE876E1EA9967F2A7A89F92 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CA58D07B7E075D82DFC95C287D9C882E /* Build configuration list for PBXNativeTarget "Pods-EJPhotoStorage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64EA073DA7E28F2CB83B72AEA3C62B85 /* Debug */,
+				D7CCE8EC55C0762C51C3BA53F9A158AF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
