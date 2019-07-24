@@ -98,6 +98,15 @@ class SearchOperator {
         }
     }
     
+    // MARK: - Request Action
+    func reset() {
+        imageResult = nil
+        vclipResult = nil
+        
+        page = 1
+        images = []
+    }
+    
     // MARK: - Image Info
     func numOfLoadedImages() -> Int {
         // 새로 로드된 이미지 갯수
@@ -142,10 +151,6 @@ class SearchOperator {
 
     
     // MARK: - Page operation
-    func firstPage() {
-        page = 1
-    }
-    
     func nextPage() {
         page += 1
     }

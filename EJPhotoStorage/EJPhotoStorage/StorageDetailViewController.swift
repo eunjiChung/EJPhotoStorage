@@ -92,7 +92,7 @@ class StorageDetailViewController: BasicViewController, UICollectionViewDataSour
             //            Toast(message: error.localizedDescription).show()
             self.presentAlert(title: "주의", message: "사진을 저장할 수 없습니다. \n 사진첩 접근을 허용해주십시오. \n \(error.localizedDescription)")
         } else {
-            self.presentAlert(title: "알림", message: "사진 저장이 완료되었습니다.")
+            self.presentAlert(title: "알림", message: "사진이 앨범에 저장되었습니다.")
         }
     }
     

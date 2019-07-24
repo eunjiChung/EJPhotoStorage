@@ -60,6 +60,7 @@ class MainDetailViewController: BasicViewController, UICollectionViewDataSource,
         if let currentImage = currentImage,
             !storedImageUrls.contains(currentImage.imageUrl!) {
             self.delegate?.saveSelectedImage(by: currentImage.imageUrl!)
+            self.presentAlert(title: "알림", message: "사진을 보관함에 저장하였습니다")
         }
     }
     

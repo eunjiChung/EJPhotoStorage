@@ -18,6 +18,7 @@ class SearchResult: Decodable {
     let meta: Meta
     var documents: [Document]
     
+    // MARK: - init
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 

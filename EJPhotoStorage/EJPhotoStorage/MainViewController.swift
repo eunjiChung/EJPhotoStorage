@@ -34,6 +34,7 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
         layout()
         
         self.collectionView.es.addPullToRefresh { [unowned self] in
+            self.searchOperator.reset()
             self.requestImages()
         }
         
@@ -115,7 +116,6 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
                                        success: { (resultOperator) in
                                         
                                         resultOperator.decodeData(with: .initial)
-                                        resultOperator.appendNewResult()
                                         resultOperator.combineResults()
                                         
                                         if !resultOperator.isResultEmpty()
