@@ -8,7 +8,20 @@
 
 import Foundation
 
-enum AnyDocument: Codable {
+enum DocumentType: String, Codable {
+    case image, vclip
+
+    var metatype: AnyDocument.Type {
+        switch self {
+        case .image:
+            return ImageDocument.self
+        case .vclip:
+            return VclipDocument.self
+        }
+    }
+}
+
+enum AnyDocument: Decodable {
     // thumbnailUrl, datetime, imageurl, width, height
     case ImageDocument(String, String, String, Int, Int)
     // thumbnail, datetime
@@ -17,27 +30,6 @@ enum AnyDocument: Codable {
     
     enum CodingKeys: String, CodingKey {
         case thumbnailUrl = "thumbnail_url", imageUrl = "image_url", width, height, datetime, thumbnail
-    }
-    
-    // MARK: - Encoder
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        
-        switch self {
-        case .ImageDocument(let thumbnailUrl, let datetime, let imageUrl, let width, let height):
-            try container.encode(thumbnailUrl, forKey: .thumbnailUrl)
-            try container.encode(datetime, forKey: .datetime)
-            try container.encode(imageUrl, forKey: .imageUrl)
-            try container.encode(width, forKey: .width)
-            try container.encode(height, forKey: .height)
-        case .VclipDocument(let thumbnail, let datetime):
-            try container.encode(thumbnail, forKey: .thumbnail)
-            try container.encode(datetime, forKey: .datetime)
-        case .noDocument:
-            let context = EncodingError.Context(codingPath: encoder.codingPath,
-                                                debugDescription: "Invalid employee!")
-            throw EncodingError.invalidValue(self, context)
-        }
     }
     
     // MARK: - Decodable
@@ -64,3 +56,13 @@ enum AnyDocument: Codable {
         }
     }
 }
+
+
+let decoder = JSONDecoder()
+let data = Data()
+let resp = try decoder.decode(AnyDocument.self, from: data)
+
+switch resp {
+    case .ImageDocument(<#T##String#>, <#T##String#>, <#T##String#>, <#T##Int#>, <#T##Int#>)
+}
+

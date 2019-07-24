@@ -9,7 +9,7 @@
 import UIKit
 
 protocol MainDetailViewDelegate: class {
-    func saveSelectedPhoto(to images: [ImageRecord])
+    func saveSelectedImage(by url: String)
 }
 
 class MainDetailViewController: BasicViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -18,9 +18,9 @@ class MainDetailViewController: BasicViewController, UICollectionViewDataSource,
     weak var delegate: MainDetailViewDelegate?
     
     // MARK: - Property
-    var images: [ImageRecord]?
-    var storedImages = [ImageRecord]()
-    var currentImage : ImageRecord?
+    var documents = [Document]()
+    var storedImageUrls = [String]()
+    var currentImage : Document?
     var indexPath : IndexPath?
     
     // MARK: - IBOutlets
@@ -57,33 +57,26 @@ class MainDetailViewController: BasicViewController, UICollectionViewDataSource,
     }
     
     @IBAction func didTouchStoreBtn(_ sender: Any) {
-        if let currentImage = currentImage, let imageUrl = currentImage.imageUrl {
-            // Set으로 다루기
-            if !storedImages.contains(currentImage) {
-                EJLibrary.shared.downloadImage(with:imageUrl) { (image) in
-                    currentImage.image = image
-                    self.storedImages.append(currentImage)
-                    self.delegate?.saveSelectedPhoto(to: self.storedImages)
-                    // 토스트 띄워보기...
-                }
-            }
+        if let currentImage = currentImage,
+            !storedImageUrls.contains(currentImage.imageUrl) {
+            self.delegate?.saveSelectedImage(by: currentImage.imageUrl)
         }
     }
     
     // MARK: - CollectionView Data Source
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let images = images else { return 0 }
-        return images.count
+        return documents.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResultDetailCollectionViewCell.identifier, for: indexPath) as! ResultDetailCollectionViewCell
         
-        guard let imageRecord = images?[indexPath.item] else { return cell }
-        currentImage = imageRecord
-        cell.imageView.loadImageNone(imageRecord.imageUrl!)
+        let image = documents[indexPath.item]
+        cell.imageView.loadImageNone(image.imageUrl)
         cell.imageName.text = "이미지"
-        cell.imageDatetime.text = imageRecord.dateTimeString()
+        cell.imageDatetime.text = image.dateToString()
+        
+        currentImage = image
         
         return cell
     }
@@ -109,3 +102,4 @@ class MainDetailViewController: BasicViewController, UICollectionViewDataSource,
         alcTrailingOfCloseButton.constant = EJSizeWidth(25.0)
     }
 }
+

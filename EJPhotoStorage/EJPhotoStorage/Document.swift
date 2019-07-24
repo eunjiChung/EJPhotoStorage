@@ -10,7 +10,7 @@ import Foundation
 
 struct Document: Decodable {
     
-    var datetime: String
+    var datetime: Date
     var imageUrl: String
     
     enum CodingKeys: String, CodingKey {
@@ -26,14 +26,24 @@ struct Document: Decodable {
         
         switch containerKeys {
         case imageKeys:
-            datetime = try container.decode(String.self, forKey: .datetime)
+            datetime = try container.decode(Date.self, forKey: .datetime)
             imageUrl = try container.decode(String.self, forKey: .thumbnailUrl)
         case vclipKeys:
-            datetime = try container.decode(String.self, forKey: .datetime)
+            datetime = try container.decode(Date.self, forKey: .datetime)
             imageUrl = try container.decode(String.self, forKey: .thumbnail)
         default:
             let context = DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Not enough keys!")
             throw DecodingError.dataCorrupted(context)
         }
+    }
+    
+    func dateToString() -> String {
+        print("Date:", datetime)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-DD'T'HH:mm:ss.SSSZZZZZ"
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        
+        print("String:", dateFormatter.string(from: datetime))
+        return dateFormatter.string(from: datetime)
     }
 }

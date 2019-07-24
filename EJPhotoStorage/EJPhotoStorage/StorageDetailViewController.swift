@@ -11,9 +11,9 @@ import UIKit
 class StorageDetailViewController: BasicViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     // MARK: - Property
-    var images: [ImageRecord]?
+    var images: [UIImage]?
     var indexPath: IndexPath?
-    var currentImage: ImageRecord?
+    var currentImage: UIImage?
     
     // MARK: - IBOutlets
     @IBOutlet weak var collectionView: UICollectionView!
@@ -48,8 +48,10 @@ class StorageDetailViewController: BasicViewController, UICollectionViewDataSour
     }
     
     @IBAction func didTouchStoreBtn(_ sender: Any) {
-        guard let image = currentImage?.image else { return }
-        UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+        
+        if let image = currentImage {
+            UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+        }
     }
 
     // MARK: - CollectionView DataSource
@@ -63,11 +65,11 @@ class StorageDetailViewController: BasicViewController, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoDetailCollectionViewCell.identifier, for: indexPath) as! PhotoDetailCollectionViewCell
         
-        guard let imageRecord = images?[indexPath.item] else { return cell }
-        cell.imageView.image = imageRecord.image
+        guard let image = images?[indexPath.item] else { return cell }
+        cell.imageView.image = image
         cell.imageName.text = "이미지"
-        cell.imageDatetime.text = imageRecord.dateTimeString()
-        currentImage = imageRecord
+//        cell.imageDatetime.text = imageRecord.dateTimeString()
+        currentImage = image
         
         return cell
     }
@@ -88,7 +90,7 @@ class StorageDetailViewController: BasicViewController, UICollectionViewDataSour
     @objc fileprivate func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
         if let error = error {
             //            Toast(message: error.localizedDescription).show()
-            self.presentAlert(title: "주의", message: "사진을 저장할 수 없습니다. \n 사진첩 접근을 허용해주십시오.")
+            self.presentAlert(title: "주의", message: "사진을 저장할 수 없습니다. \n 사진첩 접근을 허용해주십시오. \n \(error.localizedDescription)")
         } else {
             self.presentAlert(title: "알림", message: "사진 저장이 완료되었습니다.")
         }

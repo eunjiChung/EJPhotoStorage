@@ -20,7 +20,7 @@ class NetworkManager {
     func GETRequest(path: String,
                     query: [URLQueryItem],
                     header: HTTPHeaders,
-                    success: @escaping SuccessHandler,
+                    success: @escaping (Data) -> (),
                     failure: @escaping FailureHandler)
     {
         guard let url = UrlForRequest(path: path, query: query, header: header) else { return }

@@ -17,10 +17,8 @@ enum SearchStatus {
 class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfallLayout, UICollectionViewDataSource, MainDetailViewDelegate, UISearchBarDelegate {
     
     // MARK: - Property
-    var images = Images.init()
-    var searchedImages: [ImageRecord] = []
-    var storedImages: [ImageRecord] = []
-    var searchKeyword = ""
+    var searchOperator = SearchOperator.init()
+    var storedImages: [UIImage] = []
     
     // MARK: - IBOutlet
     @IBOutlet weak var collectionView: UICollectionView!
@@ -40,7 +38,7 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
         }
         
         self.collectionView.es.addInfiniteScrolling { [unowned self] in
-            if self.images.isRequestEnd() {
+            if self.searchOperator.isAllRequestEnd() {
                 
                 self.presentAlert(title: "알림", message: "모든 결과를 불러왔습니다.")
                 
@@ -58,40 +56,6 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
         setSearchResultLabel(by: .initial)
     }
     
-    // MARK: - CollectionViewDataSource
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images.imageRecords.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResultCollectionViewCell.identifier, for: indexPath) as! ResultCollectionViewCell
-        
-        let imageDetail = images.imageRecords[indexPath.item]
-        cell.imageView.image = imageDetail.image
-        
-        cell.imageView.loadImageCrossDissolve(imageDetail.imageUrl!)
-        
-        return cell
-    }
-    
-    
-    // MARK: - CHTCollectionViewWaterfallLayout Delegate
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
-        let result = images.imageRecords[indexPath.item]
-        
-        if let width = result.imageWidth, let height = result.imageHeight {
-            return CGSize(width: width, height: height)
-        }
-        
-        return result.image.size
-    }
-    
-    
-    // MARK: - Save Photo Delegate
-    func saveSelectedPhoto(to images: [ImageRecord]) {
-        storedImages = images
-    }
-    
     // MARK: - UISearchBar Delegate
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         // Hide Keyboard
@@ -100,7 +64,7 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
         
         if let searchKeyword = searchBar.text {
             if searchKeyword != "" {
-                self.images = Images.init(with: searchKeyword)
+                searchOperator = SearchOperator.init(with: searchKeyword)
                 setSearchResultLabel(by: .searching)
                 requestImages()
             } else {
@@ -109,15 +73,54 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
         }
     }
     
+    // MARK: - CollectionViewDataSource
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return searchOperator.images.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResultCollectionViewCell.identifier, for: indexPath) as! ResultCollectionViewCell
+        
+        let imageDetail = searchOperator.images[indexPath.item]
+        cell.imageView.image = UIImage(named: "Placeholder")! // 이거 클래스에서 바꿀 순 없나? 구조체라서 안되나..?
+        
+        cell.imageView.loadImageCrossDissolve(imageDetail.imageUrl)
+        
+        return cell
+    }
+    
+    
+    // MARK: - CHTCollectionViewWaterfallLayout Delegate
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
+        let result = searchOperator.images[indexPath.item]
+        
+//        if let width = result.imageWidth, let height = result.imageHeight {
+//            return CGSize(width: width, height: height)
+//        }
+        
+//        return result.image.size/
+        return CGSize.zero // 사이즈 결정하기 ㅠㅠ
+    }
+    
+    
+    // MARK: - Save Photo Delegate
+    func saveSelectedImage(by url: String) {
+        EJLibrary.shared.downloadImage(with: url) { (image) in
+            self.storedImages.append(image)
+        }
+    }
+    
     // MARK: - Private Method
     fileprivate func requestImages() {
-        EJLibrary.shared.requestImages(images: self.images,
-                                       success: { (images) in
+        EJLibrary.shared.requestImages(searchOperator: self.searchOperator,
+                                       success: { (resultOperator) in
                                         
-                                        if !images.isImageRecordEmpty()
+                                        resultOperator.decodeData()
+                                        resultOperator.appendNewResult()
+                                        resultOperator.combineResults()
+                                        
+                                        if !resultOperator.isResultEmpty()
                                         {
-                                            self.images = images
-    
                                             self.setSearchResultLabel(by: .searched)
                                             self.collectionView.reloadData()
                                             
@@ -137,14 +140,19 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
     
     fileprivate func requestLoadMoreImages() {
         
-        self.images.nextPage()
+        searchOperator.nextPage()
         
-        EJLibrary.shared.requestImages(images: self.images,
-                                       success: { (resultImages) in
+        EJLibrary.shared.requestImages(searchOperator: self.searchOperator,
+                                       success: { (resultOperator) in
+                                        
+                                        resultOperator.decodeData()
+                                        resultOperator.appendNewResult()
+                                        resultOperator.combineResults()
+                                        
                                         self.collectionView.performBatchUpdates({
-                                            let indexPaths = self.indexPathsForLoadMore(by: resultImages.imageRecords)
+                                            // 안돼 ㅠㅠ 새로운 이미지만 넣어야해....
+                                            let indexPaths = self.indexPathsForLoadMore(by: resultOperator.numOfLoadedImages())
                                             self.collectionView.insertItems(at: indexPaths)
-                                            self.images = resultImages
                                             self.activityIndicator.stopAnimating()
                                         }, completion: { (result) in
                                             self.activityIndicator.stopAnimating()
@@ -157,11 +165,11 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
     }
     
     
-    fileprivate func indexPathsForLoadMore(by resultRecords: [ImageRecord]) -> [IndexPath] {
+    fileprivate func indexPathsForLoadMore(by newImagesCount: Int) -> [IndexPath] {
         var moreIndexPaths: [IndexPath] = []
-        let startIndex = images.imageRecords.count
+        let startIndex = self.searchOperator.images.count
         
-        for index in 0..<resultRecords.count {
+        for index in 0..<newImagesCount {
             let indexPath = IndexPath.init(item: startIndex+index, section: 0)
             moreIndexPaths.append(indexPath)
         }
@@ -184,8 +192,8 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
         case .some("main_detail_segue"):
             if let destination = segue.destination as? MainDetailViewController,
                 let cell = sender as? UICollectionViewCell, let indexPath = collectionView.indexPath(for: cell) {
-                destination.images = images.imageRecords
-                destination.indexPath = indexPath
+                destination.documents = self.searchOperator.images
+                destination.indexPath = indexPath // 이게 동작을 안하나...?
                 destination.delegate = self
             }
         case "main_storage_segue":
@@ -202,11 +210,11 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
         
         switch status {
         case .initial:
-            if images.imageRecords.count == 0 {
+            if searchOperator.isDocumentEmpty() {
                 searchResultLabel.text = "검색어를 입력해주세요."
             }
         case .searched:
-            if images.imageRecords.count == 0 {
+            if searchOperator.isResultEmpty() {
                 searchResultLabel.text = "검색 결과가 없습니다."
             }
         case .searching:
@@ -219,8 +227,5 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
             let indexPath = IndexPath(item: 0, section: 0)
             self.collectionView.scrollToItem(at: indexPath, at: .top, animated: true)
         }
-    }
-    
-    fileprivate func removeActivity() {
     }
 }

@@ -46,13 +46,13 @@ class EJLibrary : NSObject {
     let pendingOperations = PendingOperations()
     
     // MARK: - Request
-    func requestImages(images: Images,
-                       success: @escaping (Images) -> (),
+    func requestImages(searchOperator: SearchOperator,
+                       success: @escaping (SearchOperator) -> (),
                        failure: @escaping FailureHandler) {
-        pendingOperations.startRequest(images: images,
+        pendingOperations.startRequest(searchOperator: searchOperator,
                                        imagePath: imagePath(),
                                        vclipPath: vclipPath(),
-                                       query: generateQueryItems(images.keyword, images.page),
+                                       query: generateQueryItems(searchOperator.keyword, searchOperator.page),
                                        header: generateRequestHeader(),
                                        success: success,
                                        failure: failure)

@@ -22,15 +22,15 @@ public class PendingOperations {
         return queue
     }()
     
-    func startRequest(images: Images,
+    func startRequest(searchOperator: SearchOperator,
                       imagePath: String,
                       vclipPath: String,
                       query: [URLQueryItem],
                       header: HTTPHeaders,
-                      success: @escaping (Images) -> (),
+                      success: @escaping (SearchOperator) -> (),
                       failure: @escaping (Error) -> ()) {
 
-        let imageRequester = ImageRequester.init(images: images,
+        let imageRequester = ImageRequester.init(searchOperator: searchOperator,
                                                  imagePath: imagePath,
                                                  vclipPath: vclipPath,
                                                  query: query,
@@ -38,15 +38,14 @@ public class PendingOperations {
         
         imageRequester.completionBlock = {
             print("Request finished!!")
-            // 얘를 어디다 옮길까...
-            imageRequester.images.sortImagesRecency()
+            
             
             if let error = imageRequester.error {
                 failure(error)
             }
             
             DispatchQueue.main.async {
-                success(imageRequester.images)
+                success(imageRequester.searchOperator)
             }
         }
         
@@ -91,11 +90,6 @@ class ImageDownloader: BlockOperation {
 }
 
 
-
-enum requestType {
-    case image, vclip
-}
-
 class ImageRequester: BlockOperation {
     
     // MARK: - Variables
@@ -107,18 +101,17 @@ class ImageRequester: BlockOperation {
     var header: HTTPHeaders
     var error: Error?
     
-    // 기존 이미지들을 가져옴...
-    var images = Images.init(with: "new")
+    var searchOperator: SearchOperator
     
     let group = DispatchGroup()
     
     // MARK: - Initializer
-    init(images: Images,
+    init(searchOperator: SearchOperator,
          imagePath: String,
          vclipPath: String,
          query: [URLQueryItem],
          header: HTTPHeaders) {
-        self.images = images
+        self.searchOperator = searchOperator
         self.imagePath = imagePath
         self.vclipPath = vclipPath
         self.query = query
@@ -127,14 +120,18 @@ class ImageRequester: BlockOperation {
     
     // MARK: - Operation Execution
     override func main() {
-        if !images.isImageEnd {
+        if !searchOperator.isImageEnd() {
             group.enter()
             requestImage()
+        } else {
+            self.searchOperator.imageData = nil
         }
         
-        if !images.isVclipEnd {
+        if !searchOperator.isVclipEnd() {
             group.enter()
             requestVclip()
+        } else {
+            self.searchOperator.vclipData = nil
         }
 
         group.wait()
@@ -148,7 +145,7 @@ class ImageRequester: BlockOperation {
                                   query: query,
                                   header: header,
                                   success: { (data) in
-                                    self.appendImages(of: data, by: .image)
+                                    self.searchOperator.imageData = data
                                     self.group.leave()
         }) { (error) in
             self.error = error
@@ -163,47 +160,11 @@ class ImageRequester: BlockOperation {
                                   query: query,
                                   header: header,
                                   success: { (data) in
-                                    self.appendImages(of: data, by: .vclip)
+                                    self.searchOperator.vclipData = data
                                     self.group.leave()
         }) { (error) in
             self.error = error
             self.group.leave()
-        }
-    }
-    
-    fileprivate func appendImages(of data: Any, by type: requestType) {
-        
-        switch type {
-        case .image:
-            
-            let model = IMImageModel.init(object: data)
-            
-            if let meta = model.meta, let documents = model.documents, let isEnd = meta.isEnd {
-                
-                if isEnd && (documents.count == 0) { return }
-                
-                documents.forEach {
-                    let newImageRecord = ImageRecord.init(with: $0)
-                    self.images.imageRecords.append(newImageRecord)
-                }
-                
-                self.images.isImageEnd = isEnd
-            }
-        case .vclip:
-            
-            let model = VMVclipModel.init(object: data)
-            
-            if let meta = model.meta, let isEnd = meta.isEnd, let documents = model.documents {
-                
-                if isEnd && (documents.count == 0) { return }
-                
-                documents.forEach {
-                    let newImageRecord = ImageRecord.init(with: $0)
-                    self.images.imageRecords.append(newImageRecord)
-                }
-                
-                self.images.isVclipEnd = isEnd
-            }
         }
     }
 }

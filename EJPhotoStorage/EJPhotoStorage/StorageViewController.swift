@@ -11,7 +11,7 @@ import UIKit
 class StorageViewController: BasicViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     // MARK: - Property
-    var images: [ImageRecord]?
+    var images: [UIImage]?
     let cellId = StorageCollectionViewCell.identifier
 
     // MARK: - IBOutlet
@@ -61,7 +61,7 @@ class StorageViewController: BasicViewController, UICollectionViewDataSource, UI
         // 여기는 진짜 저장된 이미지들을 저장!
         if let images = images {
             let image = images[indexPath.item]
-            cell.imageView.loadImageNone(image.imageUrl!)
+            cell.imageView.image = image
         }
         
         return cell
