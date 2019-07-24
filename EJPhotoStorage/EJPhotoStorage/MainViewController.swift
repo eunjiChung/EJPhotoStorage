@@ -110,6 +110,10 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
             self.storedImages.append(image)
         } else {
             print("No IMAGE in ImageCache!!")
+            EJLibrary.shared.downloadImage(with: url) { (image) in
+                imageCache.setObject(image, forKey: url as NSString)
+                self.storedImages.append(image)
+            }
         }
     }
     
@@ -191,9 +195,9 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
         {
         case .some("main_detail_segue"):
             if let destination = segue.destination as? MainDetailViewController,
-                let cell = sender as? UICollectionViewCell, let indexPath = collectionView.indexPath(for: cell) {
+                let cell = sender as? ResultCollectionViewCell, let indexPath = collectionView.indexPath(for: cell) {
                 destination.documents = self.searchOperator.images
-                destination.indexPath = indexPath // 이게 동작을 안하나...?
+                destination.indexPath = indexPath // waterFallLayout이 정렬하다보니까...
                 destination.delegate = self
             }
         case "main_storage_segue":

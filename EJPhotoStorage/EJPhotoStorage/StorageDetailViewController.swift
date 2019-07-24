@@ -48,7 +48,6 @@ class StorageDetailViewController: BasicViewController, UICollectionViewDataSour
     }
     
     @IBAction func didTouchStoreBtn(_ sender: Any) {
-        
         if let image = currentImage {
             UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
         }
@@ -67,8 +66,6 @@ class StorageDetailViewController: BasicViewController, UICollectionViewDataSour
         
         guard let image = images?[indexPath.item] else { return cell }
         cell.imageView.image = image
-        cell.imageName.text = "이미지"
-//        cell.imageDatetime.text = imageRecord.dateTimeString()
         currentImage = image
         
         return cell

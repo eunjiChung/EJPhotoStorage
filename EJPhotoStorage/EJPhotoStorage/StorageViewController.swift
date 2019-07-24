@@ -34,12 +34,11 @@ class StorageViewController: BasicViewController, UICollectionViewDataSource, UI
         }
     }
     
-    
     // MARK: - Private Method
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "storage_detail_segue" {
             if let destination = segue.destination as? StorageDetailViewController,
-                let cell = sender as? UICollectionViewCell,
+                let cell = sender as? PhotoDetailCollectionViewCell,
                 let indexPath = collectionView.indexPath(for: cell) {
                 destination.images = images
                 destination.indexPath = indexPath
@@ -58,7 +57,6 @@ class StorageViewController: BasicViewController, UICollectionViewDataSource, UI
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! StorageCollectionViewCell
         
-        // 여기는 진짜 저장된 이미지들을 저장!
         if let images = images {
             let image = images[indexPath.item]
             cell.imageView.image = image
