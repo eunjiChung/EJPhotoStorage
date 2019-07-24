@@ -85,7 +85,7 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
         let imageDetail = searchOperator.images[indexPath.item]
         cell.imageView.image = UIImage(named: "Placeholder")! // 이거 클래스에서 바꿀 순 없나? 구조체라서 안되나..?
         
-        cell.imageView.loadImageCrossDissolve(imageDetail.imageUrl!)
+        cell.imageView.loadImageNone(imageDetail.imageUrl!)
         
         return cell
     }
@@ -139,17 +139,15 @@ class MainViewController: BasicViewController, CHTCollectionViewDelegateWaterfal
     
     fileprivate func requestLoadMoreImages() {
         
+        let startIndex = self.searchOperator.images.count
         searchOperator.goToNextPage()
         EJLibrary.shared.requestImages(searchOperator: self.searchOperator,
                                        success: { (resultOperator) in
-                                        
-                                        // 로딩한 데이타만 generate한다 & sorting
-                                        resultOperator.generateLoadedData()
+                                        resultOperator.generateData(with: .loading)
+                                        self.searchOperator = resultOperator
                                         
                                         self.collectionView.performBatchUpdates({
-                                            let indexPaths = self.indexPathsForLoadMore(by: resultOperator.images.count, to: resultOperator.numOfLoadedImages())
-//                                            resultOperator.appendNewResults()
-//                                            self.searchOperator = resultOperator
+                                            let indexPaths = self.indexPathsForLoadMore(by: startIndex, to: resultOperator.numOfLoadedImages())
                                             self.collectionView.insertItems(at: indexPaths)
                                             self.activityIndicator.stopAnimating()
                                         }, completion: { (result) in

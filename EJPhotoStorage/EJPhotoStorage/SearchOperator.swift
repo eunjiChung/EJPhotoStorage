@@ -25,7 +25,6 @@ class SearchOperator {
     var images: [Document] = []
     
     
-    
     // MARK: - Init
     init() {
         
@@ -40,79 +39,56 @@ class SearchOperator {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .formatted(DateFormatter.iso8601Full)
         
-        if let imageData = imageData {
-            do {
-                imageResult = try decoder.decode(SearchResult.self, from: imageData)
-            } catch {
-                print("Got Error whild decoding imageData: \(error)")
+        switch status {
+        case .initial:
+            if let imageData = imageData {
+                do {
+                    imageResult = try decoder.decode(SearchResult.self, from: imageData)
+                } catch {
+                    print("Got Error whild decoding imageData: \(error)")
+                }
             }
-        }
-        if let vclipData = vclipData {
-            do {
-                vclipResult = try decoder.decode(SearchResult.self, from: vclipData)
-            } catch {
-                print("Got Error while decoding vclipData: \(error)")
+            if let vclipData = vclipData {
+                do {
+                    vclipResult = try decoder.decode(SearchResult.self, from: vclipData)
+                } catch {
+                    print("Got Error while decoding vclipData: \(error)")
+                }
             }
-        }
-        
-        combineResults(imageResult, vclipResult)
-    }
-    
-    func generateLoadedData() {
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .formatted(DateFormatter.iso8601Full)
-        
-        if let imageData = imageData {
-            do {
-                newImageResult = try decoder.decode(SearchResult.self, from: imageData)
-            } catch {
-                print("Got Error whild decoding imageData: \(error)")
+            combineResults(imageResult, vclipResult)
+        case .loading:
+            if let imageData = imageData {
+                do {
+                    newImageResult = try decoder.decode(SearchResult.self, from: imageData)
+                } catch {
+                    print("Got Error whild decoding imageData: \(error)")
+                }
             }
-        }
-        if let vclipData = vclipData {
-            do {
-                newVclipresult = try decoder.decode(SearchResult.self, from: vclipData)
-            } catch {
-                print("Got Error while decoding vclipData: \(error)")
+            if let vclipData = vclipData {
+                do {
+                    newVclipresult = try decoder.decode(SearchResult.self, from: vclipData)
+                } catch {
+                    print("Got Error while decoding vclipData: \(error)")
+                }
             }
+            combineResults(newImageResult, newVclipresult)
+        default:
+            print("Status Nothing")
         }
-        
-//        appendNewResults()
-//        combineResults(newImageResult, newVclipresult)
     }
     
     func combineResults(_ first: SearchResult?, _ second: SearchResult?) {
         if let image = first {
             image.documents.forEach { images.append($0) }
-            self.newImageResult = nil
         }
         
         if let vclip = second {
             vclip.documents.forEach { images.append($0) }
-            self.newVclipresult = nil
         }
         
-        print("Images: ", images)
+        print("Images: ", images.count)
         
         images.sort { $0.datetime.compare($1.datetime) == .orderedDescending }
-    }
-    
-    func appendNewResults() {
-        if let newImage = newImageResult {
-            newImage.documents.forEach {
-                self.imageResult?.documents.append($0)
-            }
-            self.newImageResult = nil
-        }
-        
-        if let newVclip = newVclipresult {
-            newVclip.documents.forEach {
-                self.vclipResult?.documents.append($0)
-            }
-            self.newVclipresult = nil
-        }
-        
-        combineResults(imageResult, vclipResult)
     }
     
     // MARK: - Request Action

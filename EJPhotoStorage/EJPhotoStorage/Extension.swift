@@ -14,9 +14,6 @@ var imageCache = NSCache<AnyObject, AnyObject>()
 extension UIImageView {
     
     func loadImageNone(_ urlString: String) {
-        // 뭐하러...
-        let tinyDelay = DispatchTime.now() + Double(Int64(0.001 * Float(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-        
         if let cacheImage = imageCache.object(forKey: urlString as AnyObject) as? UIImage {
             self.run(with: cacheImage)
             return
