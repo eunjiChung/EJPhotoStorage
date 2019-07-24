@@ -23,6 +23,7 @@
 
 
 ## 화면
+![메인화면](https://blog.naver.com/PostView.nhn?blogId=twih&Redirect=View&logNo=221594564489&categoryNo=67&isAfterWrite=true&isMrblogPost=false&isHappyBeanLeverage=true&contentLength=6539#)
 
 
 
